@@ -1,4 +1,4 @@
-package SortPractice;
+package com.algorithm;
 
 import java.util.stream.IntStream;
 
