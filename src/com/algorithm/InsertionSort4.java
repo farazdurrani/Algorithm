@@ -15,7 +15,6 @@ public class InsertionSort4 {
 	    }
 	    arr[j + 1]  = key;
 	}
-	IntStream.of(arr).forEach(x -> System.err.print(x + ", "));
-	
+	IntStream.of(arr).forEach(x -> System.err.print(x + ", "));	
     }
 }

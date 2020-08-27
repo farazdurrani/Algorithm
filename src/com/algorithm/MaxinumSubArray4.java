@@ -20,7 +20,7 @@ public class MaxinumSubArray4 {
 	int n = arr.length;
 	int maxSum = Integer.MIN_VALUE;
 	for (int i = 0; i < n; i++) {
-	    int sum = 0; //don't forget this sum part. It must start between two for loops.
+	    int sum = 0; // don't forget this sum part. It must start between two for loops.
 	    for (int j = i; j < n; j++) {
 		sum = sum + arr[j];
 		if (sum > maxSum) {
@@ -41,7 +41,8 @@ public class MaxinumSubArray4 {
 	    int[] leftMaxSum = findMaxSubArrayDC(arr, low, mid);
 	    int[] rightMaxSum = findMaxSubArrayDC(arr, mid + 1, high);
 	    int[] crossMaxSum = findMaxSubArrayCrossingMid(arr, low, mid, high);
-
+	    System.out.print("low is: " + low + ", mid is: " + mid + ", high is: " + high);
+	    System.out.println();
 	    if (leftMaxSum[2] >= rightMaxSum[2] && leftMaxSum[2] >= crossMaxSum[2]) {
 		return leftMaxSum;
 	    } else if (rightMaxSum[2] >= leftMaxSum[2] && rightMaxSum[2] >= crossMaxSum[2]) {
