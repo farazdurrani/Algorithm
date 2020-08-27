@@ -10,5 +10,7 @@ public class TreeTest {
 	t.preorderTraversal();
 	t.inorderTraversal();
 	t.postorderTraversal();
+	list.forEach(i -> t.find(i));
+	list.forEach(i -> t.find(i + 1));
     }
 }
