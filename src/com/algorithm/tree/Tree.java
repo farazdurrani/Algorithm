@@ -15,6 +15,30 @@ public class Tree<E extends Comparable<E>> {
 	}
     }
 
+    public boolean find(E data) {
+	TreeNode<E> node = find(data, root);
+	if (null == node) {
+	    System.out.println(data + " not found");
+	    return true;
+	} else {
+	    System.out.println("Found " + data);
+	    return false;
+	}
+    }
+
+    private TreeNode<E> find(E data, TreeNode<E> node) {
+	if (node != null) {
+	    if (node.data.compareTo(data) == 0) {
+		return node;
+	    } else if (data.compareTo(node.data) < 0) {
+		return find(data, node.left);
+	    } else if (data.compareTo(node.data) > 0) {
+		return find(data, node.right);
+	    }
+	}
+	return null;
+    }
+
     public void inorderTraversal() {
 	inorderHelper(root);
 	System.out.println();
