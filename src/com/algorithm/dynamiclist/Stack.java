@@ -13,11 +13,11 @@ public class Stack<E> {
     }
 
     public void push(E data) {
-	node.insertAtBack(data);
+	node.insertAtFront(data);
     }
 
     public E pull() {
-	return node.removeFromBack();
+	return node.removeFromFront();
     }
     
     public void print() {
