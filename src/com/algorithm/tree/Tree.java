@@ -15,28 +15,65 @@ public class Tree<E extends Comparable<E>> {
 	}
     }
 
-    public boolean find(E data) {
-	TreeNode<E> node = find(data, root);
+    public boolean find(E findData) {
+	TreeNode<E> node = find(root, findData);
 	if (null == node) {
-	    System.out.println(data + " not found");
-	    return true;
-	} else {
-	    System.out.println("Found " + data);
+	    System.out.println(findData + " not found");
 	    return false;
+	} else {
+	    System.out.println("Found " + findData);
+	    return true;
 	}
     }
 
-    private TreeNode<E> find(E data, TreeNode<E> node) {
+    private TreeNode<E> find(TreeNode<E> node, E findData) {
+	System.out.println("Finding " + findData);
 	if (node != null) {
-	    if (node.data.compareTo(data) == 0) {
+	    if (findData.compareTo(node.data) < 0) {
+		return find(node.left, findData);
+	    } else if (findData.compareTo(node.data) > 0) {
+		return find(node.right, findData);
+	    } else {
 		return node;
-	    } else if (data.compareTo(node.data) < 0) {
-		return find(data, node.left);
-	    } else if (data.compareTo(node.data) > 0) {
-		return find(data, node.right);
 	    }
 	}
 	return null;
+    }
+
+    void deleteTreeNode(E deleteData) {
+	root = deleteTreeNode(root, deleteData);
+    }
+
+    private TreeNode<E> deleteTreeNode(TreeNode<E> node, E deleteData) {
+	TreeNode<E> cur = node;
+	if (cur == null) {
+	    return cur;
+	}
+	if (deleteData.compareTo(cur.data) < 0) {
+	    cur.left = deleteTreeNode(cur.left, deleteData);
+	} else if (deleteData.compareTo(cur.data) > 0) {
+	    cur.right = deleteTreeNode(cur.right, deleteData);
+	} else {
+	    if (cur.left == null && cur.right == null) {
+		cur = null;
+	    } else if (cur.left == null) {
+		cur = cur.right;
+	    } else if (cur.right == null) {
+		cur = cur.left;
+	    } else {
+		TreeNode<E> temp = findMinFromRight(cur.right);
+		cur.data = temp.data;
+		cur.right = deleteTreeNode(cur.right, temp.data);
+	    }
+	}
+	return cur;
+    }
+
+    private TreeNode<E> findMinFromRight(TreeNode<E> node) {
+	while (node.left != null) {
+	    node = node.left;
+	}
+	return node;
     }
 
     public void inorderTraversal() {
