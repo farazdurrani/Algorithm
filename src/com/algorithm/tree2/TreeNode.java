@@ -1,4 +1,4 @@
-package com.algorithm.tree;
+package com.algorithm.tree2;
 
 public class TreeNode<E extends Comparable<E>> {
     TreeNode<E> left;
@@ -6,19 +6,24 @@ public class TreeNode<E extends Comparable<E>> {
     E data;
 
     public TreeNode(E data) {
+	this(data, null, null);
+    }
+
+    private TreeNode(E data, TreeNode<E> left, TreeNode<E> right) {
 	this.data = data;
-	left = right = null;
+	this.left = left;
+	this.right = right;
     }
 
     public void insert(E insertData) {
 	if (insertData.compareTo(data) < 0) {
-	    if (null == left) {
+	    if (left == null) {
 		left = new TreeNode<>(insertData);
 	    } else {
 		left.insert(insertData);
 	    }
 	} else if (insertData.compareTo(data) > 0) {
-	    if (null == right) {
+	    if (right == null) {
 		right = new TreeNode<>(insertData);
 	    } else {
 		right.insert(insertData);
@@ -32,5 +37,4 @@ public class TreeNode<E extends Comparable<E>> {
     }
     
     
-
 }
