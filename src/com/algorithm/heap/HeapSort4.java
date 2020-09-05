@@ -14,7 +14,7 @@ public class HeapSort4 {
 	int heapSize = A.length - 1;
 	BUILD_MAX_HEAP(A, heapSize);
 	for (int i = A.length - 1; i > 0; i--) {
-	    //we will operate on 0
+	    //we will operate on 0th index
 	    exchange(A, 0, i);
 	    heapSize -= 1;
 	    MAX_HEAPIFY(A, 0, heapSize);
