@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class HeapSort5 {
     public static void main(String[] args) {
 	String A[] = { "d", "c", "b", "a", "h", "g", "f", "e", "m", "l", "k", "j", "i", "p", "o", "n" };
-//	String A[] = { "13", "-3", "-25", "20", "-3", "-16", "-23", "18", "20", "-7", "12", "-5", "-22", "15", "-4", "7" };
 	heapSort(A);
 	Arrays.stream(A).forEach(x -> System.out.print(x + " "));
     }
@@ -27,6 +26,7 @@ public class HeapSort5 {
     }
 
     private static void maxHeapify(String[] a, int i, int heapSize) {
+	//int parent = (i-1)/2
 	int l = (2 * i) + 1;
 	int r = (2 * i) + 2;
 	int largest = i;
@@ -48,10 +48,6 @@ public class HeapSort5 {
 	a2[b] = temp;
     }
 
-    @Override
-    public int compare(Object o1, Object o2) {
-	// TODO Auto-generated method stub
-	return 0;
-    }
+
 
 }

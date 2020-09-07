@@ -12,6 +12,7 @@ public class BSTTest {
 	System.out.println("BST contains 999? " + bst.find(999));
 	System.out.println("BST contains 85? " + bst.find(85));
 	System.out.println("BST contains -1? " + bst.find(-1));
+	bst.remove(55);
 	bst.remove(49);
 	bst.remove(64);
 	bst.remove(37);
