@@ -15,6 +15,7 @@ public class BSTNode<E extends Comparable<E>> {
 		size++;
 	    }
 	}
+	
     }
 
     public void inorderTraversal() {
