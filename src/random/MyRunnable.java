@@ -1,4 +1,5 @@
-package src.random;
+package random;
+
 public class MyRunnable implements Runnable {
 
     private long val;
