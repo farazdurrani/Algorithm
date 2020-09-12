@@ -1,4 +1,5 @@
-package src.random;
+package random;
+
 public class NonRepeating {
     /*
      * public char firstNonRepeatingCharacter(String val) {...}
@@ -8,9 +9,9 @@ public class NonRepeating {
      * 
      * Examples:
      * 
-     * firstNonRepeatingCharacter(“apples”) returns 'a'
+     * firstNonRepeatingCharacter(â€œapplesâ€�) returns 'a'
      * 
-     * firstNonRepeatingCharacter(“papaya”) returns 'y'
+     * firstNonRepeatingCharacter(â€œpapayaâ€�) returns 'y'
      */
     public static void main(String[] args) throws Exception {
 	String val = "appeases";
@@ -22,7 +23,7 @@ public class NonRepeating {
 	val = "papaya";
 	answer = firstNonRepeatingCharacter(val);
 	System.out.println(answer);
-	
+
     }
 
     public static char firstNonRepeatingCharacter(String val) throws Exception {

@@ -75,7 +75,7 @@ public class LinkedList<E> {
 
     }
 
-    private boolean isEmpty() {
+    boolean isEmpty() {
 	return first == null;
     }
 

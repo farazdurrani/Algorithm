@@ -1,4 +1,5 @@
-package src.random;
+package random;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class PrimeNumberPrinter {
 		Thread t = new Thread(new MyRunnable(i));
 		t.start();
 	    }
-	}	
+	}
 	System.exit(0);
     }
 
