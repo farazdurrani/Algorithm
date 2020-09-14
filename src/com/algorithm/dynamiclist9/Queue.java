@@ -14,4 +14,8 @@ public class Queue<T> {
     public void print() {
 	ll.print();
     }
+
+    public boolean isEmpty() {
+	return ll.isEmpty();
+    }
 }
