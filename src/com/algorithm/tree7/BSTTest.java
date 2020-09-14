@@ -5,8 +5,8 @@ import java.util.List;
 public class BSTTest {
     public static void main(String[] args) {
 	BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-//	List<Integer> l = List.of(47, 25, 77, 11, 43, 65, 93, 7, 17, 31, 44, 68);
-	List<Integer> l = List.of(49, 14, 64, 34, 55, 85, 46, 37, 46, 37);
+	List<Integer> l = List.of(47, 25, 77, 11, 43, 65, 93, 7, 17, 31, 44, 68);
+//	List<Integer> l = List.of(49, 14, 64, 34, 55, 85, 46, 37, 46, 37);
 	l.forEach(i -> bst.insert(i));
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalIterative();
@@ -41,5 +41,7 @@ public class BSTTest {
 	System.out.println("root: " + bst.getRoot());
 	System.out.println("Level Order Traversal ");
 	bst.levelOrderTraversalIterative();
+	
+	bst.isBinary();
     }
 }

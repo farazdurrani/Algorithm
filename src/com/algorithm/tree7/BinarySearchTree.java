@@ -156,4 +156,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     }
 
+    public void isBinary() {
+	
+    }
+
 }
