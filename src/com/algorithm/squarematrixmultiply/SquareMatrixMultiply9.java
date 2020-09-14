@@ -1,12 +1,7 @@
-import java.util.Arrays;
+package com.algorithm.squarematrixmultiply;
 
-public class A {
-
+public class SquareMatrixMultiply9 {
     public static void main(String[] args) {
-	int a[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
-	Arrays.stream(a).forEach(x -> System.out.printf("%4d", x));
-	System.out.println();
-
 	// correct algorithm
 	// match it from here ->
 	// https://www.mathsisfun.com/algebra/matrix-multiplying.html
@@ -34,14 +29,22 @@ public class A {
 	B[0][1] = 2;
 	B[1][0] = 3;
 	B[1][1] = 4;
-	
-	int c[] [] = new int[n][n];
-	
-	for(int i = 0; i < n; i++) {
-	    for(int j = 0; j  < n; j++) {
-		
+
+	int C[][] = new int[n][n];
+
+	for (int i = 0; i < n; i++) {
+	    for (int j = 0; j < n; j++) {
+		for (int k = 0; k < n; k++) {
+		    C[i][j] = C[i][j] + (A[i][k] * B[k][j]);
+		}
 	    }
 	}
 
+	for (int i = 0; i < n; i++) {
+	    for (int j = 0; j < n; j++) {
+		System.out.print(C[i][j] + " ");
+	    }
+	    System.out.println();
+	}
     }
 }
