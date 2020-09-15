@@ -11,7 +11,8 @@ public class BSTTest {
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalInterative();
 	System.out.println("Level Order Traversal Using Queue");
-	bst.levelOrderTraversalQueue();;
+	bst.levelOrderTraversalQueue();
+	;
 	System.out.println("In-Order Traversal ");
 	bst.inorderTraversal();
 	System.out.println("Root is: " + bst.getRoot());
@@ -41,6 +42,17 @@ public class BSTTest {
 	System.out.println("root: " + bst.getRoot());
 	System.out.println("Level Order Traversal ");
 	bst.levelOrderTraversalQueue();
-	
+
+	System.out.println("New Tree");
+	BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
+	l.forEach(i -> bst2.insert(i));
+	System.out.println("Level Order Traversal");
+	bst2.levelOrderTraversalInterative();
+	System.out.println("Inverting Tree");
+	bst2.invertTree();
+	System.out.println("Level Order Traversal");
+	bst2.levelOrderTraversalQueue();
+	System.out.println("Descending Order");
+	bst2.inorderTraversal();
     }
 }

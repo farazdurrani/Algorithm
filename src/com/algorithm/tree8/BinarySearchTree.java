@@ -137,4 +137,23 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	System.out.println("Get Size not implemented yet. Returning 0");
 	return 0;
     }
+
+    public void invertTree() {
+	root = invertTree(root);
+    }
+
+    private TreeNode<E> invertTree(TreeNode<E> node) {
+	if (node == null) {
+	    return null;
+	}
+
+	TreeNode<E> left = invertTree(node.left);
+	TreeNode<E> right = invertTree(node.right);
+
+	// swap
+	node.left = right;
+	node.right = left;
+	
+	return node;
+    }
 }
