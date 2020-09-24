@@ -14,7 +14,7 @@ public class BSTTest {
 	bst.levelOrderTraversalQueue();
 	;
 	System.out.println("In-Order Traversal ");
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("Root is: " + bst.getRoot());
 	System.out.println("size: " + bst.getSize());
 	System.out.println("BST contains 14? " + bst.find(14));
@@ -24,19 +24,19 @@ public class BSTTest {
 	System.out.println("size: " + bst.getSize());
 	System.out.println("removing 55 (exists)");
 	bst.remove(55);
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("removing 49 (exists)");
 	bst.remove(49);
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("removing 64 (exists)");
 	bst.remove(64);
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("removing 37 (exists)");
 	bst.remove(37);
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("removing 35 (doesn't exist)");
 	bst.remove(35);
-	bst.inorderTraversal();
+	bst.inorderTraversalResursive();
 	System.out.println("size: " + bst.getSize());
 	System.out.println("Height : " + bst.height());
 	System.out.println("root: " + bst.getRoot());
@@ -53,6 +53,8 @@ public class BSTTest {
 	System.out.println("Level Order Traversal");
 	bst2.levelOrderTraversalQueue();
 	System.out.println("Descending Order");
-	bst2.inorderTraversal();
+	bst2.inorderTraversalResursive();
+	
+	
     }
 }

@@ -1,6 +1,11 @@
 package com.algorithm.tree8;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.algorithm.dynamiclist9.LinkedList;
 import com.algorithm.dynamiclist9.Queue;
+import com.algorithm.dynamiclist9.Stack;
 
 public class BinarySearchTree<E extends Comparable<E>> {
     private TreeNode<E> root;
@@ -13,7 +18,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	}
     }
 
-    public void inorderTraversal() {
+    public void inorderTraversalResursive() {
 	inorderHelper(root);
 	System.out.println();
     }
@@ -153,7 +158,33 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	// swap
 	node.left = right;
 	node.right = left;
-	
+
 	return node;
+    }
+
+    public LinkedList<E> inorderTraversalIterative() {
+	int h = height();
+	LinkedList<E> res = new LinkedList<>();
+	Stack<TreeNode<E>> stack = new Stack<>();
+	stack.push(root);
+	while (!stack.isEmpty()) {
+	    TreeNode<E> node = stack.pop();
+	    if(node.left == null && node.right == null) {
+		res.insertAtBack(node.data);
+		res.insertAtBack(stack.pop().data);
+		continue;
+	    }
+	    if (node.right != null) {
+		stack.push(node.right);
+	    }
+	    stack.push(node);
+	    if (node.left != null) {
+		stack.push(node.left);
+	    }
+	}
+//	while (!stack.isEmpty()) {
+//	    res.insertAtBack(stack.pop().data);
+//	}
+	return res;
     }
 }
