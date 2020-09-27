@@ -2,7 +2,13 @@ package com.algorithm.sort;
 
 import java.util.Arrays;
 
+/**
+ * Turns out, this is a variation of SelectionSort. 
+ * @author Faraz
+ *
+ */
 public class FarazSort {
+    
     public static void main(String[] args) {
 
 	int arr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
@@ -15,10 +21,6 @@ public class FarazSort {
 	    int maxIndex = findMaxIndex(arr, heapSize);
 	    swap(arr, heapSize, maxIndex);
 	    heapSize--;
-	    if (heapSize < 0) {
-		System.out.println("Finished Sorted");
-		i = arr.length; // or break
-	    }
 	}
 
 	Arrays.stream(arr).forEach(x -> System.out.printf("%4d", x));
