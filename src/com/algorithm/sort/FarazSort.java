@@ -16,8 +16,9 @@ public class FarazSort {
 	System.out.println();
 
 	int heapSize = arr.length - 1;
-
+	int comp = 0;
 	for (int i = 0; i < arr.length; i++) {
+	    comp++;
 	    int maxIndex = findMaxIndex(arr, heapSize);
 	    swap(arr, heapSize, maxIndex);
 	    heapSize--;
@@ -25,6 +26,7 @@ public class FarazSort {
 
 	Arrays.stream(arr).forEach(x -> System.out.printf("%4d", x));
 	System.out.println();
+	System.out.println("Number of comparisons: " + comp);
 
     }
 
