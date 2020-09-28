@@ -8,10 +8,10 @@ public class FarazSort2 {
 	int arr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
 	Arrays.stream(arr).forEach(x -> System.out.print(x + " "));
 	System.out.println();
-
+	int comp = 0;
 	int heapSize = arr.length - 1;
-
 	for (int i = 0; i < heapSize; i++, heapSize--) {
+	    comp++;
 	    int[] minMaxIndex = findMinMaxIndex(arr, i, heapSize);
 	    swap(arr, i, minMaxIndex[0]);
 	    swap(arr, heapSize, minMaxIndex[1]);
@@ -19,6 +19,8 @@ public class FarazSort2 {
 
 	Arrays.stream(arr).forEach(x -> System.out.printf("%4d", x));
 	System.out.println();
+	
+	System.out.println("Number of comparisons: " + comp);
 
     }
 
