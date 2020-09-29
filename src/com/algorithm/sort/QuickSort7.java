@@ -5,7 +5,9 @@ import java.util.Random;
 
 public class QuickSort7 {
     public static void main(String[] args) {
-	int arr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+//	int arr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+
+	int arr[] = { 1, 2, 3, 4, 5 };
 
 	Arrays.stream(arr).forEach(x -> System.out.print(x + " "));
 	System.out.println();
@@ -15,7 +17,9 @@ public class QuickSort7 {
 	Arrays.stream(arr).forEach(x -> System.out.print(x + " "));
 	System.out.println();
 
-	int arr2[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+//	int arr2[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+
+	int arr2[] = { 1, 2, 3, 4, 5 };
 
 	randomizedQuickSort(arr2, 0, arr.length - 1);
 
@@ -56,7 +60,7 @@ public class QuickSort7 {
 	int i = start - 1;
 	int pivot = arr[end];
 	for (int j = start; j < end; j++) {
-	    if (arr[j] > pivot) {
+	    if (arr[j] < pivot) {
 		i++;
 		swap(arr, i, j);
 	    }

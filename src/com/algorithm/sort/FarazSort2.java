@@ -8,19 +8,17 @@ public class FarazSort2 {
 	int arr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
 	Arrays.stream(arr).forEach(x -> System.out.print(x + " "));
 	System.out.println();
-	int comp = 0;
 	int heapSize = arr.length - 1;
 	for (int i = 0; i < heapSize; i++, heapSize--) {
-	    comp++;
-	    int[] minMaxIndex = findMinMaxIndex(arr, i, heapSize);
-	    swap(arr, i, minMaxIndex[0]);
-	    swap(arr, heapSize, minMaxIndex[1]);
+	    int[] indices = findMinMaxIndex(arr, i, heapSize);
+	    int mixIndex = indices[0];
+	    int maxIndex = indices[1];
+	    swap(arr, i, mixIndex);
+	    swap(arr, heapSize, maxIndex);
 	}
 
 	Arrays.stream(arr).forEach(x -> System.out.printf("%4d", x));
 	System.out.println();
-	
-	System.out.println("Number of comparisons: " + comp);
 
     }
 
@@ -30,18 +28,18 @@ public class FarazSort2 {
 	arr[b] = temp;
     }
 
-    private static int[] findMinMaxIndex(int[] a, int j, int heapSize) {
+    private static int[] findMinMaxIndex(int[] arr, int start, int end) {
 	int max = Integer.MIN_VALUE;
 	int maxIndex = 0;
 	int min = Integer.MAX_VALUE;
 	int minIndex = 0;
-	for (int i = j; i <= heapSize; i++) {
-	    if (a[i] >= max) {
-		max = a[i];
+	for (int i = start; i <= end; i++) {
+	    if (arr[i] >= max) {
+		max = arr[i];
 		maxIndex = i;
 	    }
-	    if (min >= a[i]) {
-		min = a[i];
+	    if (min >= arr[i]) {
+		min = arr[i];
 		minIndex = i;
 	    }
 	}
