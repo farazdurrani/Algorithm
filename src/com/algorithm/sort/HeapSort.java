@@ -1,6 +1,7 @@
 package com.algorithm.sort;
 
 public class HeapSort {
-    tomorrow,heapsort,linkedlist,stack,queues,
-    bst insert, find, delete, traversals.
+    tomorrow:
+	max heap operations, linkedlist, stack, queues.
+	bst insert, find, delete, traversals.
 }
