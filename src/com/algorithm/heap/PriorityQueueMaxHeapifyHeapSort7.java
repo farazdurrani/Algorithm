@@ -31,22 +31,86 @@ public class PriorityQueueMaxHeapifyHeapSort7 {
 	buildMaxHeap(A);
 	print(A, "After building max heapify");
 	print(new int[] { max(A) }, "Max Value");
-//	print(new int[] { extractMax(A) }, "Extract Max");
-//	print(new int[] { extractMax(A) }, "Extract Max");
-//	print(new int[] { extractMax(A) }, "Extract Max");
-//	print(A, "After extracting max");
-//	insert(A, 55);
-//	insert(A, 44);
-//	insert(A, 32);
-//	insert(A, 21);
-//	print(A, "After Inserting key");
-//	increaseKey(A, 0, 222);
-//	increaseKey(A, 1, 99);
-//	increaseKey(A, 2, 45);
-//	increaseKey(A, 6, 888888);
-//	print(A, "After Increasing keys");
-//	heapSort(A);
-//	print(A, "After Increasing keys");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	extractMax(A);
+	print(A, "After extracting max");
+	try {
+	    extractMax(A);
+	    print(A, "After extracting max");
+	} catch (Exception e) {
+	    System.out.println("HeapSize is gone in reverse");
+	}
+	insertKey(A, 0);
+	print(A, "After Inserting key");
+	insertKey(A, 1);
+	print(A, "After Inserting key");
+	insertKey(A, 2);
+	print(A, "After Inserting key");
+	insertKey(A, 3);
+	print(A, "After Inserting key");
+	insertKey(A, 4);
+	print(A, "After Inserting key");
+	insertKey(A, 5);
+	print(A, "After Inserting key");
+	insertKey(A, 6);
+	print(A, "After Inserting key");
+	insertKey(A, 7);
+	increaseKey(A, 222, 0);
+	print(A, "After Increasing keys");
+	increaseKey(A, 99, 1);
+	print(A, "After Increasing keys");
+	increaseKey(A, 45, 2);
+	print(A, "After Increasing keys");
+	increaseKey(A, 888888, 6);
+	print(A, "After Increasing keys");
+	
+	heapSort(A);
+	print(A, "After Sort");
+	
+    }
+
+    private static void insertKey(int[] arr, int key) {
+	if (heapSize < arr.length - 1) {
+	    heapSize++;
+	    arr[heapSize] = Integer.MIN_VALUE;
+	    increaseKey(arr, key, heapSize);
+	} else {
+	    System.out.println("Heap Overflow");
+	}
+    }
+
+    private static void increaseKey(int[] arr, int key, int i) {
+	if (arr[i] > key) {
+	    System.out.println("Existing key is larger than new key");
+	    return;
+	}
+	arr[i] = key;
+	while (i > -1 && arr[parent(i)] < arr[i]) {
+	    swap(arr, parent(i), i);
+	    i = parent(i);
+	}
+    }
+
+    private static int extractMax(int[] arr) {
+	if (heapSize < 0) {
+	    throw new RuntimeException("Stack underflow");
+	}
+	int max = max(arr);
+	swap(arr, 0, heapSize);
+	heapSize--;
+	maintainMaxHeapProperty(arr, 0);
+	return max;
     }
 
     private static int max(int[] arr) {
