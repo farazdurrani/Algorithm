@@ -2,6 +2,6 @@ package com.algorithm.sort;
 
 public class HeapSort {
     tomorrow:
-	linkedlist, stack, queues.
+	double linkedlist
 	bst insert, find, delete, traversals.
 }
