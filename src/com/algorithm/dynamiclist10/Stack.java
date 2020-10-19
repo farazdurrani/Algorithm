@@ -16,4 +16,8 @@ public class Stack<E> {
 	return list.removeFromFront();
     }
 
+    public boolean isEmpty() {
+	return list.isEmpty();
+    }
+
 }
