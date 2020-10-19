@@ -70,4 +70,8 @@ public class LinkedList<E> {
 	System.out.println();
     }
 
+    public boolean isEmpty() {
+	return first == null;
+    }
+
 }

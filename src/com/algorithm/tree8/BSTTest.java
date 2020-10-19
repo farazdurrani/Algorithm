@@ -12,7 +12,6 @@ public class BSTTest {
 	bst.levelOrderTraversalInterative();
 	System.out.println("Level Order Traversal Using Queue");
 	bst.levelOrderTraversalQueue();
-	;
 	System.out.println("In-Order Traversal ");
 	bst.inorderTraversalResursive();
 	System.out.println("Root is: " + bst.getRoot());

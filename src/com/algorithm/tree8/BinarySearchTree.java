@@ -1,8 +1,5 @@
 package com.algorithm.tree8;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.algorithm.dynamiclist9.LinkedList;
 import com.algorithm.dynamiclist9.Queue;
 import com.algorithm.dynamiclist9.Stack;
