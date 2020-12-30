@@ -1,4 +1,4 @@
-package com.algorithm.heap;
+package com.algorithm.heap.priorityqueue;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
