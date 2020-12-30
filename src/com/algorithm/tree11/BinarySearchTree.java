@@ -1,61 +1,16 @@
-package com.algorithm.tree9;
+package com.algorithm.tree11;
 
-import com.algorithm.dynamiclist9.Queue;
+import com.algorithm.dynamiclist11.Queue;
 
 public class BinarySearchTree<E extends Comparable<E>> {
     private TreeNode<E> root;
 
     public void insert(E data) {
 	if (root == null) {
-	    root = new TreeNode<>(data);
+	    root = new TreeNode<E>(data);
 	} else {
 	    root.insert(data);
 	}
-    }
-
-    public void inorderTraversalResursive() {
-	inorderHelper(root);
-	System.out.println();
-    }
-
-    private void inorderHelper(TreeNode<E> node) {
-	if (node == null) {
-	    return;
-	}
-
-	inorderHelper(node.left);
-	System.out.print(node.data + " ");
-	inorderHelper(node.right);
-
-    }
-
-    public E getRoot() {
-	if (!isEmpty()) {
-	    return root.data;
-	}
-	return null;
-    }
-
-    private boolean isEmpty() {
-	return root == null;
-    }
-
-    public boolean contains(E data) {
-	return contains(data, root) != null;
-    }
-
-    private TreeNode<E> contains(E data, TreeNode<E> node) {
-	if (node == null) {
-	    return node;
-	}
-	if (data.compareTo(node.data) < 0) {
-	    return contains(data, node.left);
-	} else if (data.compareTo(node.data) > 0) {
-	    return contains(data, node.right);
-	} else {
-	    return node;
-	}
-
     }
 
     public void levelOrderTraversalIterative() {
@@ -67,10 +22,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     private void printNodeAtGivenLevel(TreeNode<E> node, int level) {
-	if(node == null) {
+	if (node == null) {
 	    return;
 	}
-	if(level == 1) {
+	if (level == 1) {
 	    System.out.print(node.data + " ");
 	}
 	printNodeAtGivenLevel(node.left, level - 1);
@@ -87,39 +42,77 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	}
 	int lh = height(node.left);
 	int rh = height(node.right);
+
 	return (lh >= rh ? lh : rh) + 1;
     }
 
     public void levelOrderTraversalQueue() {
-	Queue<TreeNode<E>> queue = new Queue<>();
-	queue.enqueue(root);
-	while(!queue.isEmpty()) {
-	    TreeNode<E> node = queue.dequeue();
+	Queue<TreeNode<E>> q = new Queue<>();
+	if (root != null) {
+	    q.enqueue(root);
+	}
+	while (!q.isEmpty()) {
+	    TreeNode<E> node = q.dequeue();
 	    System.out.print(node.data + " ");
-	    if(node.left != null) {
-		queue.enqueue(node.left);
+	    if (node.left != null) {
+		q.enqueue(node.left);
 	    }
-	    if(node.right != null) {
-		queue.enqueue(node.right);
+	    if (node.right != null) {
+		q.enqueue(node.right);
 	    }
 	}
 	System.out.println();
     }
 
-    public void remove(E data) {
-	root = remove(data, root);
+    public void inorderTraversalResursive() {
+	inorderTraversalHelper(root);
+	System.out.println();
     }
 
-    private TreeNode<E> remove(E data, TreeNode<E> node) {
-	if(node == null) {
+    private void inorderTraversalHelper(TreeNode<E> node) {
+	if (node == null) {
+	    return;
+	}
+	inorderTraversalHelper(node.left);
+	System.out.print(node.data + " ");
+	inorderTraversalHelper(node.right);
+    }
+
+    public E getRoot() {
+	return root.data;
+    }
+
+    public boolean contains(E data) {
+	return contains(root, data) != null;
+    }
+
+    private TreeNode<E> contains(TreeNode<E> node, E data) {
+	if (node == null) {
+	    return null;
+	}
+	if (data.compareTo(node.data) < 0) {
+	    return contains(node.left, data);
+	} else if (data.compareTo(node.data) > 0) {
+	    return contains(node.right, data);
+	} else {
 	    return node;
 	}
-	if(data.compareTo(node.data) < 0) {
-	    node.left = remove(data, node.left);
-	} else if(data.compareTo(node.data) > 0) {
-	    node.right = remove(data, node.right);
+    }
+
+    public void remove(E data) {
+	root = remove(root, data);
+    }
+
+    private TreeNode<E> remove(TreeNode<E> node, E data) {
+	if (node == null) {
+	    return node;
+	}
+	if (data.compareTo(node.data) < 0) {
+	    node.left = remove(node.left, data);
+	} else if (data.compareTo(node.data) > 0) {
+	    node.right = remove(node.right, data);
 	} else {
-	    if(node.left==null && node.right == null) {
+	    if(node.left == null && node.right == null) {
 		node = null;
 	    } else if(node.left == null) {
 		node = node.right;
@@ -128,7 +121,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    } else {
 		TreeNode<E> temp = findMinOnRight(node.right);
 		node.data = temp.data;
-		node.right = remove(temp.data, node.right);
+		node.right = remove(node.right, temp.data);
 	    }
 	}
 	return node;
@@ -148,15 +141,14 @@ public class BinarySearchTree<E extends Comparable<E>> {
     private TreeNode<E> invertTree(TreeNode<E> node) {
 	if(node == null) {
 	    return node;
-	}	
+	}
+	
 	TreeNode<E> left = invertTree(node.left);
 	TreeNode<E> right = invertTree(node.right);
-	
 	
 	node.left = right;
 	node.right = left;
 	
 	return node;
     }
-
 }
