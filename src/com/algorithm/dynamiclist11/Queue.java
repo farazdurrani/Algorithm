@@ -18,5 +18,8 @@ public class Queue<E> {
     public E dequeue() {
 	return list.removeFromFront();
     }
+    public boolean isEmpty() {
+	return list.isEmpty();
+    }
     
 }

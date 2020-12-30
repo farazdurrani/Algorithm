@@ -1,4 +1,4 @@
-package com.algorithm.tree9;
+package com.algorithm.tree11;
 
 import java.util.List;
 
@@ -12,13 +12,15 @@ public class BSTTest {
 	bst.levelOrderTraversalIterative();
 	System.out.println("Level Order Traversal Using Queue");
 	bst.levelOrderTraversalQueue();
-	System.out.println("In-Order Traversal ");
+	System.out.println("In-Order Traversal Recursive");
 	bst.inorderTraversalResursive();
 	System.out.println("Root is: " + bst.getRoot());
-	System.out.println("BST contains 14? " + bst.contains(14));
-	System.out.println("BST contains 999? " + bst.contains(999));
-	System.out.println("BST contains 85? " + bst.contains(85));
-	System.out.println("BST contains -1? " + bst.contains(-1));
+	System.out.println("BST contains 14? (yes) " + bst.contains(14));
+	System.out.println("BST contains 999? (no) " + bst.contains(999));
+	System.out.println("BST contains 85? (yes) " + bst.contains(85));
+	System.out.println("BST contains -1? (no) " + bst.contains(-1));
+	System.out.println("In-Order Traversal Recursive");
+	bst.inorderTraversalResursive();
 	System.out.println("removing 14 (exists)");
 	bst.remove(14);
 	bst.inorderTraversalResursive();
