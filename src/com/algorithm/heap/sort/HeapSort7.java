@@ -1,4 +1,4 @@
-package com.algorithm.heap;
+package com.algorithm.heap.sort;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

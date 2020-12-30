@@ -1,26 +1,19 @@
-package com.algorithm.heap;
+package com.algorithm.heap.sort;
 
 import java.util.stream.IntStream;
 
-public class HeapSort {
+public class HeapSort0 {
     public static void main(String[] args) {
-	int A[] = {4,1,3,2,16,9,10,14,8,7};
-	heapSort(A);
-	
+	int arr[] = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
+
+	BUILD_MAX_HEAP(arr);
+
+	IntStream.of(arr).forEach(x -> System.out.print(x + " "));
+
     }
 
-    private static void heapSort(int[] A) {
-	int heap_size = A.length - 1;
-	BUILD_MAX_HEAP(A, heap_size);	
-	for(int i = A.length - 1; i > 0; i--) {
-	    exchange(A, 0, i);
-	    heap_size -= 1; 
-	    MAX_HEAPIFY(A, 0, heap_size);
-	}
-	IntStream.of(A).forEach(x -> System.out.print(x + " "));
-    }
-    
-    private static void BUILD_MAX_HEAP(int[] arr, int heap_size) {	
+    private static void BUILD_MAX_HEAP(int[] arr) {
+	int heap_size = arr.length - 1;
 	for (int i = (arr.length / 2); i > -1; i--) {
 	    MAX_HEAPIFY(arr, i, heap_size);
 	}
