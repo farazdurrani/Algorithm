@@ -19,19 +19,19 @@ public class MaxinumSubArray6 {
 	int start = 0;
 	int end = 0;
 	int max_sum = Integer.MIN_VALUE;
-	for(int i = 0; i < arr.length; i++) {
+	for (int i = 0; i < arr.length; i++) {
 	    int sum = 0;
-	    for(int j = i; j < arr.length; j++) {
+	    for (int j = i; j < arr.length; j++) {
 		sum += arr[j];
-		if(sum > max_sum) {
+		if (sum > max_sum) {
 		    max_sum = sum;
 		    start = i;
 		    end = j;
 		}
 	    }
 	}
-	
-	return new int[] {start, end, max_sum};
+
+	return new int[] { start, end, max_sum };
     }
 
     private static int[] maxSumArrayDaC(int[] arr, int low, int high) {
