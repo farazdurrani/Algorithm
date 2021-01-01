@@ -24,4 +24,8 @@ public class Queue<E> {
 	list.print();
     }
 
+    public boolean isEmpty() {
+	return list.isEmpty();
+    }
+
 }

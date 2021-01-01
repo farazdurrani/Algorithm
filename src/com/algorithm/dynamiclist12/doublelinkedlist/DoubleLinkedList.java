@@ -97,13 +97,13 @@ public class DoubleLinkedList<E> {
 	return data;
     }
 
-    class Node<E> {
+    private class Node<S> {
 
-	Node<E> prev;
-	Node<E> next;
-	E data;
+	private Node<S> prev;
+	private Node<S> next;
+	private S data;
 
-	public Node(E data) {
+	public Node(S data) {
 	    this.data = data;
 	    prev = next = null; // symbolic representation
 	}
@@ -112,9 +112,6 @@ public class DoubleLinkedList<E> {
 	public String toString() {
 	    return "[data=" + data + "]";
 	}
-	
-	
-
     }
 
 }
