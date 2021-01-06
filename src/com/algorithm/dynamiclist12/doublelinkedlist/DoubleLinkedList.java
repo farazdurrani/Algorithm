@@ -1,6 +1,6 @@
 package com.algorithm.dynamiclist12.doublelinkedlist;
 
-public class DoubleLinkedList<E> {
+public class DoubleLinkedList<E extends Comparable<E>> {
 
     private Node<E> first;
     private Node<E> last;
@@ -68,12 +68,12 @@ public class DoubleLinkedList<E> {
     }
 
     public E removeFromFront() {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    System.out.println(this.name + " is empty");
 	    return null;
 	}
 	E data = first.data;
-	if(first == last) {
+	if (first == last) {
 	    first = last = null;
 	} else {
 	    first = first.next;
@@ -83,18 +83,47 @@ public class DoubleLinkedList<E> {
     }
 
     public E removeFromBack() {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    System.out.println(this.name + " is empty");
 	    return null;
 	}
 	E data = last.data;
-	if(first == last) {
+	if (first == last) {
 	    first = last = null;
 	} else {
 	    last = last.prev;
 	    last.next = null;
 	}
 	return data;
+    }
+
+    public boolean remove(E data) {
+	if (isEmpty()) {
+	    return false;
+	}
+	if (first.data.compareTo(data) == 0) {
+	    first = first.next;
+	    first.prev = null;
+	    return true;
+	}
+
+	if (last.data.compareTo(data) == 0) {
+	    last = last.prev;
+	    last.next = null;
+	    return true;
+	}
+	boolean removed = false;
+	Node<E> temp = first.next;
+	while (last != temp) {
+	    if (temp.data.compareTo(data) == 0) {
+		temp.prev.next = temp.next;
+		removed = true;
+		temp = last;
+	    } else {
+		temp = temp.next;
+	    }
+	}
+	return removed;
     }
 
     private class Node<S> {
@@ -113,5 +142,4 @@ public class DoubleLinkedList<E> {
 	    return "[data=" + data + "]";
 	}
     }
-
 }
