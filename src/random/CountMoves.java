@@ -6,7 +6,7 @@ import java.util.Random;
 public class CountMoves {
 
     static Random rand = new Random();
-
+    
     public static void main(String[] args) {
 	int[] numbers = { 3, 4, 6, 6, 3 };
 	int maxIndex = findMax(numbers);

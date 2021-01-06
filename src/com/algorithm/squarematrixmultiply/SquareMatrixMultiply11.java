@@ -1,13 +1,12 @@
 package com.algorithm.squarematrixmultiply;
 
-public class SquareMatrixMultiply10 {
+public class SquareMatrixMultiply11 {
     public static void main(String[] args) {
 	// correct algorithm
 	// match it from here ->
 	// https://www.mathsisfun.com/algebra/matrix-multiplying.html
 	// 2 4
 	// 7 10
-
 	int n = 2;
 	int[][] a = new int[n][n];
 	int[][] b = new int[n][n];
@@ -29,13 +28,11 @@ public class SquareMatrixMultiply10 {
 	b[0][1] = 2;
 	b[1][0] = 3;
 	b[1][1] = 4;
-
-	int c[][] = new int[n][n];
-
+	int c[][] = new int[2][2];
 	for(int i = 0; i < n; i++) {
 	    for(int j = 0; j < n; j++) {
 		for(int k = 0; k < n; k++) {
-		    c[i][j] += a[i][k] * b[k][j];
+		    c[i][j] = c[i][j] + (a[i][k] * b[k][j]);
 		}
 	    }
 	}
