@@ -30,7 +30,7 @@ public class HashTable {
     }
 
     private void print() {
-	System.out.println("Hash Table Contains");
+	System.out.println("Printing Hash Table");
 	int i = 0;
 	while (i < store.length) {
 	    System.out.print("At position " + i + " -> ");
