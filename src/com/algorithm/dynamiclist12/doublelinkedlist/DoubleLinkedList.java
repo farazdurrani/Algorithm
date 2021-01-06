@@ -114,7 +114,7 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 	}
 	boolean removed = false;
 	Node<E> temp = first.next;
-	while (last != temp) {
+	while (last != temp && null != temp) {
 	    if (temp.data.compareTo(data) == 0) {
 		temp.prev.next = temp.next;
 		removed = true;
