@@ -11,7 +11,14 @@ public class HashTable {
     private static DoubleLinkedList<String>[] store = new DoubleLinkedList[5];
 
     public static void main(String[] args) {
-
+	String first = "fa";
+	String second = "da";
+	for(char c : second.toCharArray()) {
+	    if(first.contains(String.valueOf(c))) {
+		System.out.println("haha");
+	    }
+	}
+	if(true) return;
 	String strings[] = generateRandomStrings(20);
 
 	HashTable hashTable = new HashTable();

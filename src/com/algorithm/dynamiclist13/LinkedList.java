@@ -1,7 +1,7 @@
 package com.algorithm.dynamiclist13;
 
 public class LinkedList<E extends Comparable<E>> {
-    
+
     private String name;
     private Node<E> first;
     private Node<E> last;
@@ -13,14 +13,14 @@ public class LinkedList<E extends Comparable<E>> {
     public LinkedList(String name) {
 	this.name = name;
     }
-    
+
     public void print() {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    System.out.println(this.name + " is empty");
 	    return;
 	}
 	Node<E> temp = first;
-	while(temp != null) {
+	while (temp != null) {
 	    System.out.print(temp.data + " ");
 	    temp = temp.next;
 	}
@@ -33,7 +33,7 @@ public class LinkedList<E extends Comparable<E>> {
 
     public void insertAtFront(E data) {
 	Node<E> newNode = new Node<>(data);
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    first = last = newNode;
 	} else {
 	    newNode.next = first;
@@ -43,7 +43,7 @@ public class LinkedList<E extends Comparable<E>> {
 
     public void insertAtBack(E data) {
 	Node<E> newNode = new Node<>(data);
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    first = last = newNode;
 	} else {
 	    last.next = newNode;
@@ -52,12 +52,12 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     public E removeFromFront() {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    System.out.println(this.name + " is empty");
 	    return null;
 	}
 	E data = first.data;
-	if(first == last) {
+	if (first == last) {
 	    first = last = null;
 	} else {
 	    first = first.next;
@@ -66,16 +66,16 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     public E removeFromBack() {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    System.out.println(this.name + " is empty");
 	    return null;
 	}
 	E data = last.data;
-	if(first == last) {
+	if (first == last) {
 	    first = last = null;
 	} else {
 	    Node<E> temp = first;
-	    while(temp.next != last) {
+	    while (temp.next != last) {
 		temp = temp.next;
 	    }
 	    last = temp;
@@ -85,31 +85,29 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     public boolean delete(E data) {
-	if(isEmpty()) {
+	if (isEmpty()) {
 	    return false;
 	}
-	if(first.data.compareTo(data) == 0) {
+	if (first.data.compareTo(data) == 0) {
 	    removeFromFront();
 	    return true;
 	}
-	if(last.data.compareTo(data) == 0) {
+	if (last.data.compareTo(data) == 0) {
 	    removeFromBack();
 	    return true;
 	}
 	boolean found = false;
 	Node<E> temp = first;
-	while(temp != null && temp.next != null && temp.next.data.compareTo(data) != 0) {
+	while (temp != null && temp.next != null && temp.next.data.compareTo(data) != 0) {
 	    temp = temp.next;
 	}
-	if(temp.next != null && temp.next.data.compareTo(data) == 0) {
-	    Node<E> nextNext = temp.next.next;
-	    temp.next = null;
-	    temp.next = nextNext;
+	if (temp.next != null && temp.next.data.compareTo(data) == 0) {
+	    temp.next = temp.next.next;
 	    found = true;
 	}
 	return found;
     }
-    
+
     private class Node<V> {
 	private Node<V> next;
 	private V data;
@@ -122,6 +120,6 @@ public class LinkedList<E extends Comparable<E>> {
 	public String toString() {
 	    return String.valueOf(data);
 	}
-	
+
     }
 }
