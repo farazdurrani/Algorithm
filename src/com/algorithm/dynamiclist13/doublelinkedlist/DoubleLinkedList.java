@@ -119,12 +119,12 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 	return del;
     }
 
-    private class Node<E> {
-	private Node<E> next;
-	private Node<E> prev;
-	private E data;
+    private class Node<V> {
+	private Node<V> next;
+	private Node<V> prev;
+	private V data;
 
-	public Node(E data) {
+	public Node(V data) {
 	    this.data = data;
 	}
     }
