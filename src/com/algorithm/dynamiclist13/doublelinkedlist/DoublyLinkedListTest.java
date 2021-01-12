@@ -66,7 +66,6 @@ public class DoublyLinkedListTest {
 	System.out.println("Print in Reverse");
 	list.printInReverse();
 	deleteOperation(list);
-
     }
 
     private static void deleteOperation(DoubleLinkedList<Integer> list) {

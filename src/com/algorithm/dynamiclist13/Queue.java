@@ -24,4 +24,8 @@ public class Queue<E extends Comparable<E>> {
 	return list.removeFromFront();
     }
 
+    public boolean isEmpty() {
+	return list.isEmpty();
+    }
+
 }

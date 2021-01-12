@@ -1,6 +1,6 @@
 package com.algorithm.dynamiclist13;
 
-public class LinkedList<E extends Comparable<E>> {
+public class LinkedList<E extends Comparable<E>>{
 
     private String name;
     private Node<E> first;
@@ -27,7 +27,7 @@ public class LinkedList<E extends Comparable<E>> {
 	System.out.println();
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
 	return first == null;
     }
 
