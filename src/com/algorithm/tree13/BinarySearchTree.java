@@ -92,20 +92,22 @@ public class BinarySearchTree<E extends Comparable<E>>{
 	root = remove(root, data);
     }
 
+    
     private TreeNode<E> remove(TreeNode<E> node, E data) {
-	if (node == null) {
+	if(node == null) {
 	    return node;
 	}
-	if (data.compareTo(node.data) < 0) {
+	
+	if(data.compareTo(node.data) < 0) {
 	    node.left = remove(node.left, data);
-	} else if (data.compareTo(node.data) > 0) {
+	} else if(data.compareTo(node.data) > 0) {
 	    node.right = remove(node.right, data);
 	} else {
-	    if (node.left == null && node.right == null) {
+	    if(node.left == null && node.right == null) {
 		node = null;
-	    } else if (node.left == null) {
+	    } else if(node.left == null) {
 		node = node.right;
-	    } else if (node.right == null) {
+	    } else if(node.right == null) {
 		node = node.left;
 	    } else {
 		TreeNode<E> temp = findMinOnRight(node.right);
