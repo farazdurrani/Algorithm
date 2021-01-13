@@ -1,7 +1,6 @@
 package com.algorithm.heap.priorityqueue;
 
 import java.util.stream.IntStream;
-
 //Notes:
 //maintainHeapProperty:
 //	This function is called on an element at i that might be violating max-heap property.
@@ -17,9 +16,10 @@ import java.util.stream.IntStream;
 //		swap the first element with the heapSize, 
 //		shrink the heapSize, 
 //		call maintainHeapProperty on the first element (because first element might be breaching max-heap-property).
-public class PriorityQueueMaxHeapifyHeapSort8 {
+
+public class PriorityQueueMaxHeapifyHeapSort9 {
     static int heapSize;
-//	static int A[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+//	static int a[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
     static int A[] = { 13, -3, -25, 20, 7, 99, 12 };
 
     private static void print(int[] a, String msg) {
@@ -34,7 +34,7 @@ public class PriorityQueueMaxHeapifyHeapSort8 {
 	heapSort(A);
 	print(A, "After sort");
 	heapSize = A.length - 1;
-	buildMaxHeap(A);
+	buildHeap(A);
 	print(A, "After building max heapify");
 	print(new int[] { max(A) }, "Max Value");
 	extractMax(A);
@@ -87,37 +87,41 @@ public class PriorityQueueMaxHeapifyHeapSort8 {
     }
 
     private static void insertKey(int[] a, int key) {
-	if (heapSize < -1) {
-	    System.out.println("Heap underflow");
-	} else if (heapSize < a.length - 1) {
-	    heapSize++;
-	    a[heapSize] = Integer.MIN_VALUE;
-	    increaseKey(a, key, heapSize);
-	} else {
-	    System.out.println("Array is full");
+	heapSize++;
+	if (heapSize > a.length - 1) {
+	    System.out.println("Heap Overflow");
+	    heapSize--;
+	    return;
 	}
+
+	a[heapSize] = Integer.MIN_VALUE;
+	increaseKey(a, key, heapSize);
     }
 
     private static void increaseKey(int[] a, int key, int i) {
 	if (a[i] > key) {
-	    System.out.println("Existing key is bigger");
+	    System.out.println("Existing value is greater");
 	    return;
 	}
 	a[i] = key;
-	while (i > -1 && a[i] > a[parent(i)]) {
-	    swap(a, i, parent(i));
+	while (i > -1 && a[parent(i)] < a[i]) { 
+	    swap(a, parent(i), i);
 	    i = parent(i);
 	}
     }
 
+    private static int parent(int i) {
+	return (i - 1) / 2;
+    }
+
     private static int extractMax(int[] a) {
 	if (heapSize < 0) {
-	    throw new RuntimeException();
+	    throw new RuntimeException("Stack underflow");
 	}
 	int max = max(a);
 	swap(a, 0, heapSize);
 	heapSize--;
-	maintainHeapProperty(a, 0);
+	maintainHeap(a, 0);
 	return max;
     }
 
@@ -126,53 +130,51 @@ public class PriorityQueueMaxHeapifyHeapSort8 {
     }
 
     private static void heapSort(int[] a) {
-	buildMaxHeap(a);
-	for (int i = a.length - 1; i > 0; i--) { // leave 0th as it as the largest value resides there after building
-						 // max heap.
-	    swap(a, 0, i);
+	buildHeap(a);
+	for (int i = a.length; i > 0; i--) {// leave 0th as it as the largest value resides there after building
+		 			    // max heap.
+	    swap(a, 0, heapSize);
 	    heapSize--;
-	    maintainHeapProperty(a, 0); // because an element at 0 might be breaking max-heap-property
+	    maintainHeap(a, 0); // because now, an element at 0 might be breaking max-heap-property
 	}
     }
 
-    private static void buildMaxHeap(int[] a) {
+    private static void buildHeap(int a[]) {
 	for (int i = a.length / 2; i > -1; i--) {
-	    maintainHeapProperty(a, i);
+	    maintainHeap(a, i);
 	}
     }
 
-    private static void maintainHeapProperty(int[] a, int parent) {
-	int leftChild = left(parent);
-	int rightChild = right(parent);
+    private static void maintainHeap(int[] a, int parent) {
+	int lc = leftchild(parent);
+	int rc = rightchild(parent);
 	int largest = parent;
-	if (leftChild <= heapSize && a[leftChild] > a[largest]) {
-	    largest = leftChild;
+	if (lc <= heapSize && a[lc] > a[largest]) {
+	    largest = lc;
 	}
-	if (rightChild <= heapSize && a[rightChild] > a[largest]) {
-	    largest = rightChild;
+
+	if (rc <= heapSize && a[rc] > a[largest]) {
+	    largest = rc;
 	}
 	if (largest != parent) {
 	    swap(a, largest, parent);
-	    maintainHeapProperty(a, largest); //becaue the original parent index reside in largest variable after the swap.
+	    maintainHeap(a, largest); //becaue the original parent index reside in largest variable after the swap.
 	}
     }
 
     private static void swap(int[] a, int i, int j) {
-	int t = a[i];
+	int temp = a[i];
 	a[i] = a[j];
-	a[j] = t;
+	a[j] = temp;
+
     }
 
-    private static int right(int parent) {
+    private static int rightchild(int parent) {
 	return (2 * parent) + 2;
     }
 
-    private static int left(int parent) {
+    private static int leftchild(int parent) {
 	return (2 * parent) + 1;
-    }
-    
-    private static int parent(int i) {
-	return (i - 1) / 2;
     }
 
 }
