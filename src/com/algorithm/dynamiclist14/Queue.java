@@ -1,9 +1,11 @@
 package com.algorithm.dynamiclist14;
 
-public class Queue<E extends Comparable<E>> {
+import com.algorithm.tree14.TreeNode;
+
+public class Queue<E extends Comparable<E>>  {
 
     private LinkedList<E> list = new LinkedList<>();
-    
+
     public void enqueue(E data) {
 	list.insertAtBack(data);
     }
@@ -16,4 +18,7 @@ public class Queue<E extends Comparable<E>> {
 	return list.removeFromFront();
     }
 
+    public boolean isEmpty() {
+	return list.isEmpty();
+    }
 }

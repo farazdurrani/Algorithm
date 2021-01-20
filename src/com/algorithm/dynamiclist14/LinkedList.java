@@ -20,7 +20,7 @@ public class LinkedList<E extends Comparable<E>> {
 	System.out.println();
     }
 
-    private boolean isEmpty() {
+    boolean isEmpty() {
 	return first == null;
     }
 
