@@ -1,17 +1,8 @@
 package random;
 
-public class binaryPatternMatching {
+public class BinaryPatternMatching {
     public static void main(String[] args) {
-//	for (char c : "010".toCharArray()) {
-//
-//	    if (Character.getNumericValue(c) == 0) {
-//		System.out.println("Yup");
-//	    }
-//
-//	}
-//	if (true)
-//	    return;
-	binaryPatternMatching b = new binaryPatternMatching();
+	BinaryPatternMatching b = new BinaryPatternMatching();
 	String pattern = "010";
 	String s = "amazing";
 	System.out.println(b.binaryPatternMatching(pattern, s));
@@ -24,7 +15,6 @@ public class binaryPatternMatching {
 	int matches = 0;
 	while (moves <= furthest && pattern.length() + moves <= furthest) {
 	    String substring = s.substring(moves, pattern.length() + moves);
-//	    System.out.println(substring);
 	    if (verify(pattern, substring)) {
 		matches++;
 	    }
@@ -48,7 +38,6 @@ public class binaryPatternMatching {
 		    if(notAVowel(substring.charAt(i))){
 			matches++;
 		    }
-		    
 		}
 	    }
 	    return matches == pattern.length();
