@@ -11,14 +11,6 @@ public class HashTable {
     private static DoubleLinkedList<String>[] store = new DoubleLinkedList[5];
 
     public static void main(String[] args) {
-	String first = "fa";
-	String second = "da";
-	for(char c : second.toCharArray()) {
-	    if(first.contains(String.valueOf(c))) {
-		System.out.println("haha");
-	    }
-	}
-	if(true) return;
 	String strings[] = generateRandomStrings(20);
 
 	HashTable hashTable = new HashTable();
@@ -31,7 +23,7 @@ public class HashTable {
 	String deleteKey = null;
 
 	hashTable.delete(deleteKey);
-
+	
 	hashTable.print();
 
     }
@@ -52,7 +44,7 @@ public class HashTable {
 
     private void delete(String key) {
 	int index = hash(key) % store.length;
-	if (store[index].remove(key)) {
+	if (key != null && store[index].remove(key)) {
 	    System.out.println("Deleted " + key);
 	} else {
 	    System.out.println(key + " not found");
@@ -69,8 +61,10 @@ public class HashTable {
 
     private int hash(String key) {
 	int hash = 0;
-	for (char c : key.toCharArray()) {
-	    hash += getAscii(c);
+	if (key != null) {
+	    for (char c : key.toCharArray()) {
+		hash += getAscii(c);
+	    }
 	}
 	return hash;
     }
