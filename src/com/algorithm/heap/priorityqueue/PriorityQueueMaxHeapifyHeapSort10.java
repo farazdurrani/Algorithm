@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
 public class PriorityQueueMaxHeapifyHeapSort10 {
     static int heapSize;
 //	static int a[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
-    static int A[] = { 13, -3, -25, 20, 7, 99, 12 };
+    static int a[] = { 13, -3, -25, 20, 7, 99, 12 };
 
     private static void print(int[] a, String msg) {
 	System.out.println(msg);
@@ -29,60 +29,60 @@ public class PriorityQueueMaxHeapifyHeapSort10 {
     }
 
     public static void main(String[] args) {
-	heapSize = A.length - 1;
-	print(A, "Before sort");
-	heapSort(A);
-	print(A, "After sort");
-	heapSize = A.length - 1;
-	buildHeap(A);
-	print(A, "After building max heapify");
-	print(new int[] { max(A) }, "Max Value");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
-	extractMax(A);
-	print(A, "After extracting max");
+	heapSize = a.length - 1;
+	print(a, "Before sort");
+	heapSort(a);
+	print(a, "After sort");
+	heapSize = a.length - 1;
+	buildHeap(a);
+	print(a, "After building max heapify");
+	print(new int[] { max(a) }, "Max Value");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
+	extractMax(a);
+	print(a, "After extracting max");
 	try {
-	    extractMax(A);
-	    print(A, "After extracting max");
+	    extractMax(a);
+	    print(a, "After extracting max");
 	} catch (Exception e) {
 	    System.out.println("HeapSize is gone in reverse");
 	}
-	insertKey(A, 0);
-	print(A, "After Inserting key");
-	insertKey(A, 1);
-	print(A, "After Inserting key");
-	insertKey(A, 2);
-	print(A, "After Inserting key");
-	insertKey(A, 3);
-	print(A, "After Inserting key");
-	insertKey(A, 4);
-	print(A, "After Inserting key");
-	insertKey(A, 5);
-	print(A, "After Inserting key");
-	insertKey(A, 6);
-	print(A, "After Inserting key");
-	insertKey(A, 7);
-	increaseKey(A, 222, 0);
-	print(A, "After Increasing keys");
-	increaseKey(A, 99, 1);
-	print(A, "After Increasing keys");
-	increaseKey(A, 45, 2);
-	print(A, "After Increasing keys");
-	increaseKey(A, 888888, 6);
-	print(A, "After Increasing keys");
+	insertKey(a, 0);
+	print(a, "After Inserting key");
+	insertKey(a, 1);
+	print(a, "After Inserting key");
+	insertKey(a, 2);
+	print(a, "After Inserting key");
+	insertKey(a, 3);
+	print(a, "After Inserting key");
+	insertKey(a, 4);
+	print(a, "After Inserting key");
+	insertKey(a, 5);
+	print(a, "After Inserting key");
+	insertKey(a, 6);
+	print(a, "After Inserting key");
+	insertKey(a, 7);
+	increaseKey(a, 222, 0);
+	print(a, "After Increasing keys");
+	increaseKey(a, 99, 1);
+	print(a, "After Increasing keys");
+	increaseKey(a, 45, 2);
+	print(a, "After Increasing keys");
+	increaseKey(a, 888888, 6);
+	print(a, "After Increasing keys");
 
-	heapSort(A);
-	print(A, "After Sort");
+	heapSort(a);
+	print(a, "After Sort");
     }
 
     private static void heapSort(int[] a) {

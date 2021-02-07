@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
 public class PriorityQueueMaxHeapifyHeapSort12 {
     static int heapSize;
 //	static int a[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
-    static int A[] = { 13, -3, -25, 20, 7, 99, 12 };
+    static int a[] = { 13, -3, -25, 20, 7, 99, 12 };
 
     private static void print(int[] a, String msg) {
 	System.out.println(msg);
