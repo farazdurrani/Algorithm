@@ -1,15 +1,19 @@
 package com.algorithm.dynamiclist15;
 
-public class Queue<E> {
+public class Queue<E extends Comparable<E>> {
 
-    public void enqueue(String string) {
+    private LinkedList<E> list = new LinkedList<>();
+    
+    public void enqueue(E data) {
+	list.insertAtBack(data);
     }
 
     public void print() {
+	list.print();
     }
 
-    public String dequeue() {
-	return null;
+    public E dequeue() {
+	return list.removeFromFront();
     }
 
 }
