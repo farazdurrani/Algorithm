@@ -1,7 +1,7 @@
 package com.algorithm.dynamiclist15;
 
 public class Stack<E extends Comparable<E>> {
-    
+
     private LinkedList<E> list = new LinkedList<>();
 
     public void push(E data) {
@@ -14,6 +14,10 @@ public class Stack<E extends Comparable<E>> {
 
     public E pop() {
 	return list.removeFromBack();
+    }
+
+    public boolean isEmpty() {
+	return list.isEmpty();
     }
 
 }
