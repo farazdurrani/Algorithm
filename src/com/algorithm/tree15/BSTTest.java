@@ -18,6 +18,14 @@ public class BSTTest {
 	bst.inorderTraversalResursive();
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalInterative();
+	System.out.println("Preorder Traversal Recursive");
+	bst.preorderTraversalRecursive();
+	System.out.println("Preorder Traversal Iterative");
+	bst.preorderTraversalIterative();
+	System.out.println("Postorder Traversal Recursive");
+	bst.postorderTraversalRecursive();
+	System.out.println("Postorder Traversal Iterative");
+	bst.postorderTraversalIterative();
 	System.out.println("Root is: " + bst.getRoot());
 	System.out.println("BST contains 14? (yes) " + bst.contains(14));
 	System.out.println("BST contains 999? (no) " + bst.contains(999));

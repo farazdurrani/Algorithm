@@ -1,17 +1,21 @@
 package com.algorithm.tree16;
 
+import com.algorithm.dynamiclist15.Queue;
+import com.algorithm.dynamiclist15.Stack;
+
 public class BinarySearchTree<E extends Comparable<E>> {
 
-    public void insert(E data) {
+    public boolean insert(E data) {
+	return false;
     }
 
     public void levelOrderTraversalIterative() {
     }
 
-    public void inorderTraversalResursive() {
+    public void levelOrderTraversalQueue() {
     }
 
-    public void levelOrderTraversalQueue() {
+    public void inorderTraversalResursive() {
     }
 
     public E getRoot() {
@@ -26,7 +30,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public int height() {
-	return -1;
+	return 0;
     }
 
     public void invertTree() {
@@ -35,16 +39,15 @@ public class BinarySearchTree<E extends Comparable<E>> {
     public void preorderTraversalRecursive() {
     }
 
-    public void postorderTraversalRecursive() {
-    }
-
-    public void inorderTraversalInterative() {
-    }
-
     public void preorderTraversalIterative() {
+    }
+
+    public void postorderTraversalRecursive() {
     }
 
     public void postorderTraversalIterative() {
     }
 
+    public void inorderTraversalInterative() {
+    }
 }
