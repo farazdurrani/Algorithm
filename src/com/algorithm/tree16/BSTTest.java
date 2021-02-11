@@ -45,6 +45,11 @@ public class BSTTest {
 	
 	System.out.println("Predecessor of 2: " + bst.predecessor(bst.search(Integer.valueOf(2))));
 	
+	System.out.println("BST contains 15? (yes) " + bst.contains(15));
+	System.out.println("BST contains 999? (no) " + bst.contains(999));
+	System.out.println("BST contains 6? (yes) " + bst.contains(6));
+	System.out.println("BST contains -1? (no) " + bst.contains(-1));
+	
 //	System.out.println("Level Order Traversal Using Queue");
 //	bst.levelOrderTraversalQueue();
 //	System.out.println("In-Order Traversal Recursive");

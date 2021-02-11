@@ -111,7 +111,18 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public boolean contains(E data) {
-	return false;
+	return contains(root, data) != null;
+    }
+
+    private TreeNode<E> contains(TreeNode<E> node, E data) {
+	while(node != null && node.data.compareTo(data) != 0) {
+	    if(data.compareTo(node.data) < 0) {
+		node = node.left;
+	    } else {
+		node = node.right;
+	    }
+	}
+	return node;
     }
 
     public void remove(E data) {
