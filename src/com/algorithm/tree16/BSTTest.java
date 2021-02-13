@@ -75,20 +75,20 @@ public class BSTTest {
 	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(20);
 	
 	System.out.println("In-Order Traversal Iterative");
-//	bst.inorderTraversalInterative();
-//	bst.predecessorWithoutTrackingParent(2);
-//	bst.predecessorWithoutTrackingParent(3);
-//	bst.predecessorWithoutTrackingParent(4);
-//	bst.predecessorWithoutTrackingParent(6);
-//	
-//	bst.predecessorWithoutTrackingParent(7);
-//	bst.predecessorWithoutTrackingParent(9);
-//	bst.predecessorWithoutTrackingParent(13);
-//	bst.predecessorWithoutTrackingParent(15);
-//	
-//	bst.predecessorWithoutTrackingParent(17);
-//	bst.predecessorWithoutTrackingParent(18);
-//	bst.predecessorWithoutTrackingParent(20);
+	bst.inorderTraversalInterative();
+	bst.predecessorWithoutTrackingParent(2);
+	bst.predecessorWithoutTrackingParent(3);
+	bst.predecessorWithoutTrackingParent(4);
+	bst.predecessorWithoutTrackingParent(6);
+	
+	bst.predecessorWithoutTrackingParent(7);
+	bst.predecessorWithoutTrackingParent(9);
+	bst.predecessorWithoutTrackingParent(13);
+	bst.predecessorWithoutTrackingParent(15);
+	
+	bst.predecessorWithoutTrackingParent(17);
+	bst.predecessorWithoutTrackingParent(18);
+	bst.predecessorWithoutTrackingParent(20);
 
 	
 //	System.out.println("Level Order Traversal Using Queue");
