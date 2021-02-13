@@ -50,6 +50,31 @@ public class BSTTest {
 	System.out.println("BST contains 6? (yes) " + bst.contains(6));
 	System.out.println("BST contains -1? (no) " + bst.contains(-1));
 	
+
+	System.out.println("In-Order Traversal Iterative");
+	bst.inorderTraversalInterative();
+	System.out.println("Successor of 13 (without keeping track of parent): " + bst.successorWithoutTrackingParent(13));
+	System.out.println("Successor of 15 (without keeping track of parent): " + bst.successorWithoutTrackingParent(15));
+	System.out.println("Successor of 2 (without keeping track of parent): " + bst.successorWithoutTrackingParent(2));
+	System.out.println("Successor of 20 (without keeping track of parent): " + bst.successorWithoutTrackingParent(20));
+	
+	System.out.println("In-Order Traversal Iterative");
+	bst.inorderTraversalInterative();
+	bst.successorWithoutTrackingParent2(2);
+	bst.successorWithoutTrackingParent2(3);
+	bst.successorWithoutTrackingParent2(4);
+	bst.successorWithoutTrackingParent2(6);
+	
+	bst.successorWithoutTrackingParent2(7);
+	bst.successorWithoutTrackingParent2(9);
+	bst.successorWithoutTrackingParent2(13);
+	bst.successorWithoutTrackingParent2(15);
+	
+	bst.successorWithoutTrackingParent2(17);
+	bst.successorWithoutTrackingParent2(18);
+	bst.successorWithoutTrackingParent2(20);
+
+	
 //	System.out.println("Level Order Traversal Using Queue");
 //	bst.levelOrderTraversalQueue();
 //	System.out.println("In-Order Traversal Recursive");
