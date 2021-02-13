@@ -53,26 +53,42 @@ public class BSTTest {
 
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalInterative();
-	System.out.println("Successor of 13 (without keeping track of parent): " + bst.successorWithoutTrackingParent(13));
-	System.out.println("Successor of 15 (without keeping track of parent): " + bst.successorWithoutTrackingParent(15));
-	System.out.println("Successor of 2 (without keeping track of parent): " + bst.successorWithoutTrackingParent(2));
-	System.out.println("Successor of 20 (without keeping track of parent): " + bst.successorWithoutTrackingParent(20));
+	System.out.println("Successor of 13 (without keeping track of parent): " + bst.successorWithoutTrackingParentUsingStack(13));
+	System.out.println("Successor of 15 (without keeping track of parent): " + bst.successorWithoutTrackingParentUsingStack(15));
+	System.out.println("Successor of 2 (without keeping track of parent): " + bst.successorWithoutTrackingParentUsingStack(2));
+	System.out.println("Successor of 20 (without keeping track of parent): " + bst.successorWithoutTrackingParentUsingStack(20));
 	
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalInterative();
-	bst.successorWithoutTrackingParent2(2);
-	bst.successorWithoutTrackingParent2(3);
-	bst.successorWithoutTrackingParent2(4);
-	bst.successorWithoutTrackingParent2(6);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(2);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(3);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(4);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(6);
 	
-	bst.successorWithoutTrackingParent2(7);
-	bst.successorWithoutTrackingParent2(9);
-	bst.successorWithoutTrackingParent2(13);
-	bst.successorWithoutTrackingParent2(15);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(7);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(9);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(13);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(15);
 	
-	bst.successorWithoutTrackingParent2(17);
-	bst.successorWithoutTrackingParent2(18);
-	bst.successorWithoutTrackingParent2(20);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(17);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(18);
+	bst.successorWithoutTrackingParentWithoutAuxilaryStorage(20);
+	
+	System.out.println("In-Order Traversal Iterative");
+//	bst.inorderTraversalInterative();
+//	bst.predecessorWithoutTrackingParent(2);
+//	bst.predecessorWithoutTrackingParent(3);
+//	bst.predecessorWithoutTrackingParent(4);
+//	bst.predecessorWithoutTrackingParent(6);
+//	
+//	bst.predecessorWithoutTrackingParent(7);
+//	bst.predecessorWithoutTrackingParent(9);
+//	bst.predecessorWithoutTrackingParent(13);
+//	bst.predecessorWithoutTrackingParent(15);
+//	
+//	bst.predecessorWithoutTrackingParent(17);
+//	bst.predecessorWithoutTrackingParent(18);
+//	bst.predecessorWithoutTrackingParent(20);
 
 	
 //	System.out.println("Level Order Traversal Using Queue");
