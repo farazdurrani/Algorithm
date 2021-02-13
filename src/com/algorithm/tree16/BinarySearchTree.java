@@ -49,14 +49,14 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	}
 	return y;
     }
-    
+
     public TreeNode<E> predecessor(TreeNode<E> x) {
-	if(x != null && x.left != null) {
+	if (x != null && x.left != null) {
 	    return max(x.left);
 	}
-	
+
 	TreeNode<E> y = x.parent;
-	while(y != null && x == y.left) {
+	while (y != null && x == y.left) {
 	    x = y;
 	    y = y.parent;
 	}
@@ -101,6 +101,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public void levelOrderTraversalQueue() {
+	Queue<TreeNode<E>> q = new Queue<>();
+	if (root != null) {
+	    q.enqueue(root);
+	}
+	while (!q.isEmpty()) {
+	    TreeNode<E> node = q.dequeue();
+	    System.out.print(node.data + " ");
+	    if (node.left != null) {
+		q.enqueue(node.left);
+	    }
+	    if (node.right != null) {
+		q.enqueue(node.right);
+	    }
+	}
+	System.out.println();
     }
 
     public void inorderTraversalResursive() {
@@ -115,8 +130,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     private TreeNode<E> contains(TreeNode<E> node, E data) {
-	while(node != null && node.data.compareTo(data) != 0) {
-	    if(data.compareTo(node.data) < 0) {
+	while (node != null && node.data.compareTo(data) != 0) {
+	    if (data.compareTo(node.data) < 0) {
 		node = node.left;
 	    } else {
 		node = node.right;
@@ -171,6 +186,73 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    curr = curr.right;
 	}
 	System.out.println();
+    }
+
+    public E successorWithoutTrackingParent(E data) {
+	Stack<TreeNode<E>> s = new Stack<>();
+	TreeNode<E> cur = root;
+	while (cur != null || !s.isEmpty()) {
+
+	    while (cur != null) {
+		s.push(cur);
+		cur = cur.left;
+	    }
+	    cur = s.pop();
+	    if (cur.data.compareTo(data) > 0) {
+		return cur.data;
+	    }
+	    cur = cur.right;
+	}
+	return null;
+    }
+
+    public E successorWithoutTrackingParent2(E key) {
+	TreeNode<E> suc = new TreeNode<>(null, null);
+	inorder(root, key, suc);
+	System.out.println("successor of " + key + " is -> " + suc.data);
+	return suc.data;
+    }
+
+    /**
+     * Best performance out of all 3 approaches as we can cut out rest of the
+     * right-subtree calls once successor is found.
+     */
+    private void inorder(TreeNode<E> node, E key, TreeNode<E> suc) {
+	if (node == null || suc.data != null) {
+	    return;
+	}
+	inorder(node.left, key, suc);
+	if (node.data.compareTo(key) > 0) {
+	    if (suc.data == null || (suc.data != null && node.data.compareTo(suc.data) < 0)) {
+		suc.data = node.data;
+	    }
+	}
+	if (suc.data == null) {
+	    inorder(node.right, key, suc);
+	}
+    }
+
+    /**
+     * A bit unintuitive but works. It's a bit efficent compare to Queue approach in
+     * terms of saving space.
+     */
+    private void inorde2(TreeNode<E> node, E key, TreeNode<E> suc) {
+	if (node == null || suc.data != null && node.data.compareTo(suc.data) > 0) {
+	    return;
+	}
+	inorder(node.left, key, suc);
+	if (node.data.compareTo(key) == 0) {
+	    suc.parent = node;
+	}
+	if (suc.parent != null && node.data.compareTo(suc.parent.data) > 0) {
+	    if (suc.data == null) {
+		suc.data = node.data;
+	    } else if (suc.data != null && node.data.compareTo(suc.data) < 0) {
+		suc.data = node.data;
+	    }
+
+	}
+	inorder(node.right, key, suc);
     }
 
 }
