@@ -210,7 +210,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     /**
-     * Most improved. No more using Auxillary space. 
+     * Most improved. No more using Auxillary space.
      */
     public E successorWithoutTrackingParentWithoutAuxilaryStorage(E key) {
 	TreeNode<E> node = search(key);
@@ -267,17 +267,31 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	inorderForSucessor(node.right, key, suc);
     }
 
-//    public E predecessorWithoutTrackingParent(E key) {
-//	TreeNode<E> node = search(key);
-//	if (node != null && node.left != null) {
-//	    E data = max(node.left).data;
-//	    System.out.println("predecessor of " + key + " is -> " + data);
-//	    return data;
-//	}
-//	node = new TreeNode<>(null,null);
-//	inOrder
-//	System.out.println("predecessor of " + key + " is -> " + node.data);
-//	return node.data;
-//    }
+    public E predecessorWithoutTrackingParent(E key) {
+	TreeNode<E> node = search(key);
+	if (node != null && node.left != null) {
+	    E data = max(node.left).data;
+	    System.out.println("predecessor of " + key + " is -> " + data);
+	    return data;
+	}
+	if (node != null) {
+	    node = new TreeNode<>(null, key);
+	    inOrderForPredeccor(root, key, node);
+	    System.out.println("predecessor of " + key + " is -> " + (node.data == key ? null : node.data));
+	    return node.data == key ? null : node.data;
+	}
+	return null;
+    }
+
+    private void inOrderForPredeccor(TreeNode<E> node, E key, TreeNode<E> pred) {
+	if (node == null) {
+	    return;
+	}
+	inOrderForPredeccor(node.left, key, pred);
+	if (node.data.compareTo(key) < 0) {
+	    pred.data = node.data;
+	}
+	inOrderForPredeccor(node.right, key, pred);
+    }
 
 }
