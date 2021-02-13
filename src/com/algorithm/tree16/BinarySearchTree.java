@@ -188,7 +188,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	System.out.println();
     }
 
-    public E successorWithoutTrackingParent(E data) {
+    /**
+     * Using Auxillary space. We can improve...
+     */
+    public E successorWithoutTrackingParentUsingStack(E data) {
 	Stack<TreeNode<E>> s = new Stack<>();
 	TreeNode<E> cur = root;
 	while (cur != null || !s.isEmpty()) {
@@ -206,41 +209,50 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	return null;
     }
 
-    public E successorWithoutTrackingParent2(E key) {
-	TreeNode<E> suc = new TreeNode<>(null, null);
-	inorder(root, key, suc);
-	System.out.println("successor of " + key + " is -> " + suc.data);
-	return suc.data;
+    /**
+     * Most improved. No more using Auxillary space. 
+     */
+    public E successorWithoutTrackingParentWithoutAuxilaryStorage(E key) {
+	TreeNode<E> node = search(key);
+	if (node != null && node.right != null) {
+	    E data = min(node.right).data;
+	    System.out.println("successor of " + key + " is -> " + data);
+	    return data;
+	}
+	node = new TreeNode<>(null, null);
+	inorderForSucessor(root, key, node);
+	System.out.println("successor of " + key + " is -> " + node.data);
+	return node.data;
     }
 
     /**
      * Best performance out of all 3 approaches as we can cut out rest of the
      * right-subtree calls once successor is found.
      */
-    private void inorder(TreeNode<E> node, E key, TreeNode<E> suc) {
+    private void inorderForSucessor(TreeNode<E> node, E key, TreeNode<E> suc) {
 	if (node == null || suc.data != null) {
 	    return;
 	}
-	inorder(node.left, key, suc);
+	inorderForSucessor(node.left, key, suc);
 	if (node.data.compareTo(key) > 0) {
 	    if (suc.data == null || (suc.data != null && node.data.compareTo(suc.data) < 0)) {
 		suc.data = node.data;
 	    }
 	}
 	if (suc.data == null) {
-	    inorder(node.right, key, suc);
+	    inorderForSucessor(node.right, key, suc);
 	}
     }
 
     /**
      * A bit unintuitive but works. It's a bit efficent compare to Queue approach in
-     * terms of saving space.
+     * terms of saving space. But it can be improved.
      */
-    private void inorde2(TreeNode<E> node, E key, TreeNode<E> suc) {
+    private void inorderForSucessor2(TreeNode<E> node, E key, TreeNode<E> suc) {
 	if (node == null || suc.data != null && node.data.compareTo(suc.data) > 0) {
 	    return;
 	}
-	inorder(node.left, key, suc);
+	inorderForSucessor(node.left, key, suc);
 	if (node.data.compareTo(key) == 0) {
 	    suc.parent = node;
 	}
@@ -252,7 +264,20 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    }
 
 	}
-	inorder(node.right, key, suc);
+	inorderForSucessor(node.right, key, suc);
     }
+
+//    public E predecessorWithoutTrackingParent(E key) {
+//	TreeNode<E> node = search(key);
+//	if (node != null && node.left != null) {
+//	    E data = max(node.left).data;
+//	    System.out.println("predecessor of " + key + " is -> " + data);
+//	    return data;
+//	}
+//	node = new TreeNode<>(null,null);
+//	inOrder
+//	System.out.println("predecessor of " + key + " is -> " + node.data);
+//	return node.data;
+//    }
 
 }
