@@ -5,7 +5,7 @@ So far, this repo contains practice for:
 
 * InsertionSort
 * MergeSort
-* MaximumSubArray Divide and Conquere and Brute Force approaches
+* MaximumSubArray Divide and Conquer and Brute Force approaches
 * SquareMatrixMultiply Brute Force approach
 * HeapSort
 * MaxProrityQueue
