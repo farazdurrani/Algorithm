@@ -234,10 +234,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    return;
 	}
 	inorderForSucessor(node.left, key, suc);
-	if (node.data.compareTo(key) > 0) {
-	    if (suc.data == null || (suc.data != null && node.data.compareTo(suc.data) < 0)) {
-		suc.data = node.data;
-	    }
+	if (node.data.compareTo(key) > 0 && suc.data == null
+		|| (suc.data != null && node.data.compareTo(suc.data) < 0)) {
+	    suc.data = node.data;
 	}
 	if (suc.data == null) {
 	    inorderForSucessor(node.right, key, suc);
@@ -292,6 +291,29 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    pred.data = node.data;
 	}
 	inOrderForPredeccor(node.right, key, pred);
+    }
+
+    public void insertIterative(E data) {
+	TreeNode<E> newNode = new TreeNode<>(null, data);
+	if (root == null) {
+	    root = newNode;
+	    return;
+	}
+	TreeNode<E> curr = root;
+	TreeNode<E> track = null;
+	while (curr != null) {
+	    track = curr;
+	    if (data.compareTo(curr.data) < 0) {
+		curr = curr.left;
+	    } else if (data.compareTo(curr.data) > 0) {
+		curr = curr.right;
+	    }
+	}
+	if (data.compareTo(track.data) < 0) {
+	    track.left = newNode;
+	} else if (data.compareTo(track.data) > 0) {
+	    track.right = newNode;
+	}
     }
 
 }

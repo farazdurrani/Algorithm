@@ -90,7 +90,13 @@ public class BSTTest {
 	bst.predecessorWithoutTrackingParent(18);
 	bst.predecessorWithoutTrackingParent(20);
 
-	
+	BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
+	System.out.println("Inserting");
+	l.forEach(bst2::insertIterative);
+	System.out.println();
+	System.out.println("Level Order Traversal Iterative");
+	bst.inorderTraversalInterative();
+	bst2.inorderTraversalInterative();
 //	System.out.println("Level Order Traversal Using Queue");
 //	bst.levelOrderTraversalQueue();
 //	System.out.println("In-Order Traversal Recursive");
