@@ -90,7 +90,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	if (node == null) {
 	    return;
 	}
-
 	if (level == 1) {
 	    System.out.printf("%4s %4s%n", node.parent != null ? node.parent.data : null, node.data);
 	    return;
@@ -119,13 +118,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public void inorderTraversalResursive() {
+	inorderHelper(root);
+	System.out.println();
+    }
+
+    private void inorderHelper(TreeNode<E> node) {
+	if (node == null) {
+	    return;
+	}
+	inorderHelper(node.left);
+	System.out.print(node.data + " ");
+	inorderHelper(node.right);
     }
 
     public TreeNode<E> getRoot() {
 	return root;
     }
 
-    public boolean contains(E data) {
+    public boolean containsIterative(E data) {
 	return contains(root, data) != null;
     }
 
@@ -141,6 +151,32 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public void remove(E data) {
+	root = remove(root, data);
+    }
+
+    private TreeNode<E> remove(TreeNode<E> node, E data) {
+	if(node == null) {
+	    return node;
+	}
+	
+	if(data.compareTo(node.data) < 0) {
+	    node.left = remove(node.left, data);
+	} else if(data.compareTo(node.data) > 0) {
+	    node.right = remove(node.right, data);
+	} else {
+	    if(node.left == null && node.right == null) {
+		node = null;
+	    } else if(node.left == null) {
+		node = node.right;
+	    } else if(node.right == null) {
+		node = node.left;
+	    } else {
+		TreeNode<E> temp = min(node.right);
+		node.data = temp.data;
+		node.right = remove(node.right, node.data);
+	    }
+	}
+	return node;
     }
 
     public int height() {
@@ -158,24 +194,92 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public void invertTree() {
+	root = invert(root);
+    }
+
+    private TreeNode<E> invert(TreeNode<E> node) {
+	if(node == null) {
+	    return node;
+	}
+	TreeNode<E> ln = invert(node.left);
+	TreeNode<E> rn = invert(node.right);
+	node.left = rn;
+	node.right = ln;
+	return node;
     }
 
     public void preorderTraversalRecursive() {
+	preorderHelper(root);
+	System.out.println();
+    }
+
+    private void preorderHelper(TreeNode<E> node) {
+	if (node == null) {
+	    return;
+	}
+	System.out.print(node.data + " ");
+	preorderHelper(node.left);
+	preorderHelper(node.right);
     }
 
     public void preorderTraversalIterative() {
+	Stack<TreeNode<E>> s = new Stack<>();
+	if (root != null) {
+	    s.push(root);
+	}
+	while (!s.isEmpty()) {
+	    TreeNode<E> node = s.pop();
+	    System.out.print(node.data + " ");
+	    if (node.right != null) {
+		s.push(node.right);
+	    }
+	    if (node.left != null) {
+		s.push(node.left);
+	    }
+	}
+	System.out.println();
     }
 
     public void postorderTraversalRecursive() {
+	postorderHelper(root);
+	System.out.println();
+    }
+
+    private void postorderHelper(TreeNode<E> node) {
+	if (node == null) {
+	    return;
+	}
+	postorderHelper(node.left);
+	postorderHelper(node.right);
+	System.out.print(node.data + " ");
     }
 
     public void postorderTraversalIterative() {
+	Stack<TreeNode<E>> s1 = new Stack<>();
+	Stack<TreeNode<E>> s2 = new Stack<>();
+	if (root != null) {
+	    s1.push(root);
+	}
+	while (!s1.isEmpty()) {
+	    TreeNode<E> node = s1.pop();
+	    s2.push(node);
+	    if (node.left != null) {
+		s1.push(node.left);
+	    }
+	    if (node.right != null) {
+		s1.push(node.right);
+	    }
+	}
+
+	while (!s2.isEmpty()) {
+	    System.out.print(s2.pop().data + " ");
+	}
+	System.out.println();
     }
 
     public void inorderTraversalInterative() {
 	Stack<TreeNode<E>> s = new Stack<>();
 	TreeNode<E> curr = root;
-
 	while (!s.isEmpty() || null != curr) {
 	    while (null != curr) {
 		s.push(curr);
@@ -314,6 +418,24 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	} else if (data.compareTo(track.data) > 0) {
 	    track.right = newNode;
 	}
+	newNode.parent = track;
+    }
+
+    public boolean containsRecursive(E data) {
+	return containsRecursive(root, data) != null;
+    }
+
+    private TreeNode<E> containsRecursive(TreeNode<E> node, E data) {
+	if(node == null || (node != null && node.data.compareTo(data) == 0)) {
+	    return node;
+	}
+	if(data.compareTo(node.data) < 0) {
+	    return containsRecursive(node.left,data);
+	}
+	if(data.compareTo(node.data) > 0) {
+	    return containsRecursive(node.right, data);
+	}
+	return null;
     }
 
 }
