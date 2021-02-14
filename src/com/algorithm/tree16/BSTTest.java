@@ -121,26 +121,26 @@ public class BSTTest {
 	System.out.println("BST contains (recursive) 999? (no) " + bst.containsRecursive(999));
 	System.out.println("BST contains (recursive) 18? (yes) " + bst.containsRecursive(18));
 	System.out.println("BST contains (recursive) -1? (no) " + bst.containsRecursive(-1));
-	System.out.println("In-Order Traversal Recursive");
-	bst.inorderTraversalResursive();
+	System.out.println("Level-Order Traversal lIterative");
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 13 (exists)");
 	bst.remove(13);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 18 (exists)");
 	bst.remove(18);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 9 (exists)");
 	bst.remove(9);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 15 (exists)");
 	bst.remove(15);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 7 (exists)");
 	bst.remove(7);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("removing 35 (doesn't exist)");
 	bst.remove(35);
-	bst.inorderTraversalResursive();
+	bst.levelOrderTraversalIterative();
 	System.out.println("Height : " + bst.height());
 	System.out.println("root: " + bst.getRoot());
 	System.out.println("Level Order Traversal ");
@@ -167,11 +167,5 @@ public class BSTTest {
 	bst2.postorderTraversalIterative();
 
     }
+
 }
-//l.forEach(i -> {
-//if (i == 3) {
-//	System.out.print(i + " " + bst.insert(i) + " ");
-//} else {
-//	bst.insert(i);
-//}
-//});

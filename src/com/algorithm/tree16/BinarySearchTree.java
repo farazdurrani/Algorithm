@@ -167,9 +167,13 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    if(node.left == null && node.right == null) {
 		node = null;
 	    } else if(node.left == null) {
+		TreeNode<E> parent = node.parent;
 		node = node.right;
+		node.parent = parent;
 	    } else if(node.right == null) {
+		TreeNode<E> parent = node.parent;
 		node = node.left;
+		node.parent = parent;
 	    } else {
 		TreeNode<E> temp = min(node.right);
 		node.data = temp.data;
