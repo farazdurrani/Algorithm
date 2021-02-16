@@ -4,13 +4,15 @@ import java.util.List;
 
 public class BSTTest {
     public static void main(String[] args) {
-	BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-//	List<Integer> l = List.of(47, 25, 77, 11, 43, 65, 93, 7, 17, 31, 44, 68);
-	List<Integer> l = List.of(49, 14, 64, 34, 55, 85, 46, 37, 46, 37);
-	System.out.println("Inserting");
-	l.forEach(i -> System.out.print(i + " " + bst.insert(i)+ " "));
+	RedBlackTree<Integer> bst = new RedBlackTree<>();
+//	digits from book pg 290
+//	List<Integer> l = List.of(15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9, 13, 9);
+//	digits from book pg 314
+	List<Integer> l = List.of(7,4,11,3,6,9,18,2,14,19,12,17,22,20);
+	System.out.println("creating a BST initially");
+	l.forEach(i -> System.out.print(i + " " + bst.BSTInsertIterative(i) + " "));
 	System.out.println();
-	System.out.println("Level Order Traversal Iterative");
+	System.out.println("Level Order Traversal Iterative");	
 	bst.levelOrderTraversalIterative();
 	System.out.println("Level Order Traversal Using Queue");
 	bst.levelOrderTraversalQueue();
@@ -18,63 +20,17 @@ public class BSTTest {
 	bst.inorderTraversalResursive();
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalInterative();
-	System.out.println("Preorder Traversal Recursive");
-	bst.preorderTraversalRecursive();
-	System.out.println("Preorder Traversal Iterative");
-	bst.preorderTraversalIterative();
-	System.out.println("Postorder Traversal Recursive");
-	bst.postorderTraversalRecursive();
-	System.out.println("Postorder Traversal Iterative");
-	bst.postorderTraversalIterative();
-	System.out.println("Root is: " + bst.getRoot());
-	System.out.println("BST contains 14? (yes) " + bst.contains(14));
-	System.out.println("BST contains 999? (no) " + bst.contains(999));
-	System.out.println("BST contains 85? (yes) " + bst.contains(85));
-	System.out.println("BST contains -1? (no) " + bst.contains(-1));
-	System.out.println("In-Order Traversal Recursive");
-	bst.inorderTraversalResursive();
-	System.out.println("removing 14 (exists)");
-	bst.remove(14);
-	bst.inorderTraversalResursive();
-	System.out.println("removing 55 (exists)");
-	bst.remove(55);
-	bst.inorderTraversalResursive();
-	System.out.println("removing 49 (exists)");
-	bst.remove(49);
-	bst.inorderTraversalResursive();
-	System.out.println("removing 64 (exists)");
-	bst.remove(64);
-	bst.inorderTraversalResursive();
-	System.out.println("removing 37 (exists)");
-	bst.remove(37);
-	bst.inorderTraversalResursive();
-	System.out.println("removing 35 (doesn't exist)");
-	bst.remove(35);
-	bst.inorderTraversalResursive();
-	System.out.println("Height : " + bst.height());
-	System.out.println("root: " + bst.getRoot());
-	System.out.println("Level Order Traversal ");
-	bst.levelOrderTraversalQueue();
-
-	System.out.println("New Tree");
-	BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
-	l.forEach(i -> bst2.insert(i));
-	System.out.println("Level Order Traversal");
-	bst2.levelOrderTraversalIterative();
-	System.out.println("Inverting Tree");
-	bst2.invertTree();
-	System.out.println("Level Order Traversal");
-	bst2.levelOrderTraversalQueue();
-	System.out.println("Descending Order");
-	bst2.inorderTraversalResursive();
-	System.out.println("Preorder Traversal Recursive");
-	bst2.preorderTraversalRecursive();
-	System.out.println("Preorder Traversal Iterative");
-	bst2.preorderTraversalIterative();
-	System.out.println("Postorder Traversal Recursive");
-	bst2.postorderTraversalRecursive();
-	System.out.println("Postorder Traversal Iterative");
-	bst2.postorderTraversalIterative();
+	bst.prettyPrint();
+	bst.leftRotate(11);
+	System.out.println("After left rotation of 11");
+	bst.prettyPrint();
+	bst.rightRotate(18);
+	System.out.println("After right rotation of 18");
+	bst.prettyPrint();
 	
+	System.out.println("Reverse In-Order Traversal Recursive");
+	bst.inorderTraversalReverseResursive();
+
     }
+
 }
