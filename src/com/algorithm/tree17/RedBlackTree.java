@@ -3,14 +3,26 @@ package com.algorithm.tree17;
 import com.algorithm.dynamiclist15.Queue;
 import com.algorithm.dynamiclist15.Stack;
 
+
+enum Color {
+    RED,
+    BLACK
+}
 public class RedBlackTree<E extends Comparable<E>> {
 
     private TreeNode<E> root;
-
+    private TreeNode<E> NIL;
+    
+    public RedBlackTree() {
+	this.NIL = new TreeNode<>();
+	this.NIL.color = Color.BLACK;
+	this.root = this.NIL;
+    }
+    
     public boolean BSTInsertIterative(E data) {
-	TreeNode<E> y = null;
+	TreeNode<E> y = NIL;
 	TreeNode<E> x = root;
-	while (x != null) {
+	while (x != NIL) {
 	    y = x;
 	    if (data.compareTo(x.data) < 0) {
 		x = x.left;
@@ -22,14 +34,57 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 	TreeNode<E> node = new TreeNode<>(data);
 	node.parent = y;
-	if (y == null) {
+	if (y == NIL) {
 	    root = node;
 	} else if (data.compareTo(y.data) < 0) {
 	    y.left = node;
 	} else {
 	    y.right = node;
 	}
+	node.left = NIL;
+	node.right = NIL;
+	node.color = Color.RED;
+	RB_INSERT_FIXUP(node);
 	return true;
+    }
+
+    private void RB_INSERT_FIXUP(TreeNode<E> z) {
+	while(z.parent.color == Color.RED) {
+	    if(z.parent == z.parent.parent.left) {
+		TreeNode<E> y  = z.parent.parent.right;
+		if(y.color == Color.RED) { //case 1
+		    y.color = Color.BLACK;
+		    z.parent.color = Color.BLACK;
+		    z.parent.parent.color = Color.RED;
+		    z = z.parent.parent;
+		} else {
+		    if(z == z.parent.right) { //case 2
+			z = z.parent; //turn case 2 into case 3
+			leftRotate(z);
+		    }
+		    z.parent.color = Color.BLACK; //case 3
+		    z.parent.parent.color = Color.RED;
+		    rightRotate(z.parent.parent);
+		}
+	    } else {
+		TreeNode<E> y = z.parent.parent.left;
+		if(y.color == Color.RED) { //case 1
+		    y.color = Color.BLACK;
+		    z.parent.color = Color.BLACK;
+		    z.parent.parent.color = Color.RED;
+		    z = z.parent.parent;
+		} else {
+		    if(z == z.parent.left) { //case 2
+			z = z.parent; //turn case 2 into case 3
+			rightRotate(z);
+		    }
+		    z.parent.color = Color.BLACK; //case 3
+		    z.parent.parent.color = Color.RED;
+		    leftRotate(z.parent.parent);
+		}
+	    }
+	}
+	root.color = Color.BLACK;
     }
 
     public void levelOrderTraversalIterative() {
@@ -46,7 +101,8 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    return;
 	}
 	if (level == 1) {
-	    System.out.printf("%4s %4s%n", node.parent != null ? node.parent.data : null, node.data);
+	    System.out.printf("%4s %4s%n", node.parent != null ? node.parent.data : null,
+	        node.data);
 	    return;
 	}
 	printNodeAtGivenLevel(level - 1, node.left);
@@ -54,7 +110,7 @@ public class RedBlackTree<E extends Comparable<E>> {
     }
 
     private int height(TreeNode<E> node) {
-	if (node == null) {
+	if (node == NIL || node == null) {
 	    return 0;
 	}
 	int lh = height(node.left);
@@ -86,7 +142,7 @@ public class RedBlackTree<E extends Comparable<E>> {
     }
 
     private void inorderHelper(TreeNode<E> node) {
-	if (node == null) {
+	if (node == NIL) {
 	    return;
 	}
 	inorderHelper(node.left);
@@ -94,7 +150,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	inorderHelper(node.right);
     }
 
-    public void inorderTraversalInterative() {
+    public void inorderTraversalIterative() {
 	Stack<TreeNode<E>> s = new Stack<>();
 	TreeNode<E> node = root;
 
@@ -125,52 +181,102 @@ public class RedBlackTree<E extends Comparable<E>> {
      */
     public void leftRotate(E data) {
 	TreeNode<E> x = search(data);
-	if (x.right != null) {
-	    TreeNode<E> y = null;
-	    y = x.right;
-	    x.right = y.left;
-	    if (y.left != null) {
-		y.left.parent = x;
-	    }
-	    y.parent = x.parent;
-	    if (x.parent == null) {
-		root = y;
-	    } else if (x == x.parent.left) {
-		x.parent.left = y;
-	    } else {
-		x.parent.right = y;
-	    }
-	    y.left = x;
-	    x.parent = y;
-	} else {
-	    System.out.println("Cannot left rotate since right child of " + data + " is null");
-	}
+	leftRotate(x);
+    }
 
+    private void leftRotate(TreeNode<E> x) {
+	TreeNode<E> y = x.right;
+	x.right = y.left;
+	if (y.left != null) {
+	    y.left.parent = x;
+	}
+	y.parent = x.parent;
+	if (x.parent == null) {
+	    root = y;
+	} else if (x == x.parent.left) {
+	    x.parent.left = y;
+	} else {
+	    x.parent.right = y;
+	}
+	y.left = x;
+	x.parent = y;
     }
 
     public void rightRotate(E data) {
 	TreeNode<E> x = search(data);
-	if (x.left != null) {
-	    TreeNode<E> y = null;
-	    y = x.left;
-	    x.left = y.right;
-	    if (y.right != null) {
-		y.right.parent = x;
-	    }
-	    y.parent = x.parent;
-	    if (x.parent == null) {
-		root = y;
-	    } else if (x == x.parent.left) {
-		x.parent.left = y;
-	    } else {
-		x.parent.right = y;
-	    }
-	    y.right = x;
-	    x.parent = y;
-	} else {
-	    System.out.println("Cannot right rotate since left child of " + data + " is null");
-	}
+	rightRotate(x);
+    }
 
+    private void rightRotate(TreeNode<E> x) {
+	TreeNode<E> y = x.left;
+	x.left = y.right;
+	if(y.right!= null) {
+	    y.right.parent = x;
+	}
+	y.parent = x.parent;
+	if (x.parent == null) {
+	    root = y;
+	} else if (x == x.parent.left) {
+	    x.parent.left = y;
+	} else {
+	    x.parent.right = y;
+	}
+	y.right = x;
+	x.parent = y;
+    }
+
+    public TreeNode<E> successor(E data) {
+	return successor(search(data));
+    }
+
+    private TreeNode<E> successor(TreeNode<E> x) {
+	if (x != null) {
+	    if (x.right != null) {
+		return min(x.right);
+	    }
+
+	    TreeNode<E> y = x.parent;
+	    while (y != null && x == y.right) {
+		x = y;
+		y = y.parent;
+	    }
+	    return y;
+	}
+	return null;
+    }
+
+    public TreeNode<E> predecessor(E data) {
+	return predecessor(search(data));
+    }
+
+    private TreeNode<E> predecessor(TreeNode<E> x) {
+	if (x != null) {
+	    if (x.left != null) {
+		return max(x.left);
+	    }
+
+	    TreeNode<E> y = x.parent;
+	    while (y != null && x == y.left) {
+		x = y;
+		y = y.parent;
+	    }
+	    return y;
+	}
+	return null;
+    }
+
+    private TreeNode<E> max(TreeNode<E> node) {
+	if (node != null && node.left != null) {
+	    return max(node.left);
+	}
+	return node;
+    }
+
+    private TreeNode<E> min(TreeNode<E> node) {
+	if (node.left != null) {
+	    return min(node.left);
+	}
+	return node;
     }
 
     public TreeNode<E> search(E key) {
@@ -199,29 +305,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 	inorderReverseTraversal(node.right);
 	System.out.print(node.data + " ");
 	inorderReverseTraversal(node.left);
-    }
-
-    void leftRotate2(E data) {
-	TreeNode<E> x = search(data);
-	if (x.right != null) {
-	    TreeNode<E> y = x.right;
-	    x.right = y.left;
-	    if (y.left != null) {
-		y.left.parent = x;
-	    }
-	    y.parent = x.parent;
-	    if (x.parent == null) {
-		root = y;
-	    } else if (x == x.parent.left) {
-		x.parent.left = y;
-	    } else {
-		x.parent.right = y;
-	    }
-	    y.left = x;
-	    x.parent = y;
-	} else {
-	    System.out.println("Can't really rotate can we?");
-	}
     }
 
 }

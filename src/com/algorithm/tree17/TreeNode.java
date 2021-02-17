@@ -5,7 +5,11 @@ public class TreeNode<V extends Comparable<V>> implements Comparable<TreeNode<V>
     TreeNode<V> left;
     TreeNode<V> right;
     V data;
+    Color color;
 
+    public TreeNode() {
+	
+    }
     public TreeNode(V data) {
 	this.data = data;
     }
