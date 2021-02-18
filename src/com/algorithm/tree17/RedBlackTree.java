@@ -310,7 +310,6 @@ public class RedBlackTree<E extends Comparable<E>> {
     public void inorderTraversalRecursive(E data) {
 	TreeNode<E> node = search(data);
 	inorderReverseTraversal(node);
-	
     }
 
 }
