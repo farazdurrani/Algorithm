@@ -35,7 +35,7 @@ public class BSTTest {
 	bst.BSTInsertIterative(4);
 	System.out.println("After inserting 4");
 	bst.inorderTraversalResursive();
-
+	
     }
 
 }

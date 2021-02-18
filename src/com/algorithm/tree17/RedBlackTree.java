@@ -191,7 +191,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    y.left.parent = x;
 	}
 	y.parent = x.parent;
-	if (x.parent == null) {
+	if (x.parent == NIL) {
 	    root = y;
 	} else if (x == x.parent.left) {
 	    x.parent.left = y;
@@ -214,7 +214,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    y.right.parent = x;
 	}
 	y.parent = x.parent;
-	if (x.parent == null) {
+	if (x.parent == NIL) {
 	    root = y;
 	} else if (x == x.parent.left) {
 	    x.parent.left = y;
@@ -305,6 +305,12 @@ public class RedBlackTree<E extends Comparable<E>> {
 	inorderReverseTraversal(node.right);
 	System.out.print(node.data + " ");
 	inorderReverseTraversal(node.left);
+    }
+
+    public void inorderTraversalRecursive(E data) {
+	TreeNode<E> node = search(data);
+	inorderReverseTraversal(node);
+	
     }
 
 }
