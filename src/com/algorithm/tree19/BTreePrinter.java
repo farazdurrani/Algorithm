@@ -1,10 +1,11 @@
-package com.algorithm.tree18;
+package com.algorithm.tree19;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class BTreePrinter {
+public class BTreePrinter {
 
     public static <T extends Comparable<T>> void printNode(TreeNode<T> root) {
 	int maxLevel = BTreePrinter.maxLevel(root);
