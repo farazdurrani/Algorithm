@@ -86,7 +86,7 @@ public class RedBlackTree<E extends Comparable<E>> {
     private void rightRotate(TreeNode<E> x) {
 	TreeNode<E> y = x.left;
 	x.left = y.right;
-	if (y.right != null) {
+	if (y.right != NIL) {
 	    y.right.parent = x;
 	}
 	y.parent = x.parent;
@@ -104,7 +104,7 @@ public class RedBlackTree<E extends Comparable<E>> {
     private void leftRotate(TreeNode<E> x) {
 	TreeNode<E> y = x.right;
 	x.right = y.left;
-	if (y.left != null) {
+	if (y.left != NIL) {
 	    y.left.parent = x;
 	}
 	y.parent = x.parent;
