@@ -417,7 +417,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 
     public void removeIteratively(E data) {
 	TreeNode<E> z = search(data);
-	if(z == NIL) {
+	if (z == NIL) {
 	    System.out.println(data + " not found");
 	    return;
 	}
@@ -439,9 +439,9 @@ public class RedBlackTree<E extends Comparable<E>> {
     }
 
     private void transplant(TreeNode<E> u, TreeNode<E> v) {
-	if(u.p == NIL) {
+	if (u.p == NIL) {
 	    root = v;
-	} else if(u == u.p.left) {
+	} else if (u == u.p.left) {
 	    u.p.left = v;
 	} else {
 	    u.p.right = v;
@@ -450,44 +450,149 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    v.p = u.p;
 	}
     }
-    
-    void deleteIterative2(E data){
+
+    void deleteIterative2(E data) {
 	TreeNode<E> z = search(data);
-	if(z == NIL) {
-	    System.out.println(data  + " not found.");
+	if (z == NIL) {
+	    System.out.println(data + " not found.");
 	    return;
 	}
 	delete(z);
     }
 
     private void delete(TreeNode<E> z) {
-	if(z.right == NIL) {
+	if (z.right == NIL) {
 	    transplant2(z, z.left);
-	} else if(z.left == NIL) {
+	} else if (z.left == NIL) {
 	    transplant2(z, z.right);
 	} else {
 	    TreeNode<E> y = min(z.right);
-	    if(z != y.p) {
+	    if (z != y.p) {
 		transplant2(y, y.right);
 		y.right = z.right;
 		y.right.p = y;
 	    }
-	    transplant2(z,y);
+	    transplant2(z, y);
 	    y.left = z.left;
 	    y.left.p = y;
 	}
     }
 
     public void transplant2(TreeNode<E> u, TreeNode<E> v) {
-	if((u.p == NIL)) {
+	if ((u.p == NIL)) {
 	    root = v;
-	} else if(u.p.left == u) {
+	} else if (u.p.left == u) {
 	    u.p.left = v;
 	} else {
 	    u.p.right = v;
 	}
-	if(v != NIL) {
+	if (v != NIL) {
 	    v.p = u.p;
+	}
+    }
+
+    public void removeRB(E data) {
+	TreeNode<E> z = search(data);
+	if (z == NIL) {
+	    System.out.println(data + " not found");
+	    return;
+	}
+	TreeNode<E> x = null, y;
+	y = z;
+	Color origYColor = y.color;
+	if (z.left == NIL) {
+	    x = z.right;
+	    transplantRB(z, z.right);
+	} else if (z.right == NIL) {
+	    x = z.left;
+	    transplantRB(z, z.left);
+	} else {
+	    y = min(z.right);
+	    origYColor = y.color;
+	    x = y.right;
+	    if (y.p == z) {
+		x.p = y;
+	    } else {
+		transplantRB(y, y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    }
+	    transplantRB(z, y);
+	    y.left = z.left;
+	    y.left.p = y;
+	    y.color = z.color;
+	}
+	if (origYColor == BLACK) {
+	    rb_delete_fixup(x);
+	}
+    }
+
+    private void rb_delete_fixup(TreeNode<E> x) {
+    }
+
+    private void transplantRB(TreeNode<E> u, TreeNode<E> v) {
+	if (u.p == NIL) {
+	    root = v;
+	} else if (u == u.p.left) {
+	    u.p.left = v;
+	} else {
+	    u.p.right = v;
+	}
+	v.p = u.p;
+    }
+
+    public void removeRB2(E data) {
+	TreeNode<E> z = search(data);
+	if(z == NIL) {
+	    System.out.println(data + " is not found");
+	    return;
+	}
+	TreeNode<E> x = null, y;
+	y = z;
+	Color yOrigColor = y.color;
+	if(z.left != NIL && z.right != NIL) {
+	    y = min(z.right);
+	    yOrigColor = y.color;
+	    x = y.right;
+	    if(y.p != z) {
+		transplantRB(y, y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    } else {
+		x.p = y;
+	    }	   
+	} else if(z.left == NIL) {
+	    x = z.right;
+	    transplantRB(z, z.right);
+	} else {
+	    x = z.left;
+	    transplantRB(z, z.left);
+	}
+	transplantRB(z,y);
+	y.left = z.left;
+	y.left.p = y;
+	y.color = z.color;
+	if(yOrigColor == BLACK) {
+	    rb_delete_fixup(x);
+	}
+    }
+    
+    void deleteIt2(E data) {
+	TreeNode<E> z = search(data);
+	if(z.left != NIL && z.right != NIL) {
+	    TreeNode<E> y = min(z.right);
+	    if(y.p != z) {
+		transplant(y,y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    }
+	    transplant(z,y);
+	    y.left = z.left;
+	    y.left.p = y;
+	}else if(z.left == NIL) {
+	    transplant(z,z.right);
+	} else {
+	    transplant(z,z.left);
 	}
     }
 

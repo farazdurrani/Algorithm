@@ -165,6 +165,12 @@ public class BSTTest {
 	bst2.postorderTraversalRecursive();
 	System.out.println("Postorder Traversal Iterative");
 	bst2.postorderTraversalIterative();
+	
+	System.out.println("\n\n\n\nNew Tree");
+	List<Integer> sorted = List.of(1,2,3, 4,5,6,7,8,9,10);
+	BinarySearchTree<Integer> bst5 = new BinarySearchTree<>();
+	sorted.forEach(i -> bst5.insert(i));
+	BTreePrinter.printNode(bst5.getRoot());
 
     }
 
