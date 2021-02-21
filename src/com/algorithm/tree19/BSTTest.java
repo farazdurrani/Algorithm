@@ -116,8 +116,6 @@ public class BSTTest {
 	bst2.levelOrderTraversalQueue();
 	System.out.println("Descending Order");
 	bst2.inorderTraversalResursive();
-	//does nothing for now.
-	bst2.transplant(2);
 	
 	System.out.println("\n\n\n\nNew Tree");
 	
@@ -126,8 +124,8 @@ public class BSTTest {
 	System.out.println("In-Order Traversal Recursive");
 	bst4.inorderTraversalResursive();
 	BTreePrinter.printNode(bst4.getRoot());
-//	bst4.removeIteratively(1);
-//	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(1);
+	BTreePrinter.printNode(bst4.getRoot());
 	bst4.removeIteratively(0);
 	BTreePrinter.printNode(bst4.getRoot());
 	bst4.removeIteratively(2);
@@ -136,7 +134,17 @@ public class BSTTest {
 	BTreePrinter.printNode(bst4.getRoot());
 	bst4.removeIteratively(7);
 	BTreePrinter.printNode(bst4.getRoot());
-//	bst4.removeIteratively(8);
-//	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(8);
+	BTreePrinter.printNode(bst4.getRoot());
+	
+	System.out.println("\n\n\n\nNew Tree");
+	List<Integer> sorted = List.of(1,2,4,5,6,7,8,9,10);
+	RedBlackTree<Integer> bst5 = new RedBlackTree<>();
+	sorted.forEach(i -> bst5.insert(i));
+	BTreePrinter.printNode(bst5.getRoot());
+	
+	bst5.removeRB(5);
+	bst5.removeRB2(6);
+	
     }
 }
