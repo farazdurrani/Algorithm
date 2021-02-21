@@ -450,8 +450,45 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    v.p = u.p;
 	}
     }
+    
+    void deleteIterative2(E data){
+	TreeNode<E> z = search(data);
+	if(z == NIL) {
+	    System.out.println(data  + " not found.");
+	    return;
+	}
+	delete(z);
+    }
 
-    public void transplant(E data) {
+    private void delete(TreeNode<E> z) {
+	if(z.right == NIL) {
+	    transplant2(z, z.left);
+	} else if(z.left == NIL) {
+	    transplant2(z, z.right);
+	} else {
+	    TreeNode<E> y = min(z.right);
+	    if(z != y.p) {
+		transplant2(y, y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    }
+	    transplant2(z,y);
+	    y.left = z.left;
+	    y.left.p = y;
+	}
+    }
+
+    public void transplant2(TreeNode<E> u, TreeNode<E> v) {
+	if((u.p == NIL)) {
+	    root = v;
+	} else if(u.p.left == u) {
+	    u.p.left = v;
+	} else {
+	    u.p.right = v;
+	}
+	if(v != NIL) {
+	    v.p = u.p;
+	}
     }
 
 }
