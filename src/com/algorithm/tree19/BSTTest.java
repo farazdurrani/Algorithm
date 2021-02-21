@@ -116,5 +116,27 @@ public class BSTTest {
 	bst2.levelOrderTraversalQueue();
 	System.out.println("Descending Order");
 	bst2.inorderTraversalResursive();
+	//does nothing for now.
+	bst2.transplant(2);
+	
+	System.out.println("\n\n\n\nNew Tree");
+	
+	RedBlackTree<Integer> bst4 = new RedBlackTree<>();
+	l.forEach(i -> bst4.insert(i));
+	System.out.println("In-Order Traversal Recursive");
+	bst4.inorderTraversalResursive();
+	BTreePrinter.printNode(bst4.getRoot());
+//	bst4.removeIteratively(1);
+//	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(0);
+	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(2);
+	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(15);
+	BTreePrinter.printNode(bst4.getRoot());
+	bst4.removeIteratively(7);
+	BTreePrinter.printNode(bst4.getRoot());
+//	bst4.removeIteratively(8);
+//	BTreePrinter.printNode(bst4.getRoot());
     }
 }

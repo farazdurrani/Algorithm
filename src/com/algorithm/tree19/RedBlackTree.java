@@ -404,15 +404,54 @@ public class RedBlackTree<E extends Comparable<E>> {
     }
 
     private TreeNode<E> invert(TreeNode<E> node) {
-	if(node == NIL) {
+	if (node == NIL) {
 	    return node;
 	}
 	TreeNode<E> left = invert(node.left);
 	TreeNode<E> right = invert(node.right);
-	
+
 	node.left = right;
 	node.right = left;
 	return node;
+    }
+
+    public void removeIteratively(E data) {
+	TreeNode<E> z = search(data);
+	if(z == NIL) {
+	    System.out.println(data + " not found");
+	    return;
+	}
+	if (z.left == NIL) {
+	    transplant(z, z.right);
+	} else if (z.right == NIL) {
+	    transplant(z, z.left);
+	} else {
+	    TreeNode<E> y = min(z.right);
+	    if (y.p != z) {
+		transplant(y, y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    }
+	    transplant(z, y);
+	    y.left = z.left;
+	    y.left.p = y;
+	}
+    }
+
+    private void transplant(TreeNode<E> u, TreeNode<E> v) {
+	if(u.p == NIL) {
+	    root = v;
+	} else if(u == u.p.left) {
+	    u.p.left = v;
+	} else {
+	    u.p.right = v;
+	}
+	if (v != NIL) {
+	    v.p = u.p;
+	}
+    }
+
+    public void transplant(E data) {
     }
 
 }
