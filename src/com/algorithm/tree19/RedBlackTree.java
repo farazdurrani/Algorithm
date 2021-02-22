@@ -42,8 +42,8 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    if (z.p == z.p.p.left) {
 		TreeNode<E> y = z.p.p.right;
 		if (y.color == RED) {
-		    z.p.color = BLACK;
 		    y.color = BLACK;
+		    z.p.color = BLACK;
 		    z.p.p.color = RED;
 		    z = z.p.p;
 		} else {
@@ -58,8 +58,8 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    } else {
 		TreeNode<E> y = z.p.p.left;
 		if (y.color == RED) {
-		    z.p.color = BLACK;
 		    y.color = BLACK;
+		    z.p.color = BLACK;
 		    z.p.p.color = RED;
 		    z = z.p.p;
 		} else {
@@ -73,7 +73,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		}
 	    }
 	}
-	root.color = BLACK;
     }
 
     private void rightRotate(TreeNode<E> x) {
@@ -543,56 +542,56 @@ public class RedBlackTree<E extends Comparable<E>> {
 
     public void removeRB2(E data) {
 	TreeNode<E> z = search(data);
-	if(z == NIL) {
-	    System.out.println(data + " is not found");
+	if (z == NIL) {
+	    System.out.println(data + " not found");
 	    return;
 	}
-	TreeNode<E> x = null, y;
-	y = z;
-	Color yOrigColor = y.color;
-	if(z.left != NIL && z.right != NIL) {
-	    y = min(z.right);
-	    yOrigColor = y.color;
-	    x = y.right;
-	    if(y.p != z) {
-		transplantRB(y, y.right);
-		y.right = z.right;
-		y.right.p = y;
-	    } else {
-		x.p = y;
-	    }	   
-	} else if(z.left == NIL) {
-	    x = z.right;
-	    transplantRB(z, z.right);
-	} else {
+	TreeNode<E> x = null, y = z;
+	Color orig_y_color = y.color;
+	if (z.right == NIL) {
 	    x = z.left;
-	    transplantRB(z, z.left);
-	}
-	transplantRB(z,y);
-	y.left = z.left;
-	y.left.p = y;
-	y.color = z.color;
-	if(yOrigColor == BLACK) {
-	    rb_delete_fixup(x);
-	}
-    }
-    
-    void deleteIt2(E data) {
-	TreeNode<E> z = search(data);
-	if(z.left != NIL && z.right != NIL) {
-	    TreeNode<E> y = min(z.right);
-	    if(y.p != z) {
-		transplant(y,y.right);
+	    transplant(z, z.left);
+	} else if (z.left == NIL) {
+	    x = z.right;
+	    transplant(z, z.right);
+	} else {
+	    y = min(z.right);
+	    orig_y_color = y.color;
+	    x = y.right;
+	    if (y.p == z) {
+		x.p = y;
+	    } else {
+		transplant(y, y.right);
 		y.right = z.right;
 		y.right.p = y;
 	    }
-	    transplant(z,y);
+	    transplant(z, y);
+	    y.left = z.left;
+	    y.color = z.color;
+	    y.left.p = y;
+	}
+	if (orig_y_color == BLACK) {
+	    rb_delete_fixup(x);
+	}
+
+    }
+
+    void deleteIt2(E data) {
+	TreeNode<E> z = search(data);
+	if (z.left != NIL && z.right != NIL) {
+	    TreeNode<E> y = min(z.right);
+	    if (y.p != z) {
+		transplant(y, y.right);
+		y.right = z.right;
+		y.right.p = y;
+	    }
+	    transplant(z, y);
 	    y.left = z.left;
 	    y.left.p = y;
-	}else if(z.left == NIL) {
-	    transplant(z,z.right);
+	} else if (z.left == NIL) {
+	    transplant(z, z.right);
 	} else {
-	    transplant(z,z.left);
+	    transplant(z, z.left);
 	}
     }
 
