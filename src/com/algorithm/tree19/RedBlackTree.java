@@ -73,6 +73,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 		}
 	    }
 	}
+	root.color = BLACK;
     }
 
     private void rightRotate(TreeNode<E> x) {
