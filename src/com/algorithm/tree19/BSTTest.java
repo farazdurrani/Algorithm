@@ -34,28 +34,28 @@ public class BSTTest {
 
 	System.out.println("Successor of " + _11.data + ": " + bst.successor(_11.data));
 
-	System.out
-	    .println("Predecessor of 15: " + bst.predecessor(bst.search(Integer.valueOf(15)).data));
-	
-	System.out
-	    .println("Predecessor of 11: " + bst.predecessor(bst.search(Integer.valueOf(11)).data));
+	System.out.println(
+	    "Predecessor of 15: " + bst.predecessor(bst.search(Integer.valueOf(15)).data));
 
-	System.out
-	    .println("Predecessor of 8: " + bst.predecessor(bst.search(Integer.valueOf(8)).data));
+	System.out.println(
+	    "Predecessor of 11: " + bst.predecessor(bst.search(Integer.valueOf(11)).data));
+
+	System.out.println(
+	    "Predecessor of 8: " + bst.predecessor(bst.search(Integer.valueOf(8)).data));
 
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalIterative();
-	
+
 	System.out.println("BST contains 1? (yes) " + bst.containsIterative(1));
 	System.out.println("BST contains 999? (no) " + bst.containsIterative(999));
 	System.out.println("BST contains 15? (yes) " + bst.containsIterative(15));
 	System.out.println("BST contains -1? (no) " + bst.containsIterative(-1));
-	
+
 	System.out.println("Level Order Traversal Using Queue");
 	bst.levelOrderTraversalQueue();
 	System.out.println("In-Order Traversal Recursive");
 	bst.inorderTraversalResursive();
-	
+
 	System.out.println("\n\n\n\n\n NEW TREE");
 	RedBlackTree<Integer> bst3 = new RedBlackTree<>();
 	System.out.println("Inserting Iteratively");
@@ -64,9 +64,9 @@ public class BSTTest {
 	System.out.println("In-Order Traversal Iterative");
 	bst3.inorderTraversalIterative();
 	BTreePrinter.printNode(bst3.getRoot());
-	System.out.println("Level Order Traversal Iterative");	
+	System.out.println("Level Order Traversal Iterative");
 	bst3.levelOrderTraversalIterative();
-	
+
 	System.out.println("Level Order Traversal Using Queue");
 	bst3.levelOrderTraversalQueue();
 	System.out.println("In-Order Traversal Recursive");
@@ -99,7 +99,7 @@ public class BSTTest {
 	System.out.println("removing 35 (doesn't exist)");
 	bst3.remove(35);
 	bst3.inorderTraversalResursive();
-	
+
 	System.out.println("Height : " + bst3.height());
 	System.out.println("root: " + bst3.getRoot());
 	System.out.println("Level Order Traversal ");
@@ -116,9 +116,9 @@ public class BSTTest {
 	bst2.levelOrderTraversalQueue();
 	System.out.println("Descending Order");
 	bst2.inorderTraversalResursive();
-	
+
 	System.out.println("\n\n\n\nNew Tree");
-	
+
 	RedBlackTree<Integer> bst4 = new RedBlackTree<>();
 	l.forEach(i -> bst4.insert(i));
 	System.out.println("In-Order Traversal Recursive");
@@ -136,15 +136,16 @@ public class BSTTest {
 	BTreePrinter.printNode(bst4.getRoot());
 	bst4.removeIteratively(8);
 	BTreePrinter.printNode(bst4.getRoot());
-	
+
 	System.out.println("\n\n\n\nNew Tree");
-	List<Integer> sorted = List.of(1,2,4,5,6,7,8,9,10);
+	List<Integer> sorted = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 	RedBlackTree<Integer> bst5 = new RedBlackTree<>();
 	sorted.forEach(i -> bst5.insert(i));
 	BTreePrinter.printNode(bst5.getRoot());
-	
-	bst5.removeRB(5);
-	bst5.removeRB2(6);
-	
+	bst5.removeRB(10);
+	bst5.removeRB(8);
+	BTreePrinter.printNode(bst5.getRoot());
+//	bst5.removeRB(bst5.getRoot().data);
+//	BTreePrinter.printNode(bst5.getRoot());
     }
 }
