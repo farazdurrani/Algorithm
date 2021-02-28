@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist16.doublelinkedlist;
+package com.algorithm.dynamiclist17.doublelinkedlist;
 
 public class DoubleLinkedList<E extends Comparable<E>> {
 

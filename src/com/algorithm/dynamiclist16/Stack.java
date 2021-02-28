@@ -1,0 +1,19 @@
+package com.algorithm.dynamiclist16;
+
+public class Stack<E extends Comparable<E>> {
+
+    private LinkedList<E> list = new LinkedList<>();
+    
+    public void push(E data) {
+	list.insertAtBack(data);
+    }
+
+    public E pop() {
+	return list.removeFromBack();
+    }
+
+    public void print() {
+	list.print();
+    }
+
+}

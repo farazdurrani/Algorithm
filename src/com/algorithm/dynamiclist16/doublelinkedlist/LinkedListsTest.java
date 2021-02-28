@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist16;
+package com.algorithm.dynamiclist16.doublelinkedlist;
 
 public class LinkedListsTest {
     public static void main(String[] args) {
@@ -30,25 +30,6 @@ public class LinkedListsTest {
 	System.out.println("Deleted 3 " + list.delete(3) + " from the list");
 	list.print();
 	System.out.println("Queue operations");
-	Queue<String> q = new Queue<>();
-	q.enqueue("a");
-	q.enqueue("b");
-	q.enqueue("c");
-	q.print();
-	System.out.println(q.dequeue() + " dequeued");
-	System.out.println(q.dequeue() + " dequeued");
-	System.out.println(q.dequeue() + " dequeued");
-	q.print();
-	System.out.println("Stack operations");
-	Stack<Long> s = new Stack<>();
-	s.push(3L);
-	s.push(2L);
-	s.push(1L);
-	s.print();
-	System.out.println(s.pop() + " popped");
-	System.out.println(s.pop() + " popped");
-	System.out.println(s.pop() + " popped");
-	s.print();
 	
     }
 
