@@ -141,16 +141,16 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 	}
 	last = first;
 	Node<E> tmp = first;
-	Node<E> prev1 = null;
+	Node<E> futureFirst = null;
 	while (tmp != null) {
 	    Node<E> prev = tmp.prev;
 	    Node<E> next = tmp.next;
 	    tmp.prev = next;
 	    tmp.next = prev;
-	    prev1 = tmp;
+	    futureFirst = tmp;
 	    tmp = next;
 	}
-	first = prev1;
+	first = futureFirst;
     }
 
 }
