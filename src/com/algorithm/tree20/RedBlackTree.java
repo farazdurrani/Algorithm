@@ -481,6 +481,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    transplantRB(z, z.left);
 	} else {
 	    y = TreeMin(z.right);
+	    orignalYColor = y.color;
 	    x = y.right;
 	    if (y.parent == z) {
 		x.parent = y;
@@ -494,7 +495,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    y.left.parent = y;
 	    y.color = z.color;
 	}
-	if (orignalYColor == RED) {
+	if (orignalYColor == BLACK) {
 	    deleteREDBLACKFIX(x);
 	}
     }
