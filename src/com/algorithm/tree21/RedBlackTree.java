@@ -474,18 +474,59 @@ public class RedBlackTree<E extends Comparable<E>> {
     }
 
     private void deletedFixupRB(TreeNode<E> x) {
-	while(x != root && x.color == BLACK ) {
-	    if(x == x.parent.left) {
+	while (x != root && x.color == BLACK) {
+	    if (x == x.parent.left) {
 		TreeNode<E> w = x.parent.right;
-		if(w.color == RED) { //case 1
+		if (w.color == RED) { // case 1
 		    w.color = BLACK;
+		    x.parent.color = RED;
+		    leftRotate(x.parent);
+		    w = x.parent.right;
 		}
-		
+		if (w.left.color == BLACK && w.right.color == BLACK) { // case 2
+		    w.color = RED;
+		    x = x.parent;
+		} else {
+		    if (w.right.color == BLACK) { // case 3
+			w.left.color = BLACK;
+			w.color = RED;
+			rightRotate(w);
+			w = x.parent.right;
+		    }
+		    // case 4
+		    w.color = x.parent.color;
+		    x.parent.color = BLACK;
+		    w.right.color = BLACK;
+		    leftRotate(x.parent);
+		    x = root;
+		}
 	    } else {
-		
+		TreeNode<E> w = x.parent.left;
+		if (w.color == RED) {
+		    w.color = BLACK;
+		    x.parent.color = RED;
+		    rightRotate(x.parent);
+		    w = x.parent.left;
+		}
+		if (w.left.color == BLACK && w.left.color == BLACK) {
+		    w.color = RED;
+		    x = x.parent;
+		} else {
+		    if (w.left.color == BLACK) {
+			w.right.color = BLACK;
+			w.color = RED;
+			leftRotate(w);
+			w = x.parent.left;
+		    }
+		    w.color = x.parent.color;
+		    x.parent.color = BLACK;
+		    w.left.color = BLACK;
+		    rightRotate(x.parent);
+		    x = root;
+		}
 	    }
-	    
 	}
+	x.color = BLACK;
     }
 
     private void transplantRB(TreeNode<E> u, TreeNode<E> v) {
@@ -532,6 +573,13 @@ public class RedBlackTree<E extends Comparable<E>> {
 	    y = x.parent; // y = y.parent
 	}
 	return y.data;
+    }
+
+    public void removeAll() {
+	this.nil = new TreeNode<>();
+	this.nil.color = BLACK;
+	this.root = this.nil;
+	this.root.parent = this.nil;
     }
 
 }

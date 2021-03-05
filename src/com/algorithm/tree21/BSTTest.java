@@ -13,18 +13,19 @@ public class BSTTest {
 	System.out.println();
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalIterative();
-	System.out.println("Inserting 4 that should change the root: " + bst.insertRecursive(4));
+	System.out
+	    .println("Inserting 4 that should change the root: " + bst.insertRecursive(4));
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalIterative();
 
 	System.out.println("MIN: " + bst.minRecursive());
 
 	System.out.println("MAX: " + bst.maxRecursive());
-	
+
 	System.out.println("MIN: " + bst.minIterative());
 
 	System.out.println("MAX: " + bst.maxIterative());
-	
+
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalIterative();
 
@@ -41,14 +42,14 @@ public class BSTTest {
 
 	System.out.println("Successor of " + _11.data + ": " + bst.successor(_11.data));
 
-	System.out.println(
-	    "Predecessor of 15: " + bst.predecessor(bst.searchRecursive(Integer.valueOf(15)).data));
+	System.out.println("Predecessor of 15: "
+	    + bst.predecessor(bst.searchRecursive(Integer.valueOf(15)).data));
 
-	System.out.println(
-	    "Predecessor of 11: " + bst.predecessor(bst.searchRecursive(Integer.valueOf(11)).data));
+	System.out.println("Predecessor of 11: "
+	    + bst.predecessor(bst.searchRecursive(Integer.valueOf(11)).data));
 
-	System.out.println(
-	    "Predecessor of 8: " + bst.predecessor(bst.searchRecursive(Integer.valueOf(8)).data));
+	System.out.println("Predecessor of 8: "
+	    + bst.predecessor(bst.searchRecursive(Integer.valueOf(8)).data));
 
 	System.out.println("In-Order Traversal Iterative");
 	bst.inorderTraversalIterative();
@@ -73,7 +74,8 @@ public class BSTTest {
 	BTreePrinter.printNode(bst3.getRoot());
 	System.out.println("Level Order Traversal Iterative");
 	bst3.levelOrderTraversalIterative();
-	System.out.println("Inserting 4 that should change the root: " + bst3.insertIterative(4));
+	System.out
+	    .println("Inserting 4 that should change the root: " + bst3.insertIterative(4));
 	System.out.println("Level Order Traversal Iterative");
 	bst3.levelOrderTraversalIterative();
 
@@ -153,9 +155,33 @@ public class BSTTest {
 	sorted.forEach(i -> bst5.insertRecursive(i));
 	BTreePrinter.printNode(bst5.getRoot());
 	bst5.removeIterativeRED_BLACK(10);
+	BTreePrinter.printNode(bst5.getRoot());
 	bst5.removeIterativeRED_BLACK(8);
 	BTreePrinter.printNode(bst5.getRoot());
 	bst5.removeIterativeRED_BLACK(bst5.getRoot().data);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeAll();
+	sorted.forEach(i -> bst5.insertRecursive(i));
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(1);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(2);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(3);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(4);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(5);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(6);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(7);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(8);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(9);
+	BTreePrinter.printNode(bst5.getRoot());
+	bst5.removeIterativeRED_BLACK(10);
 	BTreePrinter.printNode(bst5.getRoot());
     }
 }
