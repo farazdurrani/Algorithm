@@ -26,7 +26,7 @@ BST contains the following operations:
   - Find (both iterative and recursive)
   - Remove (both iterative and recursive)
   - Height
-  - Level Order Traversal (Iterative and Queue approaches (seperate))
+  - Level Order Traversal (Iterative and Queue approaches (separate))
   - Pre, In, and Post traversals recursive and iterative
   - Successor (by keeping track of parent node. And without tracking parent node)
   - Predecessor (by keeping track of parent node. And without tracking parent node)
