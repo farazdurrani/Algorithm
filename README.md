@@ -5,18 +5,18 @@ So far, this repo contains practice for:
 
 * InsertionSort
 * MergeSort
-* MaximumSubArray Divide and Conquer and Brute Force approaches
-* SquareMatrixMultiply Brute Force approach
+* QuickSort
 * HeapSort
 * MaxProrityQueue
 * MinPriorityQueue
-* QuickSort
+* MaximumSubArray Divide and Conquer and Brute Force approaches
+* SquareMatrixMultiply Brute Force approach
 * Single LinkedList (and Queues and Stacks).
 * Double LinkedList
 
 LinkedList contains all standard operations including removing a specific element and reversing it. 
 
-* BinarySearchTree 
+* Binary Search Tree 
 
 BST contains the following operations:
 
