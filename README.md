@@ -24,13 +24,18 @@ BST contains the following operations:
   - Invert
   - Insert (both iterative and recursive)
   - Find (both iterative and recursive)
-  - Remove (Recursive only)
+  - Remove (both iterative and recursive)
   - Height
   - Level Order Traversal (Iterative and Queue approaches (seperate))
   - Pre, In, and Post traversals recursive and iterative
   - Successor (by keeping track of parent node. And without tracking parent node)
   - Predecessor (by keeping track of parent node. And without tracking parent node)
   - min and max (both iterative and recursive)
+
+
+* Red Black Tree
+  - Insert and InsertRBFix
+  - Delete and DeleteRBFix
 
 * HashTable (Using LinkedList in each bucket)
 
