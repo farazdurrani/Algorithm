@@ -1,4 +1,4 @@
-package com.algorithm.squarematrixmultiply;
+package com.algorithm.matrix.square.multiply;
 
 public class SquareMatrixMultiply7 {
     public static void main(String[] args) {

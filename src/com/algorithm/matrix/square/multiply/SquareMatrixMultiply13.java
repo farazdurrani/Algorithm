@@ -1,6 +1,6 @@
-package com.algorithm.squarematrixmultiply;
+package com.algorithm.matrix.square.multiply;
 
-public class SquareMatrixMultiply15 {
+public class SquareMatrixMultiply13 {
     public static void main(String[] args) {
 	// correct algorithm
 	// match it from here ->
@@ -33,7 +33,7 @@ public class SquareMatrixMultiply15 {
 	for (int i = 0; i < n; i++) {
 	    for (int j = 0; j < n; j++) {
 		for (int k = 0; k < n; k++) {
-		    c[i][j] += a[i][k] * b[k][j];
+		    c[i][j] = c[i][j] + (a[i][k] * b[k][j]);
 		}
 	    }
 	}
