@@ -1,4 +1,4 @@
-package com.algorithm.squarematrixmultiply;
+package com.algorithm.matrix.square.multiply;
 
 //correct algorithm
 //match it from here -> https://www.mathsisfun.com/algebra/matrix-multiplying.html

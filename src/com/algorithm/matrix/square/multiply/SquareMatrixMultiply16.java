@@ -1,6 +1,6 @@
-package com.algorithm.squarematrixmultiply;
+package com.algorithm.matrix.square.multiply;
 
-public class SquareMatrixMultiply12 {
+public class SquareMatrixMultiply16 {
     public static void main(String[] args) {
 	// correct algorithm
 	// match it from here ->
@@ -28,21 +28,8 @@ public class SquareMatrixMultiply12 {
 	b[0][1] = 2;
 	b[1][0] = 3;
 	b[1][1] = 4;
-	int c[][] = new int[2][2];
+	int c[][] = new int[n][n];
 
-	// del from below
-	
-	
-	
-	
-	for (int i = 0; i < n; i++) {
-	    for (int j = 0; j < n; j++) {
-		for (int k = 0; k < n; k++) {
-		    c[i][j] += (a[i][k] * b[k][j]);
-		}
-	    }
-	}
-	
 	for (int i = 0; i < n; i++) {
 	    for (int j = 0; j < n; j++) {
 		System.out.print(c[i][j] + " ");
