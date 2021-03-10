@@ -10,7 +10,7 @@ So far, this repo contains practice for:
 * MaxProrityQueue
 * MinPriorityQueue
 * MaximumSubArray Divide and Conquer and Brute Force approaches
-* SquareMatrixMultiply Brute Force approach
+* Matrix Multiplication Brute Force approach
 * Single LinkedList (and Queues and Stacks).
 * Double LinkedList
 
@@ -39,3 +39,5 @@ BST contains the following operations:
 
 * HashTable (Using LinkedList in each bucket)
 
+* Dynamic Programming (memoization)
+  - Cut Rod using top-down and bottom-up approaches.
