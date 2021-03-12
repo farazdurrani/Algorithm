@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist17.doublelinkedlist;
+package com.algorithm.dynamiclist18.doublelinkedlist;
 
 import java.util.List;
 import java.util.Random;
