@@ -121,7 +121,7 @@ public class DoublyLinkedListTest {
 	list.printFromFront();
 	System.out.println("After populating: Print from back ");
 	list.printInReverse();
-	List<Integer> rands = new Random().ints(1, 15).limit(30).boxed()
+	List<Integer> rands = new Random().ints(1, 10).limit(15).boxed()
 	    .collect(Collectors.toList());
 	for (Integer integer : rands) {
 	    System.out.println("Deleting + " + integer + "? " + list.delete(integer));
