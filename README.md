@@ -41,3 +41,4 @@ BST contains the following operations:
 
 * Dynamic Programming (memoization)
   - Cut Rod using top-down and bottom-up approaches.
+  - Longest Common Subsequence (naive recursive approach and DP-approach)
