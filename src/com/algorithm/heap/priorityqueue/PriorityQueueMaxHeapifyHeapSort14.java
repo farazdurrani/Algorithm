@@ -78,7 +78,7 @@ public class PriorityQueueMaxHeapifyHeapSort14 {
 		print(a, "After Increasing keys");
 		increaseKey(99, 1);
 		print(a, "After Increasing keys");
-		increaseKey(45, 2);
+		increaseKey(45, 2); 
 		print(a, "After Increasing keys");
 		increaseKey(888888, 6);
 		print(a, "After Increasing keys");
