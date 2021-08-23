@@ -2,12 +2,6 @@ package com.algorithm.heap.priorityqueue;
 
 import java.util.stream.IntStream;
 
-import javax.management.RuntimeErrorException;
-//Notes:
-//maintainHeapProperty:
-//	This function is called on an element at i that might be violating max-heap property.
-//	Meaning, element at A[i] might be smaller than left or right child.
-
 //buildMaxHeap:
 //	Build max heap in a bottom up manner by calling maintainHeapProperty. But instead of starting from A.length - 1, 
 //	start from mid till the first element. Because children will be traversed by maintainHeapProperty.

@@ -1,6 +1,6 @@
 package com.algorithm.matrix.chain.multiply;
 
-public class MatrixChainMultiply5 {
+public class MatrixChainMultiply6 {
 	public static void main(String[] args) {
 //	https://javatutoring.com/matrix-multiplication-in-java/
 //	output   matrix:-
@@ -18,23 +18,9 @@ public class MatrixChainMultiply5 {
 
 		fillup(a, b);
 
-		// solution
-
-		int[][] c = new int[aRows][bColumns];
-
-		if (aColumns != bRows) {
-			System.out.println("Invalid dimentions");
-			return;
-		}
-
-		for (int i = 0; i < aRows; i++) {
-			for (int j = 0; j < bColumns; j++) {
-				for (int k = 0; k < aRows; k++) {
-					c[i][j] += a[i][k] * b[k][j];
-				}
-			}
-		}
-		// print
+		//solution
+		
+		//print
 		for (int i = 0; i < aRows; i++) {
 			for (int j = 0; j < bColumns; j++) {
 				System.out.print(c[i][j] + " ");

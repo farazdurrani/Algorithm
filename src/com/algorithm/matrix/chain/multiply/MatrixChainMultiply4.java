@@ -15,31 +15,15 @@ public class MatrixChainMultiply4 {
 	int[][] a = new int[r1][c1];
 	int[][] b = new int[r2][c2];
 
-	a[0][0] = 1;
-	a[0][1] = 2;
-	a[0][2] = 3;
-	a[1][0] = 4;
-	a[1][1] = 5;
-	a[1][2] = 6;
-	a[2][0] = 7;
-	a[2][1] = 8;
-	a[2][2] = 9;
-
-	b[0][0] = 9;
-	b[0][1] = 8;
-	b[0][2] = 7;
-	b[1][0] = 6;
-	b[1][1] = 5;
-	b[1][2] = 4;
-	b[2][0] = 3;
-	b[2][1] = 2;
-	b[2][2] = 1;
-	int c[][] = new int[r1][c2];
+	fillup(a,b);
 
 	if (c1 != r2) {
 	    System.out.println("Invalid dimentions");
 	    return;
 	}
+	
+	int c[][] = new int[r1][c2];
+	
 	for (int i = 0; i < r1; i++) {
 	    for (int j = 0; j < c2; j++) {
 		for (int k = 0; k < c1; k++) {
@@ -55,4 +39,26 @@ public class MatrixChainMultiply4 {
 	    System.out.println();
 	}
     }
+
+	private static void fillup(int[][] a, int[][] b) {
+		a[0][0] = 1;
+		a[0][1] = 2;
+		a[0][2] = 3;
+		a[1][0] = 4;
+		a[1][1] = 5;
+		a[1][2] = 6;
+		a[2][0] = 7;
+		a[2][1] = 8;
+		a[2][2] = 9;
+
+		b[0][0] = 9;
+		b[0][1] = 8;
+		b[0][2] = 7;
+		b[1][0] = 6;
+		b[1][1] = 5;
+		b[1][2] = 4;
+		b[2][0] = 3;
+		b[2][1] = 2;
+		b[2][2] = 1;
+	}
 }
