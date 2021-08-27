@@ -2,9 +2,6 @@ package com.algorithm.dynamiclist19;
 
 public class LinkedList<E extends Comparable<E>> {
 
-    private Node<E> first;
-    private Node<E> last;
-
     public void print() {
 	
     }
