@@ -105,7 +105,7 @@ public class LinkedList<E extends Comparable<E>> {
 		Node<E> prev = null;
 		Node<E> next = null;
 		Node<E> temp = first;
-		while(temp != null) {
+		while (temp != null) {
 			next = temp.next;
 			temp.next = prev;
 			prev = temp;
@@ -126,7 +126,7 @@ public class LinkedList<E extends Comparable<E>> {
 		public String toString() {
 			return "Node [data=" + data + ", next=" + (next != null ? next.data : "") + "]";
 		}
-		
+
 	}
 
 }
