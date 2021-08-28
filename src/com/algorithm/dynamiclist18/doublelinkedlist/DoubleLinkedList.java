@@ -131,23 +131,6 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 		return false;
 	}
 
-	public void reverse() {
-		if (isEmpty() || first == last) {
-			return;
-		}
-		last = first;
-		Node<E> node = first;
-		Node<E> futureFirst = null;
-		while (node != null) {
-			futureFirst = node;
-			Node<E> next = node.next;
-			node.next = node.prev;
-			node.prev = next;
-			node = next;
-		}
-		first = futureFirst;
-	}
-
 	public class Node<E> {
 		E data;
 		Node<E> prev;
@@ -161,6 +144,20 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 			this.data = data;
 		}
 
+	}
+
+	public void reverse() {
+		last = first;
+		Node<E> temp = first;
+		Node<E> futureFirst = null;
+		while (temp != null) {
+			futureFirst = temp;
+			Node<E> next = temp.next;
+			temp.next = temp.prev;
+			temp.prev = next;
+			temp = next;
+		}
+		first = futureFirst;
 	}
 
 }

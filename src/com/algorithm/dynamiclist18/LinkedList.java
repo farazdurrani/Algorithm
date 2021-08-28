@@ -100,20 +100,6 @@ public class LinkedList<E extends Comparable<E>> {
 		return false;
 	}
 
-	public void reverse() {
-		last = first;
-		Node<E> prev = null;
-		Node<E> next = null;
-		Node<E> temp = first;
-		while (temp != null) {
-			next = temp.next;
-			temp.next = prev;
-			prev = temp;
-			temp = next;
-		}
-		first = prev;
-	}
-
 	private class Node<E> {
 		E data;
 		Node<E> next;
@@ -127,6 +113,20 @@ public class LinkedList<E extends Comparable<E>> {
 			return "Node [data=" + data + ", next=" + (next != null ? next.data : "") + "]";
 		}
 
+	}
+
+	public void reverse() {
+		last = first;
+		Node<E> prev = null;
+		Node<E> curr = first;
+		
+		while(curr != null) {
+			Node<E> next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		first = prev;
 	}
 
 }
