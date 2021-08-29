@@ -1,6 +1,5 @@
 package com.algorithm.tree22;
 
-import com.algorithm.dynamiclist16.Stack;
 import com.algorithm.dynamiclist17.doublelinkedlist.QueueDoublyLinked;
 import com.algorithm.dynamiclist17.doublelinkedlist.StackDoublyLinked;
 
@@ -39,7 +38,126 @@ public class RedBlackTree<E extends Comparable<E>> {
 		}
 
 	}
+	
+	public void removeRecursive(E data) {
+		root = remove(root, data);
+	}
 
+	private TreeNode<E> remove(TreeNode<E> node, E data) {
+		if (node == nil) {
+			return node;
+		}
+		if (data.compareTo(node.data) < 0) {
+			node.left = remove(node.left, data);
+		} else if (data.compareTo(node.data) > 0) {
+			node.right = remove(node.right, data);
+		} else {
+			if (node.left == nil) {
+				node = node.right;
+			} else if (node.right == nil) {
+				node = node.left;
+			} else {
+				TreeNode<E> temp = minR(node.right);
+				node.data = temp.data;
+				node.right = remove(node.right, node.data);
+			}
+		}
+		return node;
+	}
+	
+	public TreeNode<E> searchRecursive(E data) {
+		return searchR(root, data);
+	}
+
+	private TreeNode<E> searchR(TreeNode<E> node, E data) {
+		if (node == nil || (node != nil && node.data.compareTo(data) == 0)) {
+			return node;
+		} else if (data.compareTo(node.data) < 0) {
+			return searchR(node.left, data);
+		} else {
+			return searchR(node.right, data);
+		}
+	}
+	
+	public void inorderTraversalResursive() {
+		inorderHelper(root);
+		System.out.println();
+	}
+
+	private void inorderHelper(TreeNode<E> node) {
+		if (node == nil) {
+			return;
+		}
+		inorderHelper(node.left);
+		System.out.print(node.data + " ");
+		inorderHelper(node.right);
+	}
+	
+	public void preorderTraversalRecursive() {
+		preorderHelper(root);
+		System.out.println();
+	}
+
+	private void preorderHelper(TreeNode<E> node) {
+		if (node == nil) {
+			return;
+		}
+		System.out.print(node.data + " ");
+		preorderHelper(node.left);
+		preorderHelper(node.right);
+	}
+
+
+	public void postorderTraversalRecursive() {
+		postorderHelper(root);
+		System.out.println();
+	}
+
+	private void postorderHelper(TreeNode<E> node) {
+		if (node == nil) {
+			return;
+		}
+		postorderHelper(node.left);
+		postorderHelper(node.right);
+		System.out.print(node.data + " ");
+	}
+	
+	public E minIterative() {
+		return minI(root);
+	}
+
+	private E minI(TreeNode<E> node) {
+		while (node != nil && node.left != nil) {
+			node = node.left;
+		}
+		return node.data;
+	}
+
+	public E maxIterative() {
+		return maxI(root);
+	}
+
+	private E maxI(TreeNode<E> node) {
+		while (node != nil && node.right != nil) {
+			node = node.right;
+		}
+		return node.data;
+	}
+	public void invertTree() {
+		root = invert(root);
+	}
+
+	private TreeNode<E> invert(TreeNode<E> node) {
+		if (node == nil) {
+			return node;
+		}
+		TreeNode<E> left = invert(node.left);
+		TreeNode<E> right = invert(node.right);
+		node.left = right;
+		node.right = left;
+		return node;
+	}
+	
 	private void insertRBFixup(TreeNode<E> z) {
 		while (z.parent.color == RED) {
 			if (z.parent == z.parent.parent.left) {
@@ -187,20 +305,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		return y.data;
 	}
 
-	public TreeNode<E> searchRecursive(E data) {
-		return searchR(root, data);
-	}
-
-	private TreeNode<E> searchR(TreeNode<E> node, E data) {
-		if (node == nil || (node != nil && node.data.compareTo(data) == 0)) {
-			return node;
-		} else if (data.compareTo(node.data) < 0) {
-			return searchR(node.left, data);
-		} else {
-			return searchR(node.right, data);
-		}
-	}
-
 	public void inorderTraversalIterative() {
 		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
 		TreeNode<E> curr = root;
@@ -244,20 +348,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		System.out.println();
 	}
 
-	public void inorderTraversalResursive() {
-		inorderHelper(root);
-		System.out.println();
-	}
-
-	private void inorderHelper(TreeNode<E> node) {
-		if (node == nil) {
-			return;
-		}
-		inorderHelper(node.left);
-		System.out.print(node.data + " ");
-		inorderHelper(node.right);
-	}
-
 	public boolean insertIterative(E data) {
 		TreeNode<E> y = nil;
 		TreeNode<E> x = root;
@@ -288,20 +378,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		return true;
 	}
 
-	public void preorderTraversalRecursive() {
-		preorderHelper(root);
-		System.out.println();
-	}
-
-	private void preorderHelper(TreeNode<E> node) {
-		if (node == nil) {
-			return;
-		}
-		System.out.print(node.data + " ");
-		preorderHelper(node.left);
-		preorderHelper(node.right);
-	}
-
 	public void preorderTraversalIterative() {
 		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
 		s.push(root);
@@ -316,20 +392,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 			}
 		}
 		System.out.println();
-	}
-
-	public void postorderTraversalRecursive() {
-		postorderHelper(root);
-		System.out.println();
-	}
-
-	private void postorderHelper(TreeNode<E> node) {
-		if (node == nil) {
-			return;
-		}
-		postorderHelper(node.left);
-		postorderHelper(node.right);
-		System.out.print(node.data + " ");
 	}
 
 	public void postorderTraversalIterative() {
@@ -351,47 +413,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		}
 		System.out.println();
 
-	}
-
-	public void removeRecursive(E data) {
-		root = remove(root, data);
-	}
-
-	private TreeNode<E> remove(TreeNode<E> node, E data) {
-		if (node == nil) {
-			return node;
-		}
-		if (data.compareTo(node.data) < 0) {
-			node.left = remove(node.left, data);
-		} else if (data.compareTo(node.data) > 0) {
-			node.right = remove(node.right, data);
-		} else {
-			if (node.left == nil) {
-				node = node.right;
-			} else if (node.right == nil) {
-				node = node.left;
-			} else {
-				TreeNode<E> temp = minR(node.right);
-				node.data = temp.data;
-				node.right = remove(node.right, node.data);
-			}
-		}
-		return node;
-	}
-
-	public void invertTree() {
-		root = invert(root);
-	}
-
-	private TreeNode<E> invert(TreeNode<E> node) {
-		if (node == nil) {
-			return node;
-		}
-		TreeNode<E> left = invert(node.left);
-		TreeNode<E> right = invert(node.right);
-		node.left = right;
-		node.right = left;
-		return node;
 	}
 
 	public void removeIteratively(E data) {
@@ -530,28 +551,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 			u.parent.right = v;
 		}
 		v.parent = u.parent;
-	}
-
-	public E minIterative() {
-		return minI(root);
-	}
-
-	private E minI(TreeNode<E> node) {
-		while (node != nil && node.left != nil) {
-			node = node.left;
-		}
-		return node.data;
-	}
-
-	public E maxIterative() {
-		return maxI(root);
-	}
-
-	private E maxI(TreeNode<E> node) {
-		while (node != nil && node.right != nil) {
-			node = node.right;
-		}
-		return node.data;
 	}
 
 	public E predecessor(E data) {
