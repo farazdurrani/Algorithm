@@ -1,88 +1,151 @@
 package com.algorithm.tree23;
 
-public class RedBlackTree<E> {
+@SuppressWarnings({ "rawtypes", "unchecked" })
+public class RedBlackTree<E extends Comparable<E>> {
 
-    public boolean insertRecursive(E data) {
-	return false;
-    }
+	// helper
+	private final TreeNode NIL;
 
-    public void levelOrderTraversalIterative() {
-    }
+	private TreeNode<E> root;
+	private Color RED = Color.RED;
+	private Color BLACK = Color.BLACK;
 
-    public E minRecursive() {
-	return null;
-    }
+	public RedBlackTree() {
+		NIL = TreeNode.NIL;
+		NIL.color = BLACK;
+		root = NIL;
+	}
 
-    public E maxRecursive() {
-	return null;
-    }
+	public boolean insertRecursive(E data) {
+		if (root == NIL) {
+			root = new TreeNode<>(NIL, data);
+			root.color = BLACK;
+			root.left = NIL;
+			root.right = NIL;
+			return true;
+		} else {
+			TreeNode<E> z = root.insert(root, data);
+			if (z != null) {
+				z.left = NIL;
+				z.right = NIL;
+				z.color = RED;
+				insertRBFixup(z);
+				return true;
+			}
+		}
+		return false;
+	}
 
-    public TreeNode<E> getRoot() {
-	return null;
-    }
+	private void insertRBFixup(TreeNode<E> z) {
+	}
 
-    public E successor(E data) {
-	return null;
-    }
+	public void levelOrderTraversalIterative() {
+		int h = height();
+		for (int level = 1; level <= h; level++) {
+			printNodeAtGivenLevel(root, level);
+		}
+		System.out.println();
+	}
 
-    public TreeNode<E> searchRecursive(E data) {
-	return null;
-    }
+	private void printNodeAtGivenLevel(TreeNode<E> node, int level) {
+		if (node == NIL) {
+			return;
+		}
+		if (level == 1) {
+			System.out.print(node.data + " ");
+			return;
+		}
+		printNodeAtGivenLevel(node.left, level - 1);
+		printNodeAtGivenLevel(node.right, level - 1);
+	}
 
-    public void inorderTraversalIterative() {
-    }
+	public E minRecursive() {
+		return null;
+	}
 
-    public E containsIterative(E data) {
-	return null;
-    }
+	public E maxRecursive() {
+		return null;
+	}
 
-    public void levelOrderTraversalQueue() {
-    }
+	public TreeNode<E> getRoot() {
+		return null;
+	}
 
-    public void inorderTraversalResursive() {
-    }
+	public E successor(E data) {
+		return null;
+	}
 
-    public boolean insertIterative(E data) {
-	return false;
-    }
+	public TreeNode<E> searchRecursive(E data) {
+		return null;
+	}
 
-    public void preorderTraversalRecursive() {
-    }
+	public void inorderTraversalIterative() {
+	}
 
-    public void preorderTraversalIterative() {
-    }
+	public E containsIterative(E data) {
+		return null;
+	}
 
-    public void postorderTraversalRecursive() {
-    }
+	public void levelOrderTraversalQueue() {
+	}
 
-    public void postorderTraversalIterative() {
-    }
+	public void inorderTraversalResursive() {
+	}
 
-    public void removeRecursive(E data) {
-    }
+	public boolean insertIterative(E data) {
+		return false;
+	}
 
-    public int height() {
-	return -1;
-    }
+	public void preorderTraversalRecursive() {
+	}
 
-    public void invertTree() {
-    }
+	public void preorderTraversalIterative() {
+	}
 
-    public void removeIteratively(E data) {
-    }
+	public void postorderTraversalRecursive() {
+	}
 
-    public void removeIterativeRED_BLACK(E data) {
-    }
+	public void postorderTraversalIterative() {
+	}
 
-    public E minIterative() {
-	return null;
-    }
+	public void removeRecursive(E data) {
+	}
 
-    public E maxIterative() {
-	return null;
-    }
+	public int height() {
+		return height(root);
+	}
 
-    public E predecessor(E data) {
-	return null;
-    }
+	private int height(TreeNode<E> node) {
+		if (node == NIL) {
+			return 0;
+		}
+		int lh = height(node.left);
+		int rh = height(node.right);
+
+		return (lh > rh ? lh : rh) + 1;
+	}
+
+	public void invertTree() {
+	}
+
+	public void removeIteratively(E data) {
+	}
+
+	public void removeIterativeRED_BLACK(E data) {
+	}
+
+	public E minIterative() {
+		return null;
+	}
+
+	public E maxIterative() {
+		return null;
+	}
+
+	public E predecessor(E data) {
+		return null;
+	}
+
+	public void removeAll() {
+	}
 }
