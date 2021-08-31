@@ -84,15 +84,36 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public TreeNode<E> getRoot() {
-		return null;
+		return root;
 	}
 
 	public E successor(E data) {
-		return null;
+		TreeNode<E> x = searchRecursive(data);
+		if (x != NIL && x.right != NIL) {
+			return minI(x.right).data;
+		}
+		TreeNode<E> y = x.parent;
+		while (y != NIL && y.right == x) {
+			x = y;
+			y = x.parent;
+		}
+		return y.data;
 	}
 
 	public TreeNode<E> searchRecursive(E data) {
-		return null;
+		return searchRecursive(root, data);
+	}
+
+	private TreeNode<E> searchRecursive(TreeNode<E> node, E data) {
+		if (node == NIL) {
+			return node;
+		}
+		if (data.compareTo(node.data) < 0) {
+			return searchRecursive(node.left, data);
+		} else if (data.compareTo(node.data) > 0) {
+			return searchRecursive(node.right, data);
+		}
+		return node;
 	}
 
 	public void inorderTraversalIterative() {
@@ -185,7 +206,16 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public E predecessor(E data) {
-		return null;
+		TreeNode<E> x = searchRecursive(data);
+		if (x != NIL && x.left != NIL) {
+			return maxI(x.left).data;
+		}
+		TreeNode<E> y = x.parent;
+		while (y != NIL && y.left == x) {
+			x = y;
+			y = x.parent;
+		}
+		return y.data;
 	}
 
 	public void removeAll() {
