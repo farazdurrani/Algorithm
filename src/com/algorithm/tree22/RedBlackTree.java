@@ -305,21 +305,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 		return y.data;
 	}
 
-	public void inorderTraversalIterative() {
-		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
-		TreeNode<E> curr = root;
-		while (curr != nil || !s.isEmpty()) {
-			while (curr != nil) {
-				s.push(curr);
-				curr = curr.left;
-			}
-			curr = s.pop();
-			System.out.print(curr.data + " ");
-			curr = curr.right;
-		}
-		System.out.println();
-	}
-
 	public E containsIterative(E data) {
 		TreeNode<E> node = root;
 		while (node != nil && node.data.compareTo(data) != 0) {
@@ -376,6 +361,21 @@ public class RedBlackTree<E extends Comparable<E>> {
 		z.color = RED;
 		insertRBFixup(z);
 		return true;
+	}
+	
+	public void inorderTraversalIterative() {
+		StackDoublyLinked<TreeNode<E>> s = new StackDoublyLinked<>();
+		TreeNode<E> curr = root;
+		while (curr != nil || !s.isEmpty()) {
+			while (curr != nil) {
+				s.push(curr);
+				curr = curr.left;
+			}
+			curr = s.pop();
+			System.out.print(curr.data + " ");
+			curr = curr.right;
+		}
+		System.out.println();
 	}
 
 	public void preorderTraversalIterative() {

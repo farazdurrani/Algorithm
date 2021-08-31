@@ -1,5 +1,7 @@
 package com.algorithm.tree23;
 
+import com.algorithm.dynamiclist18.doublelinkedlist.Stack;
+
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class RedBlackTree<E extends Comparable<E>> {
 
@@ -60,11 +62,25 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public E minRecursive() {
-		return null;
+		return minR(root).data;
+	}
+
+	private TreeNode<E> minR(TreeNode<E> node) {
+		if (node != NIL && node.left != NIL) {
+			return minR(node.left);
+		}
+		return node;
 	}
 
 	public E maxRecursive() {
-		return null;
+		return maxR(root).data;
+	}
+
+	private TreeNode<E> maxR(TreeNode<E> node) {
+		if (node != NIL && node.right != NIL) {
+			return maxR(node.right);
+		}
+		return node;
 	}
 
 	public TreeNode<E> getRoot() {
@@ -80,6 +96,18 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void inorderTraversalIterative() {
+		Stack<TreeNode<E>> stack = new Stack<>();
+		TreeNode<E> curr = root;
+		while (curr != NIL || !stack.isEmpty()) {
+			while (curr != NIL) {
+				stack.push(curr);
+				curr = curr.left;
+			}
+			curr = stack.pop();
+			System.out.print(curr.data + " ");
+			curr = curr.right;
+		}
+		System.out.println();
 	}
 
 	public E containsIterative(E data) {
@@ -135,11 +163,25 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public E minIterative() {
-		return null;
+		return minI(root).data;
+	}
+
+	private TreeNode<E> minI(TreeNode<E> node) {
+		while (node != NIL && node.left != NIL) {
+			node = node.left;
+		}
+		return node;
 	}
 
 	public E maxIterative() {
-		return null;
+		return maxI(root).data;
+	}
+
+	private TreeNode<E> maxI(TreeNode<E> node) {
+		while (node != NIL && node.right != NIL) {
+			node = node.right;
+		}
+		return node;
 	}
 
 	public E predecessor(E data) {

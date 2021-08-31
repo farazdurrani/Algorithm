@@ -13,7 +13,7 @@ public class TreeNode<E extends Comparable<E>> implements Comparable<TreeNode<E>
 	public TreeNode() {
 		
 	}
-	
+
 	public TreeNode(TreeNode<E> parent, E data) {
 		this.parent = parent;
 		this.data = data;
@@ -45,4 +45,8 @@ public class TreeNode<E extends Comparable<E>> implements Comparable<TreeNode<E>
 		throw new RuntimeException("Not implemented");
 	}
 
+	@Override
+	public String toString() {
+		return String.valueOf(this.data);
+	}
 }

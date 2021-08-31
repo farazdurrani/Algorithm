@@ -16,4 +16,7 @@ public class Stack<E extends Comparable<E>> {
 		list.printFromFront();
 	}
 
+	public boolean isEmpty() {
+		return list.isEmpty();
+	}
 }

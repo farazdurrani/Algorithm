@@ -16,7 +16,7 @@ public class DoubleLinkedList<E extends Comparable<E>> {
 		}
 	}
 
-	private boolean isEmpty() {
+	boolean isEmpty() {
 		return first == null;
 	}
 
