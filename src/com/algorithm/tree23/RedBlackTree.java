@@ -176,7 +176,32 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public boolean insertIterative(E data) {
-		return false;
+		TreeNode<E> y = NIL;
+		TreeNode<E> x = root;
+		while(x != NIL) {
+			y = x;
+			if(data.compareTo(x.data) == 0) {
+				System.out.println("Duplicate " +  data);
+				return false;
+			} else if(data.compareTo(x.data) < 0){
+				x = x.left;
+			} else {
+				x = x.right;
+			}
+		}
+		TreeNode<E> z = new TreeNode<>(y, data);
+		if(y == NIL) {
+			root = z;
+		} else if(data.compareTo(y.data) < 0) {
+			y.left = z;
+		} else {
+			y.right = z;
+		}
+		z.left = NIL;
+		z.right = NIL;
+		z.color = RED;
+		insertRBFixup(z);
+		return true;
 	}
 
 	public void preorderTraversalRecursive() {
