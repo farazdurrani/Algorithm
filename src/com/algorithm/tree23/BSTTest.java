@@ -13,9 +13,8 @@ public class BSTTest {
 	System.out.println();
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalIterative();
-	//TODO
-//	System.out
-//	    .println("Inserting 4 that should change the root: " + bst.insertRecursive(4));
+	System.out
+	    .println("Inserting 4 that should change the root: " + bst.insertRecursive(4));
 	System.out.println("Level Order Traversal Iterative");
 	bst.levelOrderTraversalIterative();
 

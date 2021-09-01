@@ -1,5 +1,6 @@
 package com.algorithm.tree23;
 
+import com.algorithm.dynamiclist18.doublelinkedlist.Queue;
 import com.algorithm.dynamiclist18.doublelinkedlist.Stack;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -132,13 +133,46 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public E containsIterative(E data) {
-		return null;
+		TreeNode<E> node = root;
+		while (node != NIL && (data.compareTo(node.data) != 0)) {
+			if (data.compareTo(node.data) < 0) {
+				node = node.left;
+			} else {
+				node = node.right;
+			}
+		}
+		return node.data;
 	}
 
 	public void levelOrderTraversalQueue() {
+		TreeNode<E> node = root;
+		Queue<TreeNode<E>> stack = new Queue<>();
+		stack.enqueue(node);
+		while (!stack.isEmpty()) {
+			TreeNode<E> curr = stack.dequeue();
+			System.out.print(curr.data + " ");
+			if (curr.left != NIL) {
+				stack.enqueue(curr.left);
+			}
+			if (curr.right != NIL) {
+				stack.enqueue(curr.right);
+			}
+		}
+		System.out.println();
 	}
 
 	public void inorderTraversalResursive() {
+		inorderHelper(root);
+		System.out.println();
+	}
+
+	private void inorderHelper(TreeNode<E> node) {
+		if (node == NIL) {
+			return;
+		}
+		inorderHelper(node.left);
+		System.out.print(node.data + " ");
+		inorderHelper(node.right);
 	}
 
 	public boolean insertIterative(E data) {
