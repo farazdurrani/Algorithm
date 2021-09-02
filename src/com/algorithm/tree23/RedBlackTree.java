@@ -178,21 +178,21 @@ public class RedBlackTree<E extends Comparable<E>> {
 	public boolean insertIterative(E data) {
 		TreeNode<E> y = NIL;
 		TreeNode<E> x = root;
-		while(x != NIL) {
+		while (x != NIL) {
 			y = x;
-			if(data.compareTo(x.data) == 0) {
-				System.out.println("Duplicate " +  data);
+			if (data.compareTo(x.data) == 0) {
+				System.out.println("Duplicate " + data);
 				return false;
-			} else if(data.compareTo(x.data) < 0){
+			} else if (data.compareTo(x.data) < 0) {
 				x = x.left;
 			} else {
 				x = x.right;
 			}
 		}
 		TreeNode<E> z = new TreeNode<>(y, data);
-		if(y == NIL) {
+		if (y == NIL) {
 			root = z;
-		} else if(data.compareTo(y.data) < 0) {
+		} else if (data.compareTo(y.data) < 0) {
 			y.left = z;
 		} else {
 			y.right = z;
@@ -205,18 +205,95 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void preorderTraversalRecursive() {
+		preorderHelper(root);
+		System.out.println();
+	}
+
+	private void preorderHelper(TreeNode<E> node) {
+		if (node == NIL) {
+			return;
+		}
+		System.out.print(node.data + " ");
+		preorderHelper(node.left);
+		preorderHelper(node.right);
 	}
 
 	public void preorderTraversalIterative() {
+		Stack<TreeNode<E>> stack = new Stack<>();
+		stack.push(root);
+		while (!stack.isEmpty()) {
+			TreeNode<E> node = stack.pop();
+			System.out.print(node.data + " ");
+			if (node.right != NIL) {
+				stack.push(node.right);
+			}
+			if (node.left != NIL) {
+				stack.push(node.left);
+			}
+		}
+		System.out.println();
 	}
 
 	public void postorderTraversalRecursive() {
+		postorderHelper(root);
+		System.out.println();
+	}
+
+	private void postorderHelper(TreeNode<E> node) {
+		if (node == NIL) {
+			return;
+		}
+		postorderHelper(node.left);
+		postorderHelper(node.right);
+		System.out.print(node.data + " ");
 	}
 
 	public void postorderTraversalIterative() {
+		Stack<TreeNode<E>> s1 = new Stack<>();
+		Stack<TreeNode<E>> s2 = new Stack<>();
+		s1.push(root);
+		while (!s1.isEmpty()) {
+			TreeNode<E> node = s1.pop();
+			s2.push(node);
+			if (node.left != NIL) {
+				s1.push(node.left);
+			}
+			if (node.right != NIL) {
+				s1.push(node.right);
+			}
+		}
+		while (!s2.isEmpty()) {
+			System.out.print(s2.pop() + " ");
+		}
+		System.out.println();
 	}
 
 	public void removeRecursive(E data) {
+		root = removeR(root, data);
+	}
+
+	private TreeNode<E> removeR(TreeNode<E> node, E data) {
+		if (node == NIL) {
+			return node;
+		}
+		if (data.compareTo(node.data) < 0) {
+			node.left = removeR(node.left, data);
+		} else if (data.compareTo(node.data) > 0) {
+			node.right = removeR(node.right, data);
+		} else {
+			if (node.left == NIL && node.right == NIL) {
+				node = NIL;
+			} else if (node.left == NIL) {
+				node = node.right;
+			} else if (node.right == NIL) {
+				node = node.left;
+			} else {
+				TreeNode<E> temp = minR(node.right);
+				node.data = temp.data;
+				node.right = removeR(node.right, data);
+			}
+		}
+		return node;
 	}
 
 	public int height() {
@@ -234,6 +311,18 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void invertTree() {
+		root = invert(root);
+	}
+
+	private TreeNode<E> invert(TreeNode<E> node) {
+		if (node == NIL) {
+			return node;
+		}
+		TreeNode<E> l = invert(node.left);
+		TreeNode<E> r = invert(node.right);
+		node.left = r;
+		node.right = l;
+		return node;
 	}
 
 	public void removeIteratively(E data) {
