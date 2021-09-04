@@ -361,6 +361,24 @@ public class RedBlackTree<E extends Comparable<E>> {
 			v.parent = u.parent;
 		}
 	}
+	
+	private void leftRotate(TreeNode<E> x) {
+		TreeNode<E> y = x.right;
+		x.right = y.left;
+		if(y.left != NIL) {
+			y.left.parent = x;
+		}
+		y.parent = x.parent;
+		if(x.parent == NIL) {
+			root = y;
+		} else if(x == x.parent.left) {
+			x.parent.left = y;
+		} else {
+			x.parent.right = y;
+		}
+		y.left = x;
+		x.parent = y;
+	}
 
 	public void removeIterativeRED_BLACK(E data) {
 	}
