@@ -40,6 +40,42 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	private void insertRBFixup(TreeNode<E> z) {
+		while (z.parent.color == RED) {
+			if (z.parent == z.parent.parent.left) {
+				TreeNode<E> y = z.parent.parent.right; // uncle
+				if (y.color == RED) {
+					y.color = BLACK;
+					z.parent.color = BLACK;
+					z.parent.parent.color = RED;
+					z = z.parent.parent;
+				} else {
+					if (z == z.parent.right) {
+						z = z.parent;
+						leftRotate(z);
+					}
+					z.parent.color = BLACK;
+					z.parent.parent.color = RED;
+					rightRotate(z.parent.parent);
+				}
+			} else { // symmetric
+				TreeNode<E> y = z.parent.parent.left; // uncle
+				if (y.color == RED) {
+					y.color = BLACK;
+					z.parent.color = BLACK;
+					z.parent.parent.color = RED;
+					z = z.parent.parent;
+				} else {
+					if (z == z.parent.left) {
+						z = z.parent;
+						rightRotate(z);
+					}
+					z.parent.color = BLACK;
+					z.parent.parent.color = RED;
+					leftRotate(z.parent.parent);
+				}
+			}
+		}
+		root.color = BLACK;
 	}
 
 	public void levelOrderTraversalIterative() {
@@ -327,56 +363,74 @@ public class RedBlackTree<E extends Comparable<E>> {
 
 	public void removeIteratively(E data) {
 		TreeNode<E> z = searchRecursive(data);
-		if(z == NIL) {
-			System.out.println("Can't find " +  data);
+		if (z == NIL) {
+			System.out.println("Can't find " + data);
 			return;
 		}
-		if(z.left == NIL) {
+		if (z.left == NIL) {
 			transplant(z, z.right);
-		} else if(z.right == NIL) {
+		} else if (z.right == NIL) {
 			transplant(z, z.left);
 		} else {
 			TreeNode<E> y = minI(z.right);
-			if(y.parent != z) {
+			if (y.parent != z) {
 				transplant(y, y.right);
 				y.right = z.right;
 				y.right.parent = y;
-			} 
+			}
 			transplant(z, y);
 			y.left = z.left;
 			y.parent.left = y;
-			
+
 		}
 	}
 
 	private void transplant(TreeNode<E> u, TreeNode<E> v) {
-		if(u.parent == NIL) {
+		if (u.parent == NIL) {
 			root = v;
-		} else if(u.parent.left == u) {
+		} else if (u.parent.left == u) {
 			u.parent.left = v;
 		} else {
 			u.parent.right = v;
 		}
-		if(v != NIL) {
+		if (v != NIL) {
 			v.parent = u.parent;
 		}
 	}
-	
+
 	private void leftRotate(TreeNode<E> x) {
 		TreeNode<E> y = x.right;
 		x.right = y.left;
-		if(y.left != NIL) {
+		if (y.left != NIL) {
 			y.left.parent = x;
 		}
 		y.parent = x.parent;
-		if(x.parent == NIL) {
+		if (x.parent == NIL) {
 			root = y;
-		} else if(x == x.parent.left) {
+		} else if (x == x.parent.left) {
 			x.parent.left = y;
 		} else {
 			x.parent.right = y;
 		}
 		y.left = x;
+		x.parent = y;
+	}
+
+	private void rightRotate(TreeNode<E> x) {
+		TreeNode<E> y = x.left;
+		x.left = y.right;
+		if (y.right != NIL) {
+			y.right.parent = x;
+		}
+		y.parent = x.parent;
+		if (x.parent == NIL) {
+			root = y;
+		} else if (x == x.parent.left) {
+			x.parent.left = y;
+		} else {
+			x.parent.right = y;
+		}
+		y.right = x;
 		x.parent = y;
 	}
 
