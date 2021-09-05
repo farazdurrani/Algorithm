@@ -526,7 +526,7 @@ public class RedBlackTree<E extends Comparable<E>> {
 			orig_y_color = y.color;
 			x = y.right;
 			if (y.parent == z) {
-				x.parent = y;
+				x.parent = z;
 			} else {
 				transplantRB(y, y.right);
 				y.right = z.right;

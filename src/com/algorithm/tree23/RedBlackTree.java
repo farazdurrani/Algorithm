@@ -435,6 +435,53 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void removeIterativeRED_BLACK(E data) {
+		TreeNode<E> z = searchRecursive(data);
+		if (z == NIL) {
+			System.out.println(data + " not found.");
+			return;
+		}
+		TreeNode<E> y = z;
+		TreeNode<E> x = null;
+		Color orignalYColor = y.color;
+		if (z.left == NIL) {
+			x = z.right;
+			rbTransplant(z, z.right);
+		} else if (z.right == NIL) {
+			x = z.left;
+			rbTransplant(z, z.left);
+		} else {
+			y = minI(z.right);
+			orignalYColor = y.color;
+			x = y.right;
+			if (y.parent == z) {
+				x.parent = z;
+			} else {
+				rbTransplant(y, y.right);
+				y.right = z.right;
+				y.right.parent = y;
+			}
+			rbTransplant(z, y);
+			y.left = z.left;
+			y.left.parent = y;
+			y.color = z.color;
+		}
+		if (orignalYColor == BLACK) {
+			rbDeleteFixup(x);
+		}
+	}
+
+	private void rbTransplant(TreeNode<E> u, TreeNode<E> v) {
+		if(u.parent == NIL) {
+			root = v;
+		} else if(u == u.parent.left) {
+			u.parent.left = v;
+		} else {
+			u.parent.right = v;
+		}
+		v.parent = u.parent;
+	}
+
+	private void rbDeleteFixup(TreeNode<E> x) {
 	}
 
 	public E minIterative() {
