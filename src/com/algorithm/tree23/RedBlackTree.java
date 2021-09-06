@@ -471,9 +471,9 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	private void rbTransplant(TreeNode<E> u, TreeNode<E> v) {
-		if(u.parent == NIL) {
+		if (u.parent == NIL) {
 			root = v;
-		} else if(u == u.parent.left) {
+		} else if (u == u.parent.left) {
 			u.parent.left = v;
 		} else {
 			u.parent.right = v;
@@ -482,6 +482,58 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	private void rbDeleteFixup(TreeNode<E> x) {
+		while (x != root && x.color == BLACK) {
+			if (x == x.parent.left) {
+				TreeNode<E> w = x.parent.right;
+				if (w.color == RED) { // case 1: sibbling is red
+					w.color = BLACK;
+					x.parent.color = RED;
+					leftRotate(x.parent);
+					w = x.parent.right;
+				}
+				if (w.left.color == BLACK && w.right.color == BLACK) {
+					w.color = RED;
+					x = x.parent;
+				} else {
+					if (x.right.color == BLACK) {
+						w.left.color = BLACK;
+						w.color = RED;
+						rightRotate(w);
+						w = x.parent.right;
+					}
+					w.color = x.parent.color;
+					x.parent.color = BLACK;
+					w.right.color = BLACK;
+					leftRotate(x.parent);
+					x = root;
+				}
+			} // symmetric
+			else {
+				TreeNode<E> w = x.parent.left;
+				if (w.color == RED) { // case 1: sibbling is red
+					w.color = BLACK;
+					x.parent.color = RED;
+					rightRotate(x.parent);
+					w = x.parent.left;
+				}
+				if (w.left.color == BLACK && w.right.color == BLACK) {
+					w.color = RED;
+					x = x.parent;
+				} else {
+					if (x.left.color == BLACK) {
+						w.right.color = BLACK;
+						w.color = RED;
+						leftRotate(w);
+						w = x.parent.left;
+					}
+					w.color = x.parent.color;
+					x.parent.color = BLACK;
+					w.left.color = BLACK;
+					rightRotate(x.parent);
+					x = root;
+				}
+			}
+		}
 	}
 
 	public E minIterative() {
@@ -520,5 +572,6 @@ public class RedBlackTree<E extends Comparable<E>> {
 	}
 
 	public void removeAll() {
+		root = this.NIL;
 	}
 }
