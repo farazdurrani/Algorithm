@@ -22,7 +22,33 @@ public class CutRod7 {
 
 	}
 
-	private static void printCutRodSolution(int[] p, int i) {
+	private static void printCutRodSolution(int[] p, int n) {
+		int rs[][] = extendedBottomUpCutRod(p, n);
+		int s[] = rs[1];
+
+		while( n > 0) {
+			System.out.print(s[n] + " ");
+			n = n - s[n];
+		}
+		System.out.println();
+		
+	}
+
+	private static int[][] extendedBottomUpCutRod(int[] p, int n) {
+		int r [] = new int[n+1];
+		int s [] = new int[n+1];
+		r[0] = 0;
+		for (int j = 1; j <= n; j++) {
+			int q = Integer.MIN_VALUE;
+			for (int i = 1; i <= j; i++) {
+				if(q < p[i] + r[j-i]) {
+					q = p[i] + r[j-i];
+					s[j] = i;
+				}
+			}
+			r[j] = q;
+		}
+		return new int[][] {r,s};
 	}
 
 	private static int bottomUpCutRod(int[] p, int n) {
