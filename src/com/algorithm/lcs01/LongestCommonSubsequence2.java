@@ -33,6 +33,12 @@ public class LongestCommonSubsequence2 {
 	}
 
 	private static int LCS_LENGTH_BF(char[] X, char[] Y, int i, int j) {
-		return -1;
+		if (i == -1 || j == -1) {
+			return 0;
+		} else if (X[i] == Y[j]) {
+			return 1 + LCS_LENGTH_BF(X, Y, i - 1, j - 1);
+		} else {
+			return Math.max(LCS_LENGTH_BF(X, Y, i - 1, j), LCS_LENGTH_BF(X, Y, i, j - 1));
+		}
 	}
 }
