@@ -44,14 +44,16 @@ public class LongestCommonSubsequence01 {
 				}
 			}
 		}
-		
-		System.out.println("Kia huwa? " + c[X.length][Y.length]);
+
+		System.out.println("Dynamic Longest Common Subsequence (non-consecutive)  " + c[X.length][Y.length]);
 		int p = b[0].length;
 		int k = b[1].length;
 		for (int i = 0; i <= p; i++) {
 			for (int j = 0; j < k; j++) {
 				if (b[i][j] != null) {
 					System.out.print(b[i][j] + c[i][j] + "      ");
+				} else {
+					System.out.print(" " + c[i][j] + "      ");
 				}
 			}
 			System.out.println("\n");
@@ -66,7 +68,7 @@ public class LongestCommonSubsequence01 {
 		}
 		if (b[i][j].equals(NORTHWEST_ARROW)) {
 			PRINT_LCS(b, x, i - 1, j - 1);
-			System.out.print(x[i-1] + " ");
+			System.out.print(x[i - 1] + " ");
 		} else if (b[i][j].equals(NORTH_ARROW)) {
 			PRINT_LCS(b, x, i - 1, j);
 		} else {
