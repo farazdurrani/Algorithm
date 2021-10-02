@@ -1,8 +1,4 @@
-package com.algorithm.lcs01;
-
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
+package com.algorithm.dynamic.programming.lcs;
 
 /**
  * In-order, non-consecutive Longest Common Subsequence
@@ -10,7 +6,7 @@ import java.time.temporal.TemporalUnit;
  * @author Faraz
  *
  */
-public class LongestCommonSubsequence2 {
+public class LongestCommonSubsequence01 {
 
 	private static final String NORTHWEST_ARROW = "\u2196";
 
@@ -19,20 +15,11 @@ public class LongestCommonSubsequence2 {
 	private static final String WEST_ARROW = "\u2190";
 
 	public static void main(String[] args) {
-//		char[] X = { 'A', 'B', 'C', 'B', 'D', 'A', 'B' };
-//		char[] Y = { 'B', 'D', 'C', 'A', 'B', 'A' };
-		String s1 = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
-		String s2 = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
-		char [] X = s1.toCharArray();
-		char [] Y = s2.toCharArray();
+		char[] X = { 'A', 'B', 'C', 'B', 'D', 'A', 'B' };
+		char[] Y = { 'B', 'D', 'C', 'A', 'B', 'A' };
 
-		Instant start = Instant.now();
-		System.out.println("Starting brute-force " +  start);
 		int length = LCS_LENGTH_BF(X, Y, X.length - 1, Y.length - 1);
-		Instant end = Instant.now();
-		System.out.println("End of Brute-Force Approach " + end);
 		System.out.println("Brute-Force Longest Common Subsequence (non-consecutive) " + length);
-		
 
 		LCS_DYNAMICPROGRAMMING(X, Y);
 
@@ -57,7 +44,7 @@ public class LongestCommonSubsequence2 {
 				}
 			}
 		}
-		
+
 		System.out.println("Dynamic Longest Common Subsequence (non-consecutive)  " + c[X.length][Y.length]);
 		int p = b[0].length;
 		int k = b[1].length;
@@ -71,6 +58,7 @@ public class LongestCommonSubsequence2 {
 			}
 			System.out.println("\n");
 		}
+
 		PRINT_LCS(b, X, X.length, Y.length);
 	}
 
@@ -80,7 +68,7 @@ public class LongestCommonSubsequence2 {
 		}
 		if (b[i][j].equals(NORTHWEST_ARROW)) {
 			PRINT_LCS(b, x, i - 1, j - 1);
-			System.out.print(x[i-1] + " ");
+			System.out.print(x[i - 1] + " ");
 		} else if (b[i][j].equals(NORTH_ARROW)) {
 			PRINT_LCS(b, x, i - 1, j);
 		} else {

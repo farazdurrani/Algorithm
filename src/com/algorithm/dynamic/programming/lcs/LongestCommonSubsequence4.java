@@ -1,4 +1,4 @@
-package com.algorithm.lcs01;
+package com.algorithm.dynamic.programming.lcs;
 
 import java.time.Instant;
 

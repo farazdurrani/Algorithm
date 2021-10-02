@@ -1,4 +1,4 @@
-package com.algorithm.lcs01;
+package com.algorithm.dynamic.programming.lcs;
 
 class LCS {
 	public int longestCommonSubsequenceLength(String s1, String s2) {
