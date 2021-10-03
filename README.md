@@ -42,3 +42,7 @@ BST contains the following operations:
 * Dynamic Programming (memoization)
   - Cut Rod using top-down and bottom-up approaches.
   - Longest Common Subsequence (naive recursive approach and DP-approach)
+  
+* Greedy Algorithm
+  - Activity Selection Problem (recursive and iterative)
+  - Knapsack Problem (greedy (fractional) and dynamic (0-1 binary) )
