@@ -1,5 +1,6 @@
 package com.algorithm.dynamic.programming.knapsack.zeroone;
 
+//https://medium.com/@fabianterh/how-to-solve-the-knapsack-problem-with-dynamic-programming-eb88c706d3cf
 public class Knapsack1 {
 	public static void main(String[] args) {
 //		int[] w = { 24, 10, 10, 7 }; 
