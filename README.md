@@ -46,3 +46,4 @@ BST contains the following operations:
 * Greedy Algorithm
   - Activity Selection Problem (recursive and iterative)
   - Knapsack Problem (greedy (fractional) and dynamic (0-1 binary) )
+  - Huffman Code (pseudo-code only)
