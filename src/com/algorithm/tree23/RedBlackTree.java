@@ -1,5 +1,10 @@
 package com.algorithm.tree23;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.algorithm.dynamiclist18.doublelinkedlist.Queue;
 import com.algorithm.dynamiclist18.doublelinkedlist.Stack;
 
@@ -573,5 +578,52 @@ public class RedBlackTree<E extends Comparable<E>> {
 
 	public void removeAll() {
 		root = this.NIL;
+	}
+
+	public boolean insertIterativeBroken(E data) {
+		TreeNode<E> y = NIL;
+		TreeNode<E> x = root;
+		while (x != NIL) {
+			y = x;
+			if (data.compareTo(x.data) == 0) {
+				System.out.println("Duplicate " + data);
+				return false;
+			} else if (data.compareTo(x.data) < 0) {
+				x = x.left;
+			} else {
+				x = x.right;
+			}
+		}
+		TreeNode<E> z = new TreeNode<>(y, data);
+		if (y == NIL) {
+			root = z;
+		} else if (data.compareTo(y.data) < 0) {
+			y.left = z;
+		} else {
+			y.right = z;
+		}
+		z.left = NIL;
+		z.right = NIL;
+		z.color = RED;
+		return true;
+	}
+
+	public void printLeafNodesAndPath() {
+		Map<String, String> path = new LinkedHashMap<>();
+		traverseLeaves(root, path, "");
+		path.forEach((k,v) -> System.out.println(k + ": " + v));
+	}
+
+	//practicing path to leave nodes for Huffman Coding
+	private void traverseLeaves(TreeNode<E> node, Map<String, String> path, String string) {
+		if (node == NIL) {
+			return;
+		}
+		if (node.left == NIL && node.right == NIL) {
+			path.put(String.valueOf(node.data), string);
+			return;
+		}
+		traverseLeaves(node.left, path, string + "0");
+		traverseLeaves(node.right, path, string + "1");
 	}
 }
