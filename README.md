@@ -30,7 +30,8 @@ BST contains the following operations:
   - Pre, In, and Post traversals recursive and iterative
   - Successor (by keeping track of parent node. And without tracking parent node)
   - Predecessor (by keeping track of parent node. And without tracking parent node)
-  - min and max (both iterative and recursive)
+  - Min and max (both iterative and recursive)
+  - Print leaf nodes only
 
 
 * Red Black Tree
@@ -42,8 +43,8 @@ BST contains the following operations:
 * Dynamic Programming (memoization)
   - Cut Rod using top-down and bottom-up approaches.
   - Longest Common Subsequence (naive recursive approach and DP-approach)
-  
+  - 0-1 (Binary) Knapsack Problem
 * Greedy Algorithm
   - Activity Selection Problem (recursive and iterative)
-  - Knapsack Problem (greedy (fractional) and dynamic (0-1 binary) )
+  - Fractional Knapsack Problem
   - Huffman Code (pseudo-code only)
