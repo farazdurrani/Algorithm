@@ -44,7 +44,10 @@ BST contains the following operations:
   - Cut Rod using top-down and bottom-up approaches.
   - Longest Common Subsequence (naive recursive approach and DP-approach)
   - 0-1 (Binary) Knapsack Problem
-  - Change-making - Minimum Number of Coins (bottom up and topdown)
+  - Change-making 
+  	- Minimum Number of Coins (bottom up and topdown)
+  	- Unique Ways to make change (bottom up)
+  
 * Greedy Algorithm
   - Activity Selection Problem (recursive and iterative)
   - Fractional Knapsack Problem
