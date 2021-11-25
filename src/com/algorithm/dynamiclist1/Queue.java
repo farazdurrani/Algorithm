@@ -24,4 +24,8 @@ public class Queue<E> {
 	node.print();
 
     }
+
+	public boolean isEmpty() {
+		return node.isEmpty();
+	}
 }

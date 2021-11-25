@@ -35,7 +35,6 @@ public class Transpose {
 				list.add(u);
 				graphT.put(v, list);
 			}
-
 		} 
 		return graphT;
 	}

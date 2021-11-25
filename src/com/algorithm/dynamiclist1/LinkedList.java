@@ -63,7 +63,7 @@ public class LinkedList<E> {
 	return dataToReturn;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
 	return first == null;
     }
 
