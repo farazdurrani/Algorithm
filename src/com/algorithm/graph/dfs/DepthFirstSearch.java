@@ -10,7 +10,7 @@ import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 
 public class DepthFirstSearch {
-	
+
 	static int TIME;
 
 	public static void main(String[] args) {
@@ -29,14 +29,14 @@ public class DepthFirstSearch {
 		graph.put(x, List.of(v));
 		graph.put(y, List.of(x));
 		graph.put(z, List.of(z));
-		
+
 		System.out.println("Graph ->");
 		graph.forEach((k, _v) -> System.out.println(k + " | " + _v));
 		System.out.println("Depth-First-Search -> ");
-		DFS(graph, null);
+		DFS(graph);
 	}
 
-	public static void DFS(Map<Vertex, List<Vertex>> graph, Collection<Vertex> col) {
+	public static void DFS(Map<Vertex, List<Vertex>> graph) {
 		for (Vertex u : graph.keySet()) {
 			u.c = Color.WHITE;
 			u.p = null; // symbolically
@@ -44,19 +44,19 @@ public class DepthFirstSearch {
 		TIME = 0; // symbolic
 		for (Vertex u : graph.keySet()) {
 			if (u.c == Color.WHITE) {
-				DFS_VISIT(graph, u, col);
+				DFS_VISIT(graph, u);
 			}
 		}
 	}
 
-	private static void DFS_VISIT(Map<Vertex, List<Vertex>> graph, Vertex u, Collection<Vertex> col) {
+	private static void DFS_VISIT(Map<Vertex, List<Vertex>> graph, Vertex u) {
 		TIME = TIME + 1;
 		u.d = TIME;
 		u.c = Color.GRAY;
 		for (Vertex v : graph.get(u)) {
 			if (v.c == Color.WHITE) {
 				v.p = u;
-				DFS_VISIT(graph, v, col);
+				DFS_VISIT(graph, v);
 			}
 		}
 		u.c = Color.BLACK;
