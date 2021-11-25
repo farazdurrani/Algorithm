@@ -53,3 +53,9 @@ BST contains the following operations:
   - Activity Selection Problem (recursive and iterative)
   - Fractional Knapsack Problem
   - Huffman Code (pseudo-code only)
+  
+* Graph
+  - Breadth-First-Search
+  - Depth-First-Search
+  - Transpose of a Graph
+  - Topological Sort
