@@ -30,11 +30,11 @@ public class TopologicalSort {
 		System.out.println("Graph -> ");
 		graph.forEach((k, v) -> System.out.println(k + " " + v));
 
-		topoSort(graph);
+		topologicalSort(graph);
 	}
 
-	public static void topoSort(Map<Vertex, List<Vertex>> graph) {
-		Stack<Vertex> s = new Stack<>();
+	public static void topologicalSort(Map<Vertex, List<Vertex>> graph) {
+		Stack<Vertex> s = new Stack<>(); //contains vertices in order of decreasing u.f
 		DFS(graph, s);
 		System.out.println("Topological Sort");
 		while (!s.isEmpty()) {

@@ -1,16 +1,13 @@
 package com.algorithm.graph;
 
-//import java.util.List;
-
 public class Vertex {
 
 	public String label;
 	public Color c;
-	public Vertex p; //parent
-	public int d; //discovery time;
-	public int f; //found time
-//	List<Vertex> adj; //adjencent vertices
-	
+	public Vertex p; // parent
+	public int d; // discovery time for DFS. Or distance for BFS;
+	public int f; // found time
+
 	public Vertex(String label) {
 		this.label = label;
 	}
@@ -39,11 +36,10 @@ public class Vertex {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return label;
 	}
-		
-}
 
+}
