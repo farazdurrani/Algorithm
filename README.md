@@ -1,5 +1,5 @@
 # Algorithm
-Algorithm Practice such as divide-and-conquer, greedy algorithm, dynamic programming, etc
+Algorithm Practice such as divide-and-conquer, greedy algorithm, dynamic programming, graph theory, etc
 
 So far, this repo contains practice for:
 
