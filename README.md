@@ -59,3 +59,4 @@ BST contains the following operations:
   - Depth-First-Search
   - Transpose of a Graph
   - Topological Sort
+  - Strongly Connected Components
