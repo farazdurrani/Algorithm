@@ -23,10 +23,30 @@ public class BreadthFirstSearch {
 				List.of(r), w, List.of(s, t, x), x, List.of(w, t, u, y), y,
 				List.of(x, u));
 
-		System.out.println("Graph ->");
-		System.out.println(graph);
+		graph.forEach((k, va) -> {
+			System.out.print(k.label + " [ ");
+			va.forEach(_v -> System.out.print(_v.label + " "));
+			System.out.println("]");
+		});
 
 		BFS(graph, s);
+
+		printPath(s, y); // print path from source to destination
+	}
+
+	/**
+	 * print path from source to destination
+	 */
+	private static void printPath(Vertex s, Vertex v) {
+
+		if (s == v) {
+			System.out.print(s.label + " ");
+		} else if (v.p == null) {
+			System.out.println(v.label + " has no way to " + s.label);
+		} else {
+			printPath(s, v.p);
+			System.out.print(v.label + " ");
+		}
 	}
 
 	private static void BFS(Map<Vertex, List<Vertex>> graph, Vertex s) {
@@ -56,7 +76,7 @@ public class BreadthFirstSearch {
 				}
 			}
 			u.c = Color.BLACK;
-			System.out.println(u + " " + u.d);
+			System.out.println(u.label + " " + u.d);
 		}
 	}
 }

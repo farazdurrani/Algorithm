@@ -1,6 +1,8 @@
 package com.algorithm.graph;
 
-public class Vertex {
+import java.util.Comparator;
+
+public class Vertex implements Comparable<Vertex>{
 
 	public String label;
 	public Color c;
@@ -39,7 +41,18 @@ public class Vertex {
 
 	@Override
 	public String toString() {
-		return label;
+		return "[" + label + "=" + d + "]";
+	}
+
+	@Override
+	public int compareTo(Vertex o) {
+		 if(this.d > o.d) {
+			 return 1;
+		 } else if(this.d < o.d) {
+			 return -1;
+		 } else {
+			 return 0;
+		 }
 	}
 
 }

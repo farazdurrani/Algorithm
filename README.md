@@ -60,3 +60,5 @@ BST contains the following operations:
   - Transpose of a Graph
   - Topological Sort
   - Strongly Connected Components
+  - Minimum-Spanning-Tree
+    - Prim's Algorithm
