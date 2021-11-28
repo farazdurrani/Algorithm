@@ -9,9 +9,12 @@ import java.util.PriorityQueue;
 import com.algorithm.graph.Vertex;
 
 /**
- * @author faraz From Generic-MST set A is always acyclic set A cannot add
- *         duplicate edges When these 2 conditions don't match any longer, we
- *         have a MST.
+ * @author faraz
+ * 
+ **         From Generic-MST 1) set A is always acyclic 2) set A cannot add
+ *         duplicate edges. When these 2 conditions don't match any longer, we
+ *         have a MST. The MST will always have V-1. The total edges will be
+ *         V-1.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class PrimsAlgorithm2 {

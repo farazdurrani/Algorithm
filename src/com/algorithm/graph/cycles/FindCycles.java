@@ -1,118 +1,95 @@
-package com.algorithm.graph.stronglyconnectedcomponent;
+package com.algorithm.graph.cycles;
 
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist10.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
-import com.algorithm.graph.transpose.Transpose;
+import com.algorithm.graph.stronglyconnectedcomponent.StronglyConnectedComponents;
 
 /**
  * @author faraz
+ * 
+ *         * We can use DFS to find cycles from both directed and undirected
+ *         graphs. To find all the vertices that form a cycle, we can run
+ *         StronglyConnectedComponents
  *
- **         We can find cycles through DFS. And if asked to show cycles, we can
- *         run Strongly Connected Components to find all the cycles.
  */
-public class StronglyConnectedComponents {
-
-	private static int TIME;
-
+/**
+ * @author faraz
+ *
+ */
+public class FindCycles {
 	public static void main(String[] args) {
 
-		// this is from the book Cormen Algorithm 3rd edition
+		// will find a cycle
 		Map<Vertex, List<Vertex>> graph = testData0();
 
 		// more testing
-
+		// will find a cycle
 		graph = testData1();
 
 		// more testing
-
+		// will find a cycle
 		graph = testData2();
 
-		// it's working for all 3 test cases
+		// more testing
+		// there is NO cycle
+		graph = testData3();
 
-		System.out.println("Graph -> ");
-		graph.forEach((k, v) -> System.out.println(k + " " + v));
+		// more testing
+		// there is NO cycle
+		graph = testData4();
 
-		System.out.println("Strong Connected Components");
-		stronglyConnectedComponents(graph);
+		DFS(graph);
 	}
 
-	public static void stronglyConnectedComponents(
-			Map<Vertex, List<Vertex>> graph) {
-		// stack contains vertices in order of decreasing u.f
-		Stack<Vertex> s = new Stack<>();
-		DFS(graph, s);
-		Map<Vertex, List<Vertex>> graphT = Transpose.transpose(graph);
-		DFS_MODIFIED(graphT, s);
-	}
-
-	private static void DFS(Map<Vertex, List<Vertex>> graph, Stack<Vertex> s) {
+	private static void DFS(Map<Vertex, List<Vertex>> graph) {
 		for (Vertex u : graph.keySet()) {
 			u.c = Color.WHITE;
-			u.p = null; // symbolically
+			u.p = null;
 		}
-		TIME = 0; // symbolic
+
+		boolean cycle = false;
 		for (Vertex u : graph.keySet()) {
 			if (u.c == Color.WHITE) {
-				DFS_VISIT(graph, u, s);
+				if (DFS_VISIT(graph, u)) {
+					cycle = true;
+					System.out.println("Found a cycle. Cycle is");
+					StronglyConnectedComponents
+							.stronglyConnectedComponents(graph);
+					break;
+				}
 			}
 		}
+		if (!cycle) {
+			System.out.println("No Cycle Found!");
+			StronglyConnectedComponents.stronglyConnectedComponents(graph);
+		}
+
 	}
 
-	private static void DFS_VISIT(Map<Vertex, List<Vertex>> graph, Vertex u,
-			Stack<Vertex> s) {
-		TIME = TIME + 1;
-		u.d = TIME;
+	private static boolean DFS_VISIT(Map<Vertex, List<Vertex>> graph,
+			Vertex u) {
 		u.c = Color.GRAY;
 		for (Vertex v : graph.get(u)) {
 			if (v.c == Color.WHITE) {
 				v.p = u;
-				DFS_VISIT(graph, v, s);
+				if (DFS_VISIT(graph, v)) {
+					return true;
+				}
+			}
+			if (v.c == Color.GRAY) {
+				return true;
 			}
 		}
 		u.c = Color.BLACK;
-		TIME = TIME + 1;
-		u.f = TIME;
-		s.push(u);
+		return false;
 	}
 
 	/**
-	 * This is a modified version of Depth First Search
+	 * From the book Cormen's Algorithm 3rd edition
 	 */
-	private static void DFS_MODIFIED(Map<Vertex, List<Vertex>> graphT,
-			Stack<Vertex> s) {
-		for (Vertex u : graphT.keySet()) {
-			u.p = null;
-			u.c = Color.WHITE;
-		}
-
-		while (!s.isEmpty()) {
-			Vertex u = s.pop();
-			if (u.c == Color.WHITE) {
-				System.out.print(u.label + " ");
-				DFS_VISIT(u, graphT);
-				System.out.println();
-			}
-		}
-	}
-
-	/**
-	 * This is a modified version of DFS-Visit
-	 */
-	private static void DFS_VISIT(Vertex u, Map<Vertex, List<Vertex>> graphT) {
-		u.c = Color.GRAY;
-		for (Vertex v : graphT.get(u)) {
-			if (v.c == Color.WHITE) {
-				System.out.print(v.label + " ");
-				DFS_VISIT(v, graphT);
-			}
-		}
-		u.c = Color.BLACK;
-	}
-	
 	private static Map<Vertex, List<Vertex>> testData0() {
 		Vertex a = new Vertex("a");
 		Vertex b = new Vertex("b");
@@ -161,4 +138,30 @@ public class StronglyConnectedComponents {
 				four, List.of());
 		return graph;
 	}
+
+	/**
+	 * https://www.algotree.org/algorithms/tree_graph_traversal/depth_first_search/cycle_detection_in_directed_graphs/
+	 */
+	private static Map<Vertex, List<Vertex>> testData4() {
+		Vertex zero = new Vertex("0");
+		Vertex one = new Vertex("1");
+		Vertex two = new Vertex("2");
+		Vertex three = new Vertex("3");
+		Vertex four = new Vertex("4");
+		return Map.of(zero, List.of(one, two), one, List.of(), two,
+				List.of(three), three, List.of(four), four, List.of(one));
+	}
+
+	/**
+	 * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+	 */
+	private static Map<Vertex, List<Vertex>> testData3() {
+		Vertex zero = new Vertex("0");
+		Vertex one = new Vertex("1");
+		Vertex two = new Vertex("2");
+		Vertex three = new Vertex("3");
+		return Map.of(zero, List.of(one, two), one, List.of(two), two,
+				List.of(three), three, List.of());
+	}
+
 }

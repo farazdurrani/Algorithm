@@ -9,9 +9,12 @@ import java.util.PriorityQueue;
 import com.algorithm.graph.Vertex;
 
 /**
- * @author faraz From Generic-MST set A is always acyclic set A cannot add
- *         duplicate edges When these 2 conditions don't match any longer, we
- *         have a MST.
+ * @author faraz
+ * 
+ **         From Generic-MST 1) set A is always acyclic 2) set A cannot add
+ *         duplicate edges. When these 2 conditions don't match any longer, we
+ *         have a MST. The MST will always have V-1. The total edges will be
+ *         V-1.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class PrimsAlgorithm {
@@ -35,8 +38,8 @@ public class PrimsAlgorithm {
 
 		primAlgorithm(graph, weight, r);
 
-		//somehow, this print function that I wrote, is correct.
-		//I don't know how.
+		// somehow, this print function that I wrote, is correct.
+		// I don't know how.
 		print(graph);
 
 	}
@@ -44,10 +47,10 @@ public class PrimsAlgorithm {
 	private static void primAlgorithm(Map<Vertex, List<Vertex>> graph,
 			Map<Key, Integer> weight, Vertex r) {
 		for (Vertex u : graph.keySet()) {
-			u.key= Integer.MAX_VALUE;
+			u.key = Integer.MAX_VALUE;
 			u.p = null;
 		}
-		r.key= 0;
+		r.key = 0;
 		PriorityQueue<Vertex> q = new PriorityQueue<>(graph.keySet());
 		while (!q.isEmpty()) {
 			Vertex u = q.poll();
@@ -57,7 +60,7 @@ public class PrimsAlgorithm {
 				if (q.contains(v) && wU_V < v.key) {
 					q.remove(v);
 					v.p = u;
-					v.key= wU_V;
+					v.key = wU_V;
 					q.add(v);
 				}
 			}
@@ -67,7 +70,7 @@ public class PrimsAlgorithm {
 	private static void print(Map<Vertex, List<Vertex>> graph) {
 		int distance = 0;
 		for (Vertex u : graph.keySet()) {
-			if (u.p != null && u.key!= Integer.MAX_VALUE) {
+			if (u.p != null && u.key != Integer.MAX_VALUE) {
 				distance += u.key;
 				System.out.println(u.p.label + "->" + u.label + "=" + u.key);
 			}
