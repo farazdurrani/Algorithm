@@ -14,7 +14,7 @@ import com.algorithm.graph.Vertex;
  *         have a MST.
  */
 @SuppressWarnings({"rawtypes", "unchecked"})
-public class PrimsAlgorithm {
+public class PrimsAlgorithm2 {
 	public static void main(String[] args) {
 
 		Map<Vertex, List<Vertex>> graph = prepareGraph();
@@ -35,39 +35,42 @@ public class PrimsAlgorithm {
 
 		primAlgorithm(graph, weight, r);
 
-		//somehow, this print function that I wrote, is correct.
-		//I don't know how.
+		// somehow, this print function that I wrote, is correct.
+		// I don't know how.
 		print(graph);
 
 	}
 
 	private static void primAlgorithm(Map<Vertex, List<Vertex>> graph,
 			Map<Key, Integer> weight, Vertex r) {
+
 		for (Vertex u : graph.keySet()) {
-			u.key= Integer.MAX_VALUE;
-			u.p = null;
+			u.p = null; // symbolic
+			u.key = Integer.MAX_VALUE;
 		}
-		r.key= 0;
+		r.key = 0;
 		PriorityQueue<Vertex> q = new PriorityQueue<>(graph.keySet());
+		int distance = 0;
 		while (!q.isEmpty()) {
 			Vertex u = q.poll();
 			for (Vertex v : graph.get(u)) {
-				Key key = new Key(u.label, v.label);
-				int wU_V = weight.get(key);
-				if (q.contains(v) && wU_V < v.key) {
+				if (q.contains(v)
+						&& weight.get(new Key(u.label, v.label)) < v.key) {
 					q.remove(v);
 					v.p = u;
-					v.key= wU_V;
+					v.key = weight.get(new Key(u.label, v.label));
 					q.add(v);
 				}
 			}
+			distance += (!q.isEmpty() ? q.peek().key : 0);
 		}
+		System.out.println("distance " + distance);
 	}
 
 	private static void print(Map<Vertex, List<Vertex>> graph) {
 		int distance = 0;
 		for (Vertex u : graph.keySet()) {
-			if (u.p != null && u.key!= Integer.MAX_VALUE) {
+			if (u.p != null && u.key != Integer.MAX_VALUE) {
 				distance += u.key;
 				System.out.println(u.p.label + "->" + u.label + "=" + u.key);
 			}

@@ -2,13 +2,15 @@ package com.algorithm.graph;
 
 import java.util.Comparator;
 
-public class Vertex implements Comparable<Vertex>{
+public class Vertex implements Comparable<Vertex> {
 
 	public String label;
 	public Color c;
 	public Vertex p; // parent
 	public int d; // discovery time for DFS. Or distance for BFS;
 	public int f; // found time
+	public int key; // edge weight at the time of Prim's Algorithm.
+					// Alternatively we could use attribute 'd'
 
 	public Vertex(String label) {
 		this.label = label;
@@ -46,13 +48,13 @@ public class Vertex implements Comparable<Vertex>{
 
 	@Override
 	public int compareTo(Vertex o) {
-		 if(this.d > o.d) {
-			 return 1;
-		 } else if(this.d < o.d) {
-			 return -1;
-		 } else {
-			 return 0;
-		 }
+		if (this.key > o.key) {
+			return 1;
+		} else if (this.key < o.key) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 
 }
