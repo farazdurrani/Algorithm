@@ -60,5 +60,7 @@ BST contains the following operations:
   - Transpose of a Graph
   - Topological Sort
   - Strongly Connected Components
+  - Find and print cycles in a directed graph using DFS.
+  - Find Cycles in an undirected graph using DFS. 
   - Minimum-Spanning-Tree
     - Prim's Algorithm
