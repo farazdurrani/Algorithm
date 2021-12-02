@@ -21,6 +21,8 @@ import com.algorithm.graph.Vertex;
  *         Problem with the algorithm: We can only go from one vertex to another
  *         if it's in the shortest path. Otherwise it won't go even though there
  *         should be a way to find distance from any vertex to another vertex.
+ *         Answer: Actually you can. You just need to set the source if it's not
+ *         in the shortest-path
  *
  */
 public class DAGShortestPath {
