@@ -69,6 +69,6 @@ BST contains the following operations:
 * Single-Source Shortest Paths
   - Bellman-Ford
   - DAG-SHORTEST-PATHS
-  
+  - Dijkstra
   
   
