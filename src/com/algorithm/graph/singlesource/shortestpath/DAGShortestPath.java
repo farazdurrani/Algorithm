@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import com.algorithm.dynamiclist10.Queue;
 import com.algorithm.dynamiclist10.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Edge;
@@ -22,7 +19,8 @@ import com.algorithm.graph.Vertex;
  *         if it's in the shortest path. Otherwise it won't go even though there
  *         should be a way to find distance from any vertex to another vertex.
  *         Answer: Actually you can. You just need to set the source if it's not
- *         in the shortest-path
+ *         in the shortest-path. Or use Bellman-Ford if you want to get to any
+ *         vertex from any vertex. (haven't reached Dijkstra Algorithm yet),
  *
  */
 public class DAGShortestPath {
@@ -43,8 +41,8 @@ public class DAGShortestPath {
 
 		List<Vertex> vertices = new ArrayList<>(graph.keySet());
 
-		System.out.println("Total vertices: " + vertices);
 		System.out.println();
+		System.out.println("Total vertices: " + vertices);
 		printPath(vertices.get(0), vertices.get(5)); // from r to z
 		System.out.println();
 		// reverse of above
@@ -76,8 +74,6 @@ public class DAGShortestPath {
 	private static void DAG_SHORTEST_PATH(Map<Vertex, List<Edge>> graph,
 			Vertex source) {
 		Stack<Vertex> stack = topologicalSort(graph);
-		// Queue is not part of the algo
-		Queue<Vertex> q = new Queue<>();
 		// initializing step
 		for (Vertex u : graph.keySet()) {
 			u.p = null;
@@ -87,7 +83,6 @@ public class DAGShortestPath {
 		// initializing complete
 		while (!stack.isEmpty()) {
 			Vertex u = stack.pop();
-			q.enqueue(u); // q is not part of the algo
 			System.out.print(u.label + " - ");
 			for (Edge e : graph.get(u)) {
 				Vertex v = e.destination;
@@ -98,12 +93,6 @@ public class DAGShortestPath {
 				}
 			}
 		}
-		System.out.println("\nFinal Graph");
-		while (!q.isEmpty()) {
-			Vertex u = q.dequeue();
-			System.out.print(u.label + "(" + u.d + ")" + " ");
-		}
-		System.out.println();
 	}
 
 	static int TIME;
@@ -173,14 +162,6 @@ public class DAGShortestPath {
 	private static List<Vertex> getVertices() {
 		return List.of(new Vertex("s"), new Vertex("t"), new Vertex("x"),
 				new Vertex("y"), new Vertex("z"), new Vertex("r"));
-	}
-
-	private static List<Vertex> getVertices(List<Edge> edges) {
-		Set<Vertex> _vertices = edges.stream().map(e -> e.source)
-				.collect(Collectors.toSet());
-		_vertices.addAll(edges.stream().map(e -> e.destination)
-				.collect(Collectors.toSet()));
-		return new ArrayList<>(_vertices);
 	}
 
 	private static void make_r_as_source(Map<Vertex, List<Edge>> graph) {

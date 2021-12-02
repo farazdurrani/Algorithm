@@ -1,7 +1,5 @@
 package com.algorithm.graph;
 
-import java.util.Comparator;
-
 public class Vertex implements Comparable<Vertex> {
 
 	public String label;
@@ -43,7 +41,7 @@ public class Vertex implements Comparable<Vertex> {
 
 	@Override
 	public String toString() {
-		return "[" + label + "=" + d + "]";
+		return "[" + label + "=" + key + "]";
 	}
 
 	@Override
