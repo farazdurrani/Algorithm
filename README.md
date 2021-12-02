@@ -62,5 +62,12 @@ BST contains the following operations:
   - Strongly Connected Components
   - Find and print cycles in a directed graph using DFS.
   - Find Cycles in an undirected graph using DFS. 
-  - Minimum-Spanning-Tree
-    - Prim's Algorithm
+   
+* Minimum-Spanning-Tree
+  - Prim's Algorithm
+
+* Single-Source Shortest Paths
+  - Bellman-Ford
+  
+  
+  
