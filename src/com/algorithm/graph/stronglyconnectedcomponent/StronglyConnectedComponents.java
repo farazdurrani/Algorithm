@@ -3,7 +3,7 @@ package com.algorithm.graph.stronglyconnectedcomponent;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist10.Stack;
+import com.algorithm.dynamiclist.ten.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 import com.algorithm.graph.transpose.Transpose;

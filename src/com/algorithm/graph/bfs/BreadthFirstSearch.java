@@ -3,7 +3,7 @@ package com.algorithm.graph.bfs;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist1.Queue;
+import com.algorithm.dynamiclist.one.Queue;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 

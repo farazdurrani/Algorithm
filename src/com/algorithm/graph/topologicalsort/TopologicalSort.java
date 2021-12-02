@@ -3,7 +3,7 @@ package com.algorithm.graph.topologicalsort;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist10.Stack;
+import com.algorithm.dynamiclist.ten.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Vertex;
 

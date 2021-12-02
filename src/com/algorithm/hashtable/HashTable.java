@@ -2,7 +2,7 @@ package com.algorithm.hashtable;
 
 import java.util.Random;
 
-import com.algorithm.dynamiclist12.doublelinkedlist.DoubleLinkedList;
+import com.algorithm.dynamiclist.twelve.doublelinkedlist.DoubleLinkedList;
 
 //https://www.youtube.com/watch?v=KyUTuwz_b7Q
 public class HashTable {

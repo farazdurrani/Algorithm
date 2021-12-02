@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.algorithm.dynamiclist10.Stack;
+import com.algorithm.dynamiclist.ten.Stack;
 import com.algorithm.graph.Color;
 import com.algorithm.graph.Edge;
 import com.algorithm.graph.Vertex;
