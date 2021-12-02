@@ -1,6 +1,6 @@
 package com.algorithm.tree.nine;
 
-import com.algorithm.dynamiclist9.Queue;
+import com.algorithm.dynamiclist.nine.Queue;
 
 public class BinarySearchTree<E extends Comparable<E>> {
     private TreeNode<E> root;

@@ -1,8 +1,8 @@
 package com.algorithm.tree.eight;
 
-import com.algorithm.dynamiclist9.LinkedList;
-import com.algorithm.dynamiclist9.Queue;
-import com.algorithm.dynamiclist9.Stack;
+import com.algorithm.dynamiclist.nine.LinkedList;
+import com.algorithm.dynamiclist.nine.Queue;
+import com.algorithm.dynamiclist.nine.Stack;
 
 public class BinarySearchTree<E extends Comparable<E>> {
     private TreeNode<E> root;

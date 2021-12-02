@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist9;
+package com.algorithm.dynamiclist.nine;
 
 public class LinkedList<E> {
     private Node<E> first;

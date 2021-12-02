@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist8.doublelinkedlist2;
+package com.algorithm.dynamiclist.eight.doublelinkedlist2;
 
 public class Stack<E> {
     private LinkedList<E> list = new LinkedList<>();

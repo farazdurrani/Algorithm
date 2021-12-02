@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist9;
+package com.algorithm.dynamiclist.nine;
 
 public class LinkedListTest {
     public static void main(String[] args) {

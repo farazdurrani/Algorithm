@@ -1,4 +1,4 @@
-package com.algorithm.dynamiclist8.doublelinkedlist;
+package com.algorithm.dynamiclist.eight.doublelinkedlist;
 
 public class Node<E> {
 
